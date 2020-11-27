@@ -37,12 +37,14 @@ void		GameState::HandleEvents()
 
 void		GameState::Update()
 {
-	
+	mPlayer.Update();
 }
 
 void		GameState::Render()
 {
 	mWindow->Clear(sf::Color::Green);
+
+	mPlayer.Render(mWindow);
 
 	//RENDER YOUR STUFF
 	
