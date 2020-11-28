@@ -4,7 +4,7 @@
 class Hero : public Entity
 {
 private:
-	/* data */
+
 public:
 	Hero(/* args */);
 	~Hero();

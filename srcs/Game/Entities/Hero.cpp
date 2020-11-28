@@ -2,8 +2,8 @@
 
 Hero::Hero(/* args */)
 {
-	mTexture.loadFromFile("assets/textures/Hero.png");
-	mSprite.setTexture(mTexture);
+	mSprite.setTexture(*ResourceManager::LoadTexture("assets/textures/Hero.png"));
+	mAnimations[Action::IDLE].AddFrame(sf::IntRect(1, 10, 100, 100));
 }
 
 Hero::~Hero()
@@ -12,7 +12,7 @@ Hero::~Hero()
 
 void	Hero::Update()
 {
-
+	mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
 }
 
 

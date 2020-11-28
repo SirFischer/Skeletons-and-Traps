@@ -12,6 +12,7 @@ Player::~Player()
 
 void	Player::Update()
 {
+	mCharacter->Update();
 
 }
 
