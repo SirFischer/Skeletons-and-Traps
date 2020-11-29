@@ -1,7 +1,7 @@
 #pragma once
 #include "Window.hpp"
 #include "Animation.hpp"
-#include "Action.hpp"
+#include "EntityAction.hpp"
 
 #include <map>
 
@@ -11,9 +11,9 @@ protected:
 
 	sf::Sprite					mSprite;
 
-	Action						mAction = Action::IDLE;
+	EntityAction				mAction = EntityAction::IDLE;
 
-	std::map<Action, Animation>	mAnimations = std::map<Action, Animation>();
+	std::map<EntityAction, Animation>	mAnimations = std::map<EntityAction, Animation>();
 
 public:
 	Entity(/* args */);

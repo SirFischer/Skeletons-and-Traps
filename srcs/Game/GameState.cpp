@@ -16,7 +16,6 @@ void		GameState::Init()
 	mf::GUI::ClearWidgets();
 	mIsActive = true;
 	mStateReturnAction = StateAction::POP;
-
 	/**
 	 * INIT STATE AND GUI
 	 **/
@@ -28,6 +27,7 @@ void		GameState::HandleEvents()
 	while (mWindow->HandleEvent(event))
 	{
 		mf::GUI::HandleEvent(event);
+		InputManager::HandleInput(event);
 		if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
 		{
 			mIsActive = false;

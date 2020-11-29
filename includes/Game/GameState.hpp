@@ -1,7 +1,7 @@
 #pragma once
 
 #include "State.hpp"
-
+#include "InputManager.hpp"
 #include "Player.hpp"
 
 class GameState : public State

@@ -3,9 +3,9 @@
 Hero::Hero(/* args */)
 {
 	mSprite.setTexture(*ResourceManager::LoadTexture("assets/textures/Hero.png"));
-	for (size_t i = 0; i < 7; i++)
-		mAnimations[Action::IDLE].AddFrame(sf::IntRect(64 * i, 128, 64, 64));
-	mAnimations[Action::IDLE].SetLength(0.1);
+	for (size_t i = 0; i < 9; i++)
+		mAnimations[EntityAction::IDLE].AddFrame(sf::IntRect(64 * i, 64 * 11, 64, 64));
+	mAnimations[EntityAction::IDLE].SetLength(0.1);
 }
 
 Hero::~Hero()
