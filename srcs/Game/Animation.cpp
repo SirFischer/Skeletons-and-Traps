@@ -15,8 +15,20 @@ void			Animation::AddFrame(sf::IntRect	tRect)
 	mFrames.push_back(tRect);
 }
 
+void			Animation::SetLength(float tLength)
+{
+	mLength = tLength;
+}
+
+void			Animation::ResetAnimation()
+{
+	mClock.restart();
+}
+
 
 sf::IntRect		Animation::GetTextureRect()
 {
-	return (sf::IntRect(0, 0, 100, 100));
+	int size = mFrames.size();
+	sf::IntRect	frame = mFrames.at((int)(((1.0 / mLength) * mClock.getElapsedTime().asSeconds())) % size);
+	return (frame);
 }

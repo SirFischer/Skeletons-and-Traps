@@ -3,7 +3,15 @@
 Hero::Hero(/* args */)
 {
 	mSprite.setTexture(*ResourceManager::LoadTexture("assets/textures/Hero.png"));
-	mAnimations[Action::IDLE].AddFrame(sf::IntRect(1, 10, 100, 100));
+	int animation_line = 2 * 64;
+	mAnimations[Action::IDLE].AddFrame(sf::IntRect(0, animation_line, 64, 64));
+	mAnimations[Action::IDLE].AddFrame(sf::IntRect(64, animation_line, 64, 64));
+	mAnimations[Action::IDLE].AddFrame(sf::IntRect(64 * 2, animation_line, 64, 64));
+	mAnimations[Action::IDLE].AddFrame(sf::IntRect(64 * 3, animation_line, 64, 64));
+	mAnimations[Action::IDLE].AddFrame(sf::IntRect(64 * 4, animation_line, 64, 64));
+	mAnimations[Action::IDLE].AddFrame(sf::IntRect(64 * 5, animation_line, 64, 64));
+	mAnimations[Action::IDLE].AddFrame(sf::IntRect(64 * 6, animation_line, 64, 64));
+	mAnimations[Action::IDLE].SetLength(0.1);
 }
 
 Hero::~Hero()
