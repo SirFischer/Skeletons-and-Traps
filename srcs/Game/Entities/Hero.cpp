@@ -14,6 +14,9 @@ Hero::~Hero()
 
 void	Hero::Update()
 {
+	mSprite.setPosition(mPosition);
+	mPosition += mVelocity;
+	mVelocity.x *= 0.95;
 	mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
 }
 

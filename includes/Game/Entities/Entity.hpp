@@ -8,6 +8,9 @@
 class Entity
 {
 protected:
+	sf::Vector2f				mPosition = sf::Vector2f(0, 0);
+	sf::Vector2f				mVelocity = sf::Vector2f(0, 0);
+	float						mSpeed = 0.5f;
 
 	sf::Sprite					mSprite;
 
@@ -21,5 +24,8 @@ public:
 
 	virtual void				Update() = 0;
 	virtual void				Render(Window *tWindow) = 0;
+
+	void						MoveLeft();
+	void						MoveRight();
 };
 
