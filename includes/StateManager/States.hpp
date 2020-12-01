@@ -8,4 +8,5 @@
 
 #include "GameState.hpp"
 #include "MenuState.hpp"
+#include "OptionsState.hpp"
 

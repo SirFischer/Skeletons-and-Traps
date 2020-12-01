@@ -34,14 +34,22 @@ void		MenuState::Init()
 	mPlayBtn->SetText("Play!");
 
 
+	mOptionBtn = mf::Button::Create(sf::Color::Blue, sf::Color::Cyan);
+	mOptionBtn->SetPositionPercentage(true)->SetPosition(45, 50);
+	mOptionBtn->SetClickEvent([actionReturn, active] {
+		*actionReturn = StateAction::OPTIONS;
+		*active = false;
+	});
+
 	mQuitBtn = mf::Button::Create(sf::Color::Red, sf::Color::Yellow);
-	mQuitBtn->SetPositionPercentage(true)->SetPosition(45, 50);
+	mQuitBtn->SetPositionPercentage(true)->SetPosition(45, 60);
 	mQuitBtn->SetClickEvent([actionReturn, active] {
 		*actionReturn = StateAction::POP;
 		*active = false;
 	});
 
 	mf::GUI::AddWidget(mPlayBtn);
+	mf::GUI::AddWidget(mOptionBtn);
 	mf::GUI::AddWidget(mQuitBtn);
 }
 

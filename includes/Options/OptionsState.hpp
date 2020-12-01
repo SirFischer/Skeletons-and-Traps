@@ -3,16 +3,14 @@
 #include "State.hpp"
 #include "ResourceManager.hpp"
 
-class MenuState : public State
+class OptionsState : public State
 {
 private:
-	mf::Button		*mPlayBtn;
-	mf::Button		*mOptionBtn;
-	mf::Button		*mQuitBtn;
+	mf::Button	*mFullscreenButton;
 	
 public:
-	MenuState(Window *tWindow);
-	~MenuState();
+	OptionsState(Window *tWindow);
+	~OptionsState();
 
 	void		Init();
 	void		HandleEvents();
