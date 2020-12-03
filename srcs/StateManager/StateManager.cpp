@@ -36,6 +36,10 @@ void		StateManager::Run()
 			mStates.push(new MenuState(mWindow));
 			break;
 
+		case StateAction::OPTIONS:
+			mStates.push(new OptionsState(mWindow));
+			break;
+
 		default:
 			delete mStates.top();
 			mStates.pop();

@@ -1,6 +1,7 @@
 #include "ResourceManager.hpp"
 
-std::map<std::string, std::shared_ptr<void>>	ResourceManager::mResources = std::map<std::string, std::shared_ptr<void>>();
+FontList	ResourceManager::mFontResources = FontList();
+TextureList	ResourceManager::mTextureResources = TextureList();
 
 ResourceManager::ResourceManager(/* args */)
 {
@@ -20,8 +21,8 @@ sf::Font		*ResourceManager::LoadFont(std::string tPath)
 {
 	sf::Font	*font = NULL;
 
-	if (mResources.count(tPath))
-		return (sf::Font *)(mResources[tPath].get());
+	if (mFontResources.count(tPath))
+		return (sf::Font *)(mFontResources[tPath].get());
 	try
 	{
 		font = new sf::Font();
@@ -33,6 +34,27 @@ sf::Font		*ResourceManager::LoadFont(std::string tPath)
 		return (NULL);
 	}
 	font->loadFromFile(tPath);
-	mResources[tPath] = std::shared_ptr<void>(font);
+	mFontResources[tPath] = std::shared_ptr<sf::Font>(font);
 	return (font);
+}
+
+sf::Texture		*ResourceManager::LoadTexture(std::string tPath)
+{
+	sf::Texture	*texture = NULL;
+
+	if (mTextureResources.count(tPath))
+		return (sf::Texture *)(mTextureResources[tPath].get());
+	try
+	{
+		texture = new sf::Texture();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Failed to load texture: " << tPath << std::endl;
+		std::cerr << e.what() << '\n';
+		return (NULL);
+	}
+	texture->loadFromFile(tPath);
+	mTextureResources[tPath] = std::shared_ptr<sf::Texture>(texture);
+	return (texture);
 }

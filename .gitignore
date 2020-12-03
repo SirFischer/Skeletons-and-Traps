@@ -1,3 +1,4 @@
 LabMonkey
 *.o
 *.d
+.vscode

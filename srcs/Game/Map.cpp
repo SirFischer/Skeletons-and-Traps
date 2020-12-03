@@ -23,10 +23,6 @@ Map::Map(std::string path)
 	std::string					tmp;
 	map.open(path);
 
-	mDirtSprite.setScale(sf::Vector2f(1, 1));
-	mGrassSprite.setScale(sf::Vector2f(1, 1));
-	mSkySprite.setScale(sf::Vector2f(1, 1));
-
 	while (!map.eof())
 	{
 		std::getline(map, tmp);
@@ -40,30 +36,30 @@ Map::~Map()
 {
 }
 
-	void Map::draw(sf::RenderWindow &window)
+void Map::Draw(Window *tWindow)
+{
+	int y = 0;
+	for (auto &&i : mMapLines)
 	{
-		int y = 0;
-		for (auto &&i : mMapLines)
+		for (size_t x = 0; x < i.length(); x++)
 		{
-			for (size_t x = 0; x < i.length(); x++)
+			if (i[x] == '0')
 			{
-				if (i[x] == '0')
-				{
-					mSkySprite.setPosition(x * 100, y * 100);
-					window.draw(mSkySprite);
-				}
-				if (i[x] == '1')
-				{
-					mGrassSprite.setPosition(x * 100, y * 100);
-					window.draw(mGrassSprite);
-				}
-				if (i[x] == '2')
-				{
-					mDirtSprite.setPosition(x * 100, y * 100);
-					window.draw(mDirtSprite);
-				}
+				mSkySprite.setPosition(x * 100, y * 100);
+				tWindow->Draw(mSkySprite);
+			}
+			if (i[x] == '1')
+			{
+				mGrassSprite.setPosition(x * 100, y * 100);
+				tWindow->Draw(mGrassSprite);
+			}
+			if (i[x] == '2')
+			{
+				mDirtSprite.setPosition(x * 100, y * 100);
+				tWindow->Draw(mDirtSprite);
 			}
 		}
-		y++;
 	}
+	y++;
+}
 

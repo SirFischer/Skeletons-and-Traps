@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <fstream>
+#include "Window.hpp"
 
 class Map
 {
@@ -21,5 +22,5 @@ public:
 	Map(std::string path);
 	~Map();
 
-	void draw(sf::RenderWindow &window);
+	void Draw(Window *tWindow);
 };
