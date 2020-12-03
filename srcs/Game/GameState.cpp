@@ -38,6 +38,7 @@ void		GameState::HandleEvents()
 
 void		GameState::Update()
 {
+	mMap.HandleCollisions(mPlayer.GetEntity());
 	mPlayer.Update();
 }
 

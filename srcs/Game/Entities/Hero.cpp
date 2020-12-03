@@ -2,7 +2,7 @@
 
 Hero::Hero(/* args */)
 {
-	mPosition = sf::Vector2f(400, 300);
+	mPosition = sf::Vector2f(400, 100);
 	mSprite.setTexture(*ResourceManager::LoadTexture("assets/textures/Hero.png"));
 	for (size_t i = 0; i < 9; i++)
 		mAnimations[EntityAction::WALK_LEFT].AddFrame(sf::IntRect(64 * i, 64 * 9, 64, 64));
@@ -32,6 +32,7 @@ void	Hero::Update()
 	if (mAnimations.count(mAction))
 		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
 	mAction = EntityAction::IDLE;
+	mVelocity.y += 0.1;
 }
 
 

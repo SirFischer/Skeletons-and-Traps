@@ -22,5 +22,5 @@ void				Entity::MoveRight()
 
 void				Entity::Jump()
 {
-	mAction = EntityAction::JUMP;
+	mVelocity.y -= mJumpForce;
 }
