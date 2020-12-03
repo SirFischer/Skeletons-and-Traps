@@ -8,9 +8,10 @@
 class Entity
 {
 protected:
+	sf::Vector2f				mSize = sf::Vector2f(32, 48);
 	sf::Vector2f				mPosition = sf::Vector2f(0, 0);
 	sf::Vector2f				mVelocity = sf::Vector2f(0, 0);
-	float						mSpeed = 0.2f;
+	float						mSpeed = 0.35f;
 	float						mJumpForce = 6.f;
 	bool						mOnGround = false;
 
@@ -32,7 +33,8 @@ public:
 	void						Jump();
 
 	sf::Vector2f				GetPosition(){return (mPosition);}
-	sf::Vector2f				GetSize(){return (sf::Vector2f(mSprite.getGlobalBounds().width, mSprite.getGlobalBounds().height));}
+	//sf::Vector2f				GetSize(){return (sf::Vector2f(mSprite.getGlobalBounds().width, mSprite.getGlobalBounds().height));}
+	sf::Vector2f				GetSize(){return (mSize);}
 	friend class				Map;
 };
 

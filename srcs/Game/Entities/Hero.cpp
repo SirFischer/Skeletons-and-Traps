@@ -18,7 +18,7 @@ Hero::Hero(/* args */)
 	mAnimations[EntityAction::JUMP].SetLength(0.08);
 	if (mAnimations.count(mAction))
 		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
-	
+	mSprite.setOrigin(16, 8);
 }
 
 Hero::~Hero()
@@ -30,7 +30,7 @@ void	Hero::Update()
 	
 	mSprite.setPosition(mPosition);
 	mPosition += mVelocity;
-	mVelocity.x *= 0.95;
+	mVelocity.x *= 0.90;
 	if (mAnimations.count(mAction))
 		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
 	mAction = EntityAction::IDLE;

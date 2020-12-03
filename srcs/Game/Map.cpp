@@ -62,7 +62,8 @@ void				Map::HandleCollisions(Entity	*tEntity)
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
-				if ((position.x < mx + BLOCK_SIZE && position.x + size.x > mx) && (position.y < my + BLOCK_SIZE && position.y + size.y > my))
+				//AABB collision?
+				if ((position.x < (mx + BLOCK_SIZE) && (position.x + size.x) > mx) && (position.y < (my + BLOCK_SIZE) && (position.y + size.y) > my))
 				{
 					float middleX =  (position.x + (size.x / 2.0)) - (mx + (BLOCK_SIZE / 2.0));
 					float middleY = (position.y + (size.y / 2.0)) - (my + (BLOCK_SIZE / 2.0));
@@ -79,7 +80,7 @@ void				Map::HandleCollisions(Entity	*tEntity)
 					if ((angle < 45 || angle > 315) && tEntity->mVelocity.x > 0)
 					{
 						tEntity->mVelocity.x = 0;
-						tEntity->mPosition = sf::Vector2f(mx - BLOCK_SIZE, prevposition.y);
+						tEntity->mPosition = sf::Vector2f(mx - size.x, prevposition.y);
 					} else
 					if ((angle > 225  && angle < 315) && tEntity->mVelocity.y < 0)
 					{
@@ -89,7 +90,7 @@ void				Map::HandleCollisions(Entity	*tEntity)
 					if ((angle > 135 && angle < 225) && tEntity->mVelocity.x < 0)
 					{
 						tEntity->mVelocity.x = 0;
-						tEntity->mPosition = sf::Vector2f(mx + size.x, prevposition.y);
+						tEntity->mPosition = sf::Vector2f(mx + BLOCK_SIZE, prevposition.y);
 					}
 					position = tEntity->GetPosition() + tEntity->mVelocity;
 					prevposition = tEntity->GetPosition();
