@@ -10,7 +10,7 @@ Map::Map(std::string path)
 	{
 		/* code */
 	}
-	if (!mSkyTexture.loadFromFile("assets/Textures/blue400x400.png"))
+	if (!mSkyTexture.loadFromFile("assets/Textures/blue400x400.jpg"))
 	{
 		/* code */
 	}
@@ -18,6 +18,10 @@ Map::Map(std::string path)
 	mDirtSprite.setTexture(mDirtTexture);
 	mGrassSprite.setTexture(mGrassTexture);
 	mSkySprite.setTexture(mSkyTexture);
+
+	mDirtSprite.setTextureRect(sf::IntRect(0, 0, 100, 100));
+	mGrassSprite.setTextureRect(sf::IntRect(0, 0, 100, 100));
+	mSkySprite.setTextureRect(sf::IntRect(0, 0, 100, 100));
 
 	std::fstream				map;
 	std::string					tmp;
@@ -59,7 +63,7 @@ void Map::Draw(Window *tWindow)
 				tWindow->Draw(mDirtSprite);
 			}
 		}
+		y++;
 	}
-	y++;
 }
 
