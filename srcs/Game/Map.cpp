@@ -67,27 +67,23 @@ void				Map::HandleCollisions(Entity	*tEntity)
 				{
 					float middleX =  (position.x + (size.x / 2.0)) - (mx + (BLOCK_SIZE / 2.0));
 					float middleY = (position.y + (size.y / 2.0)) - (my + (BLOCK_SIZE / 2.0));
-					
 					float angle = std::atan2(middleY, middleX) + M_PI;
 					angle = ((angle / 3.1416) * 180.0);
-					if ((angle >= 44 && angle <= 136) && tEntity->mVelocity.y > 0)
+					if ((angle > 45 && angle < 135) && tEntity->mVelocity.y > 0)
 					{
 						tEntity->mVelocity.y = 0;
 						tEntity->mOnGround = true;
 						tEntity->mPosition = sf::Vector2f(prevposition.x, my - size.y);
 						
-					} else
-					if ((angle < 45 || angle > 315) && tEntity->mVelocity.x > 0)
+					} else if ((angle < 45 || angle > 315) && tEntity->mVelocity.x > 0)
 					{
 						tEntity->mVelocity.x = 0;
 						tEntity->mPosition = sf::Vector2f(mx - size.x, prevposition.y);
-					} else
-					if ((angle > 225  && angle < 315) && tEntity->mVelocity.y < 0)
+					} else if ((angle > 225  && angle < 315) && tEntity->mVelocity.y < 0)
 					{
 						tEntity->mVelocity.y = 0;
 						tEntity->mPosition = sf::Vector2f(prevposition.x, my + BLOCK_SIZE);
-					} else
-					if ((angle > 135 && angle < 225) && tEntity->mVelocity.x < 0)
+					} else if ((angle > 135 && angle < 225) && tEntity->mVelocity.x < 0)
 					{
 						tEntity->mVelocity.x = 0;
 						tEntity->mPosition = sf::Vector2f(mx + BLOCK_SIZE, prevposition.y);
