@@ -10,7 +10,7 @@ class Entity
 protected:
 	sf::Vector2f				mPosition = sf::Vector2f(0, 0);
 	sf::Vector2f				mVelocity = sf::Vector2f(0, 0);
-	float						mSpeed = 0.1f;
+	float						mSpeed = 0.2f;
 
 	sf::Sprite					mSprite;
 
@@ -27,5 +27,6 @@ public:
 
 	void						MoveLeft();
 	void						MoveRight();
+	void						Jump();
 };
 

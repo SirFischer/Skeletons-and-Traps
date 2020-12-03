@@ -7,7 +7,7 @@ class State
 {
 
 protected:
-	sf::Time		mDeltaTime = sf::seconds(1.f / 128.f);
+	sf::Time		mDeltaTime = sf::seconds(1.f / 64.f);
 	StateAction		mStateReturnAction = StateAction::POP;
 
 	bool			mIsActive = true;

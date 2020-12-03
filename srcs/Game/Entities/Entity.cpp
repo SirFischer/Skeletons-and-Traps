@@ -11,11 +11,16 @@ Entity::~Entity()
 void				Entity::MoveLeft()
 {
 	mVelocity.x -= mSpeed;
-	mAction = EntityAction::WALK;
+	mAction = EntityAction::WALK_LEFT;
 }
 
 void				Entity::MoveRight()
 {
 	mVelocity.x += mSpeed;
-	mAction = EntityAction::WALK;
+	mAction = EntityAction::WALK_RIGHT;
+}
+
+void				Entity::Jump()
+{
+	mAction = EntityAction::JUMP;
 }
