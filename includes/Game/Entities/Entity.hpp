@@ -11,7 +11,8 @@ protected:
 	sf::Vector2f				mPosition = sf::Vector2f(0, 0);
 	sf::Vector2f				mVelocity = sf::Vector2f(0, 0);
 	float						mSpeed = 0.2f;
-	float						mJumpForce = 2.f;
+	float						mJumpForce = 6.f;
+	bool						mOnGround = false;
 
 	sf::Sprite					mSprite;
 

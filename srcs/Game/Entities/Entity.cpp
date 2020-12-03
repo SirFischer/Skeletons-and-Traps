@@ -22,5 +22,6 @@ void				Entity::MoveRight()
 
 void				Entity::Jump()
 {
-	mVelocity.y -= mJumpForce;
+	if (mOnGround)
+		mVelocity.y -= mJumpForce;
 }

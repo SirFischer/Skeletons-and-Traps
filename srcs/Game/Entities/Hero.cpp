@@ -16,6 +16,8 @@ Hero::Hero(/* args */)
 	for (size_t i = 0; i < 6; i++)
 		mAnimations[EntityAction::JUMP].AddFrame(sf::IntRect(64 * i, 64 * 15, 64, 64));
 	mAnimations[EntityAction::JUMP].SetLength(0.08);
+	if (mAnimations.count(mAction))
+		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
 	
 }
 
@@ -32,7 +34,8 @@ void	Hero::Update()
 	if (mAnimations.count(mAction))
 		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
 	mAction = EntityAction::IDLE;
-	mVelocity.y += 0.1;
+	if (!mOnGround)
+		mVelocity.y += 0.1;
 }
 
 

@@ -46,6 +46,7 @@ void				Map::HandleCollisions(Entity	*tEntity)
 	sf::Vector2f	position = tEntity->GetPosition() + tEntity->mVelocity;
 	sf::Vector2f	prevposition = tEntity->GetPosition();
 	sf::Vector2i	index = sf::Vector2i((position.x - BLOCK_SIZE) / BLOCK_SIZE, (position.y - BLOCK_SIZE) / BLOCK_SIZE);
+	tEntity->mOnGround = false;
 	index.x = (index.x < 0) ? 0 : index.x;
 	index.y = (index.y < 0) ? 0 : index.y;
 	for (int y = index.y; y < index.y + 3; y++)
@@ -71,6 +72,7 @@ void				Map::HandleCollisions(Entity	*tEntity)
 					if ((angle >= 44 && angle <= 136) && tEntity->mVelocity.y > 0)
 					{
 						tEntity->mVelocity.y = 0;
+						tEntity->mOnGround = true;
 						tEntity->mPosition = sf::Vector2f(prevposition.x, my - size.y);
 						
 					} else
@@ -89,7 +91,8 @@ void				Map::HandleCollisions(Entity	*tEntity)
 						tEntity->mVelocity.x = 0;
 						tEntity->mPosition = sf::Vector2f(mx + size.x, prevposition.y);
 					}
-					break;
+					position = tEntity->GetPosition() + tEntity->mVelocity;
+					prevposition = tEntity->GetPosition();
 				}
 			}
 			
