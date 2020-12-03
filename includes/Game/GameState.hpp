@@ -5,8 +5,7 @@
 class GameState : public State
 {
 private:
-	/* data */
-	
+
 public:
 	GameState(Window *tWindow);
 	~GameState();
