@@ -15,6 +15,7 @@ Map::Map(std::string path)
 		/* code */
 	}
 
+	//Textures/sprites
 	mDirtSprite.setTexture(mDirtTexture);
 	mGrassSprite.setTexture(mGrassTexture);
 	mSkySprite.setTexture(mSkyTexture);
@@ -27,6 +28,7 @@ Map::Map(std::string path)
 	std::string					tmp;
 	map.open(path);
 
+	//Read trough map file lines
 	while (!map.eof())
 	{
 		std::getline(map, tmp);
@@ -40,6 +42,7 @@ Map::~Map()
 {
 }
 
+//asserting sprites to characters and drawing them until the final character has been read
 void Map::Draw(Window *tWindow)
 {
 	int y = 0;
