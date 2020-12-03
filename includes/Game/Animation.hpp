@@ -19,6 +19,8 @@ public:
 	void							SetLength(float tLength);
 	void							ResetAnimation();
 
+	bool							IsDone();
+
 	sf::IntRect						GetTextureRect();
 };
 

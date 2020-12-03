@@ -3,5 +3,6 @@
 enum class EntityAction {
 	IDLE,
 	JUMP,
-	WALK
+	WALK_LEFT,
+	WALK_RIGHT
 };
