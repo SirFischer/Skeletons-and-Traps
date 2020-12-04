@@ -79,14 +79,14 @@ void				Map::HandleCollisions(Entity	*tEntity)
 					{
 						tEntity->mVelocity.x = 0;
 						tEntity->mPosition = sf::Vector2f(mx - size.x, prevposition.y);
-					} else if ((angle > 225  && angle < 315) && tEntity->mVelocity.y < 0)
-					{
-						tEntity->mVelocity.y = 0;
-						tEntity->mPosition = sf::Vector2f(prevposition.x, my + BLOCK_SIZE);
 					} else if ((angle > 135 && angle < 225) && tEntity->mVelocity.x < 0)
 					{
 						tEntity->mVelocity.x = 0;
 						tEntity->mPosition = sf::Vector2f(mx + BLOCK_SIZE, prevposition.y);
+					} else if ((angle > 229  && angle < 305) && tEntity->mVelocity.y < 0)
+					{
+						tEntity->mVelocity.y = 0;
+						tEntity->mPosition = sf::Vector2f(prevposition.x, my + BLOCK_SIZE);
 					}
 					position = tEntity->GetPosition() + tEntity->mVelocity;
 					prevposition = tEntity->GetPosition();
