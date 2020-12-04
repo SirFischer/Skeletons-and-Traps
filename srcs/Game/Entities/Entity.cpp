@@ -8,6 +8,14 @@ Entity::~Entity()
 {
 }
 
+void				Entity::ApplyAnimation()
+{
+	if (mAnimations.count(mAction))
+		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
+	mAction = EntityAction::IDLE;
+}
+
+
 void				Entity::Attack()
 {
 	

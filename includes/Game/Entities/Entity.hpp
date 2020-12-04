@@ -11,6 +11,7 @@ protected:
 	sf::Vector2f				mSize = sf::Vector2f(32, 48);
 	sf::Vector2f				mPosition = sf::Vector2f(0, 0);
 	sf::Vector2f				mVelocity = sf::Vector2f(0, 0);
+	float						mHealth = 100.f;
 	float						mSpeed = 0.35f;
 	float						mJumpForce = 6.f;
 	bool						mOnGround = false;
@@ -21,6 +22,8 @@ protected:
 
 	std::map<EntityAction, Animation>	mAnimations = std::map<EntityAction, Animation>();
 
+	virtual void				ApplyAnimation();
+
 public:
 	Entity(/* args */);
 	~Entity();
@@ -29,6 +32,8 @@ public:
 	virtual void				Render(Window *tWindow) = 0;
 
 	virtual void				Attack();
+
+
 	void						MoveLeft();
 	void						MoveRight();
 	void						Jump();

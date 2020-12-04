@@ -106,7 +106,7 @@ void		Map::SpawnEntities(std::list<Entity *> *tEntities)
 		{
 			if (i[x] == '3')
 			{
-				Hero *entity = new Hero();
+				Skeleton *entity = new Skeleton();
 				entity->mPosition = sf::Vector2f(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tEntities->push_front(entity);
 			}
