@@ -8,6 +8,12 @@ Entity::~Entity()
 {
 }
 
+void				Entity::Attack()
+{
+	
+}
+
+
 void				Entity::MoveLeft()
 {
 	mVelocity.x -= mSpeed;
@@ -24,4 +30,5 @@ void				Entity::Jump()
 {
 	if (mOnGround)
 		mVelocity.y -= mJumpForce;
+	
 }

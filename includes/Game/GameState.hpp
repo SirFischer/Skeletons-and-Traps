@@ -9,8 +9,9 @@ class GameState : public State
 {
 private:
 
-	Map			mMap;
-	Player		mPlayer;
+	Map						mMap;
+	Player					mPlayer;
+	std::list<Entity *>		mEntities;
 	
 public:
 	GameState(Window *tWindow);

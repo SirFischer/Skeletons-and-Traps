@@ -28,6 +28,7 @@ public:
 	virtual void				Update() = 0;
 	virtual void				Render(Window *tWindow) = 0;
 
+	virtual void				Attack();
 	void						MoveLeft();
 	void						MoveRight();
 	void						Jump();

@@ -30,5 +30,7 @@ public:
 
 	void					HandleCollisions(Entity	*tEntity);
 
+	void					SpawnEntities(std::list<Entity *> *tEntities);
+
 	void					Draw(Window *tWindow);
 };
