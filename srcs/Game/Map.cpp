@@ -58,7 +58,7 @@ void				Map::HandleCollisions(Entity	*tEntity)
 			if (x >= (int)mMapLines[y].length())
 				break;
 			//if block is solid
-			if (mMapLines[y][x] == '1')
+			if (mMapLines[y][x] == '1' || mMapLines[y][x] == '2')
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
