@@ -13,7 +13,10 @@ public:
 	Player(/* args */);
 	~Player();
 
+	
 	void	Update();
 	void	Render(Window	*tWindow);
+	
+	Entity	*GetEntity(){return mCharacter.get();}
 };
 

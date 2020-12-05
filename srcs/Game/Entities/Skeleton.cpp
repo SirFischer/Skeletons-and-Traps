@@ -1,9 +1,9 @@
-#include "Hero.hpp"
+#include "Skeleton.hpp"
 
-Hero::Hero(/* args */)
+Skeleton::Skeleton(/* args */)
 {
 	mPosition = sf::Vector2f(400, 100);
-	mSprite.setTexture(*ResourceManager::LoadTexture("assets/Textures/Hero.png"));
+	mSprite.setTexture(*ResourceManager::LoadTexture("assets/Textures/Skeleton.png"));
 	for (size_t i = 0; i < 9; i++)
 		mAnimations[EntityAction::WALK_LEFT].AddFrame(sf::IntRect(64 * i, 64 * 9, 64, 64));
 	mAnimations[EntityAction::WALK_LEFT].SetLength(0.1);
@@ -21,13 +21,12 @@ Hero::Hero(/* args */)
 	mSprite.setOrigin(16, 8);
 }
 
-Hero::~Hero()
+Skeleton::~Skeleton()
 {
 }
 
-void	Hero::Update()
+void	Skeleton::Update()
 {
-	
 	mSprite.setPosition(mPosition);
 	mPosition += mVelocity;
 	mVelocity.x *= 0.90;
@@ -37,7 +36,7 @@ void	Hero::Update()
 }
 
 
-void	Hero::Render(Window	*tWindow)
+void	Skeleton::Render(Window	*tWindow)
 {
 	tWindow->Draw(mSprite);
 }

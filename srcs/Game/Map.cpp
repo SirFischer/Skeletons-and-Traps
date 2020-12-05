@@ -20,9 +20,9 @@ Map::Map(std::string path)
 	mGrassSprite.setTexture(mGrassTexture);
 	mSkySprite.setTexture(mSkyTexture);
 
-	mDirtSprite.setTextureRect(sf::IntRect(0, 0, 100, 100));
-	mGrassSprite.setTextureRect(sf::IntRect(0, 0, 100, 100));
-	mSkySprite.setTextureRect(sf::IntRect(0, 0, 100, 100));
+	mDirtSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mGrassSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mSkySprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 
 	std::fstream				map;
 	std::string					tmp;
@@ -42,27 +42,106 @@ Map::~Map()
 {
 }
 
+<<<<<<< HEAD
 //asserting sprites to characters and drawing them until the final character has been read
 void Map::Draw(Window *tWindow)
+=======
+void				Map::HandleCollisions(Entity	*tEntity)
+{
+	sf::Vector2f	size = tEntity->GetSize();
+	sf::Vector2f	position = tEntity->GetPosition() + tEntity->mVelocity;
+	sf::Vector2f	prevposition = tEntity->GetPosition();
+	sf::Vector2i	index = sf::Vector2i((position.x - BLOCK_SIZE) / BLOCK_SIZE, (position.y - BLOCK_SIZE) / BLOCK_SIZE);
+	tEntity->mOnGround = false;
+	index.x = (index.x < 0) ? 0 : index.x;
+	index.y = (index.y < 0) ? 0 : index.y;
+	for (int y = index.y; y < index.y + 3; y++)
+	{
+		if (y >= (int)mMapLines.size())
+				break;
+		for ( int x = index.x; x < index.x + 3; x++)
+		{
+			if (x >= (int)mMapLines[y].length())
+				break;
+			//if block is solid
+			if (mMapLines[y][x] == '1' || mMapLines[y][x] == '2')
+			{
+				int mx = x * BLOCK_SIZE;
+				int my = y * BLOCK_SIZE;
+				//AABB collision?
+				if ((position.x < (mx + BLOCK_SIZE) && (position.x + size.x) > mx) && (position.y < (my + BLOCK_SIZE) && (position.y + size.y) > my))
+				{
+					float middleX =  (position.x + (size.x / 2.0)) - (mx + (BLOCK_SIZE / 2.0));
+					float middleY = (position.y + (size.y / 2.0)) - (my + (BLOCK_SIZE / 2.0));
+					float angle = std::atan2(middleY, middleX) + M_PI;
+					angle = ((angle / 3.1416) * 180.0);
+					if ((angle > 45 && angle < 135) && tEntity->mVelocity.y > 0)
+					{
+						tEntity->mVelocity.y = 0;
+						tEntity->mOnGround = true;
+						tEntity->mPosition = sf::Vector2f(prevposition.x, my - size.y);
+						
+					} else if ((angle < 45 || angle > 315) && tEntity->mVelocity.x > 0)
+					{
+						tEntity->mVelocity.x = 0;
+						tEntity->mPosition = sf::Vector2f(mx - size.x, prevposition.y);
+					} else if ((angle > 135 && angle < 225) && tEntity->mVelocity.x < 0)
+					{
+						tEntity->mVelocity.x = 0;
+						tEntity->mPosition = sf::Vector2f(mx + BLOCK_SIZE, prevposition.y);
+					} else if ((angle > 229  && angle < 305) && tEntity->mVelocity.y < 0)
+					{
+						tEntity->mVelocity.y = 0;
+						tEntity->mPosition = sf::Vector2f(prevposition.x, my + BLOCK_SIZE);
+					}
+					position = tEntity->GetPosition() + tEntity->mVelocity;
+					prevposition = tEntity->GetPosition();
+				}
+			}
+			
+		}
+	}
+}
+
+void		Map::SpawnEntities(std::list<Entity *> *tEntities)
 {
 	int y = 0;
 	for (auto &&i : mMapLines)
 	{
 		for (size_t x = 0; x < i.length(); x++)
 		{
-			if (i[x] == '0')
+			if (i[x] == '3')
 			{
-				mSkySprite.setPosition(x * 100, y * 100);
+				Skeleton *entity = new Skeleton();
+				entity->mPosition = sf::Vector2f(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tEntities->push_front(entity);
+			}
+		}
+		y++;
+	}
+}
+
+void		Map::Draw(Window *tWindow)
+>>>>>>> c0474c9898cdc21b848c18cebb7d89cbcca4a500
+{
+	int y = 0;
+	for (auto &&i : mMapLines)
+	{
+		for (size_t x = 0; x < i.length(); x++)
+		{
+			if (i[x] == '0' || i[x] == '3')
+			{
+				mSkySprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mSkySprite);
 			}
 			if (i[x] == '1')
 			{
-				mGrassSprite.setPosition(x * 100, y * 100);
+				mGrassSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mGrassSprite);
 			}
 			if (i[x] == '2')
 			{
-				mDirtSprite.setPosition(x * 100, y * 100);
+				mDirtSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mDirtSprite);
 			}
 		}

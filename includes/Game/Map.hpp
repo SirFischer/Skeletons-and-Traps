@@ -3,7 +3,13 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <fstream>
+#include <algorithm>
+#include <math.h>
+
 #include "Window.hpp"
+#include "Entities.hpp"
+
+#define		BLOCK_SIZE 64.f
 
 class Map
 {
@@ -22,5 +28,9 @@ public:
 	Map(std::string path);
 	~Map();
 
-	void Draw(Window *tWindow);
+	void					HandleCollisions(Entity	*tEntity);
+
+	void					SpawnEntities(std::list<Entity *> *tEntities);
+
+	void					Draw(Window *tWindow);
 };

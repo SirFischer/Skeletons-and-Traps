@@ -5,6 +5,7 @@ GameState::GameState(Window *tWindow)
 {
 	mWindow = tWindow;
 	mWindow->HideCursor();
+	mMap.SpawnEntities(&mEntities);
 }
 
 GameState::~GameState()
@@ -38,7 +39,14 @@ void		GameState::HandleEvents()
 
 void		GameState::Update()
 {
+	mMap.HandleCollisions(mPlayer.GetEntity());
 	mPlayer.Update();
+	for (auto &entity : mEntities)
+	{
+		mMap.HandleCollisions(entity);
+		entity->Update();
+	}
+		
 }
 
 void		GameState::Render()
@@ -47,7 +55,8 @@ void		GameState::Render()
 
 	mMap.Draw(mWindow);
 	mPlayer.Render(mWindow);
-	//RENDER YOUR STUFF
+	for (auto &entity : mEntities)
+		entity->Render(mWindow);
 	mf::GUI::Render();
 	mWindow->Render();
 }

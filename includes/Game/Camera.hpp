@@ -9,7 +9,6 @@
 class Camera
 {
 private:
-	Hero				mCenter;
 	sf::View			mView;
 	sf::Sprite			mSprite;
 	sf::Vector2f		mPosition;

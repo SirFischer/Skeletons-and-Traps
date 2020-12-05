@@ -15,9 +15,10 @@ InputManager::~InputManager()
 
 void		InputManager::LoadDefaultKeyBindings()
 {
-	mInputKeyMap[sf::Keyboard::D] = InputAction::MOVE_RIGHT;
-	mInputKeyMap[sf::Keyboard::A] = InputAction::MOVE_LEFT;
-	mInputKeyMap[sf::Keyboard::Space] = InputAction::JUMP;
+	mInputKeyMap[sf::Keyboard::Right] = InputAction::MOVE_RIGHT;
+	mInputKeyMap[sf::Keyboard::Left] = InputAction::MOVE_LEFT;
+	mInputKeyMap[sf::Keyboard::Up] = InputAction::JUMP;
+	mInputKeyMap[sf::Keyboard::Space] = InputAction::ATTACK;
 }
 
 void		InputManager::HandleInput(sf::Event	&tEvent)

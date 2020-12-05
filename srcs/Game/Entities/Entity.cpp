@@ -8,6 +8,20 @@ Entity::~Entity()
 {
 }
 
+void				Entity::ApplyAnimation()
+{
+	if (mAnimations.count(mAction))
+		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
+	mAction = EntityAction::IDLE;
+}
+
+
+void				Entity::Attack()
+{
+	
+}
+
+
 void				Entity::MoveLeft()
 {
 	mVelocity.x -= mSpeed;
@@ -22,5 +36,7 @@ void				Entity::MoveRight()
 
 void				Entity::Jump()
 {
-	mAction = EntityAction::JUMP;
+	if (mOnGround)
+		mVelocity.y -= mJumpForce;
+	
 }

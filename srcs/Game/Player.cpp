@@ -19,6 +19,8 @@ void	Player::Update()
 		mCharacter->MoveRight();
 	if (InputManager::IsActive(InputAction::MOVE_LEFT))
 		mCharacter->MoveLeft();
+	if (InputManager::IsActive(InputAction::ATTACK))
+		mCharacter->Attack();
 
 }
 
