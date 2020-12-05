@@ -2,12 +2,8 @@
 
 Camera::Camera()
 {
-
-
-
 }
 
 Camera::~Camera()
 {
 }
-
