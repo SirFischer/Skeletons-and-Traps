@@ -9,7 +9,6 @@ class Player
 {
 private:
 	std::unique_ptr<Entity>	mCharacter;
-
 public:
 	Player(/* args */);
 	~Player();

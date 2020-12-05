@@ -4,6 +4,7 @@
 #include "InputManager.hpp"
 #include "Player.hpp"
 #include "Map.hpp"
+#include "Camera.hpp"
 
 class GameState : public State
 {
