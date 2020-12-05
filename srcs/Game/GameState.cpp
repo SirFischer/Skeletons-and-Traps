@@ -48,7 +48,7 @@ void		GameState::Update()
 	}
 	for (auto &entity : mEntities)
 	{
-		if (entity->GetHealth() <= 0)
+		if (entity->IsAlive() <= 0)
 		{
 			delete entity;
 			mEntities.remove(entity);

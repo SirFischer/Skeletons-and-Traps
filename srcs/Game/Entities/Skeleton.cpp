@@ -16,6 +16,10 @@ Skeleton::Skeleton(/* args */)
 	for (size_t i = 0; i < 6; i++)
 		mAnimations[EntityAction::JUMP].AddFrame(sf::IntRect(64 * i, 64 * 15, 64, 64));
 	mAnimations[EntityAction::JUMP].SetLength(0.08);
+	for (size_t i = 0; i < 6; i++)
+		mAnimations[EntityAction::DIE].AddFrame(sf::IntRect(64 * i, 64 * 20, 64, 64));
+	mAnimations[EntityAction::DIE].SetLength(0.1);
+	mAnimations[EntityAction::DIE].SetLoop(false);
 	if (mAnimations.count(mAction))
 		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
 	mSprite.setOrigin(16, 8);
@@ -33,6 +37,18 @@ void	Skeleton::Update()
 	ApplyAnimation();
 	if (!mOnGround)
 		mVelocity.y += 0.1;
+	if (mHealth > 0)
+	{
+		mDeathClock.restart();
+		mAnimations[EntityAction::DIE].ResetAnimation();
+	}
+		
+	if (mHealth <= 0)
+	{
+		mAction = EntityAction::DIE;
+		if (mDeathClock.getElapsedTime().asSeconds() > 3)
+			mIsAlive = false;
+	}
 }
 
 

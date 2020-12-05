@@ -16,6 +16,9 @@ protected:
 	float						mSpeed = 0.35f;
 	float						mJumpForce = 6.f;
 	bool						mOnGround = false;
+	bool						mIsAlive = true;
+
+	sf::Clock					mDeathClock;
 
 	sf::Sprite					mSprite;
 
@@ -43,6 +46,7 @@ public:
 	//sf::Vector2f				GetSize(){return (sf::Vector2f(mSprite.getGlobalBounds().width, mSprite.getGlobalBounds().height));}
 	sf::Vector2f				GetSize(){return (mSize);}
 	float						GetHealth(){return (mHealth);}
+	bool						IsAlive(){return (mIsAlive);}
 	friend class				Map;
 };
 

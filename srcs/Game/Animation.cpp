@@ -20,6 +20,12 @@ void			Animation::SetLength(float tLength)
 	mLength = tLength;
 }
 
+void			Animation::SetLoop(bool tLoop)
+{
+	mLoop = tLoop;
+}
+
+
 void			Animation::ResetAnimation()
 {
 	mClock.restart();
@@ -27,6 +33,8 @@ void			Animation::ResetAnimation()
 
 size_t			Animation::GetAnimationStep()
 {
+	if (!mLoop && mClock.getElapsedTime().asSeconds() > mLength * mFrames.size())
+		return (mFrames.size() - 1);
 	return ((int)(((1.0 / mLength) * mClock.getElapsedTime().asSeconds())) % mFrames.size());
 }
 
