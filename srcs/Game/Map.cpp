@@ -42,10 +42,6 @@ Map::~Map()
 {
 }
 
-<<<<<<< HEAD
-//asserting sprites to characters and drawing them until the final character has been read
-void Map::Draw(Window *tWindow)
-=======
 void				Map::HandleCollisions(Entity	*tEntity)
 {
 	sf::Vector2f	size = tEntity->GetSize();
@@ -122,7 +118,6 @@ void		Map::SpawnEntities(std::list<Entity *> *tEntities)
 }
 
 void		Map::Draw(Window *tWindow)
->>>>>>> c0474c9898cdc21b848c18cebb7d89cbcca4a500
 {
 	int y = 0;
 	for (auto &&i : mMapLines)

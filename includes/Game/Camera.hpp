@@ -10,6 +10,4 @@ private:
 public:
 	Camera();
 	~Camera();
-
-
 };
