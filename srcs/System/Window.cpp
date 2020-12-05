@@ -69,3 +69,9 @@ void	Window::ShowCursor()
 {
 	mWindow.setMouseCursorVisible(true);
 }
+
+void	Window::Camera()
+{
+	sf::View mView(sf::FloatRect(0.f, 0.f, 1000.f, 600.f));
+	mWindow.setView(mView);
+}

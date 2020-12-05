@@ -14,6 +14,7 @@ private:
 	
 	bool				mFullscreen = false;
 	sf::VideoMode		mMode = sf::VideoMode(1600, 900);
+	sf::View			mView;
 
 public:
 					Window(/* args */);
@@ -48,6 +49,11 @@ public:
 	void			ChangeResolution(int tWidth, int tHeight);
 	void			HideCursor();
 	void			ShowCursor();
+
+	/**
+	 * Camera
+	 **/
+	void			Camera();
 
 	bool			IsOpen(){return (mWindow.isOpen());}
 };
