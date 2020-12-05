@@ -14,8 +14,11 @@ Hero::Hero(/* args */)
 		mAnimations[EntityAction::IDLE].AddFrame(sf::IntRect(64 * i, 64 * 10, 64, 64));
 	mAnimations[EntityAction::IDLE].SetLength(0.08);
 	for (size_t i = 0; i < 6; i++)
-		mAnimations[EntityAction::ATTACK].AddFrame(sf::IntRect(64 * i, 64 * 15, 64, 64));
-	mAnimations[EntityAction::ATTACK].SetLength(0.08);
+		mAnimations[EntityAction::ATTACK_RIGHT].AddFrame(sf::IntRect(64 * i, 64 * 15, 64, 64));
+	mAnimations[EntityAction::ATTACK_RIGHT].SetLength(0.05);
+	for (size_t i = 0; i < 6; i++)
+		mAnimations[EntityAction::ATTACK_LEFT].AddFrame(sf::IntRect(64 * i, 64 * 13, 64, 64));
+	mAnimations[EntityAction::ATTACK_LEFT].SetLength(0.05);
 	if (mAnimations.count(mAction))
 		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
 	mSprite.setOrigin(16, 8);
@@ -27,7 +30,10 @@ Hero::~Hero()
 
 void	Hero::Update()
 {
-	
+	if (!mAnimations[EntityAction::ATTACK_LEFT].IsDone())
+		mAction = EntityAction::ATTACK_LEFT;
+	if (!mAnimations[EntityAction::ATTACK_RIGHT].IsDone())
+		mAction = EntityAction::ATTACK_RIGHT;
 	mSprite.setPosition(mPosition);
 	mPosition += mVelocity;
 	mVelocity.x *= 0.90;

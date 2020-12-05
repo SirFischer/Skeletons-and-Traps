@@ -14,7 +14,7 @@ public:
 	~Player();
 
 	
-	void	Update();
+	void	Update(std::list<Entity *> tEntities);
 	void	Render(Window	*tWindow);
 	
 	Entity	*GetEntity(){return mCharacter.get();}

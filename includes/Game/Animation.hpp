@@ -22,5 +22,6 @@ public:
 	bool							IsDone();
 
 	sf::IntRect						GetTextureRect();
+	size_t							GetAnimationStep();
 };
 

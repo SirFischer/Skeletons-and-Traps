@@ -6,13 +6,14 @@
 #include "Map.hpp"
 #include "Camera.hpp"
 
+
 class GameState : public State
 {
 private:
 
-	Map						mMap;
-	Player					mPlayer;
-	std::list<Entity *>		mEntities;
+	Map										mMap;
+	Player									mPlayer;
+	std::list<Entity *>						mEntities;
 	
 public:
 	GameState(Window *tWindow);
