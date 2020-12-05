@@ -18,7 +18,7 @@ void				Entity::ApplyAnimation()
 
 void				Entity::Attack()
 {
-	
+	mAction = EntityAction::ATTACK;
 }
 
 
@@ -38,5 +38,4 @@ void				Entity::Jump()
 {
 	if (mOnGround)
 		mVelocity.y -= mJumpForce;
-	
 }
