@@ -50,10 +50,5 @@ public:
 	void			HideCursor();
 	void			ShowCursor();
 
-	/**
-	 * Camera
-	 **/
-	void			Camera();
-
 	bool			IsOpen(){return (mWindow.isOpen());}
 };
