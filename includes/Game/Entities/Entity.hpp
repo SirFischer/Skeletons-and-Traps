@@ -27,7 +27,7 @@ protected:
 
 public:
 	Entity(/* args */);
-	~Entity();
+	virtual ~Entity();
 
 	virtual void				Update() = 0;
 	virtual void				Render(Window *tWindow) = 0;
@@ -42,6 +42,7 @@ public:
 	sf::Vector2f				GetPosition(){return (mPosition);}
 	//sf::Vector2f				GetSize(){return (sf::Vector2f(mSprite.getGlobalBounds().width, mSprite.getGlobalBounds().height));}
 	sf::Vector2f				GetSize(){return (mSize);}
+	float						GetHealth(){return (mHealth);}
 	friend class				Map;
 };
 

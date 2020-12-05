@@ -46,7 +46,15 @@ void		GameState::Update()
 		mMap.HandleCollisions(entity);
 		entity->Update();
 	}
-		
+	for (auto &entity : mEntities)
+	{
+		if (entity->GetHealth() <= 0)
+		{
+			delete entity;
+			mEntities.remove(entity);
+			break;
+		}
+	}
 }
 
 void		GameState::Render()
