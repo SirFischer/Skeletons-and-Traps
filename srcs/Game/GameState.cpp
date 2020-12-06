@@ -62,6 +62,7 @@ void		GameState::Update()
 
 void		GameState::Render()
 {
+	mWindow->Clear();
 	mWindow->View();
 	mMap.Draw(mWindow);
 	mPlayer.Render(mWindow);
