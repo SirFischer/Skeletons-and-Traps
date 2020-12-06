@@ -10,7 +10,7 @@ Player::~Player()
 }
 
 
-void	Player::Update()
+void	Player::Update(std::list<Entity *> tEntities)
 {
 	mCharacter->Update();
 	if (InputManager::IsActive(InputAction::JUMP))
@@ -20,7 +20,7 @@ void	Player::Update()
 	if (InputManager::IsActive(InputAction::MOVE_LEFT))
 		mCharacter->MoveLeft();
 	if (InputManager::IsActive(InputAction::ATTACK))
-		mCharacter->Attack();
+		mCharacter->Attack(tEntities);
 
 }
 

@@ -68,13 +68,11 @@ void		MenuState::HandleEvents()
 
 void		MenuState::Update()
 {
-	
 }
 
 void		MenuState::Render()
 {
 	mWindow->Clear(sf::Color::Black);
-	
 	mf::GUI::Render();
 	mWindow->Render();
 }

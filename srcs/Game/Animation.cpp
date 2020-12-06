@@ -3,7 +3,7 @@
 
 Animation::Animation()
 {
-
+	
 }
 
 Animation::~Animation()
@@ -20,9 +20,22 @@ void			Animation::SetLength(float tLength)
 	mLength = tLength;
 }
 
+void			Animation::SetLoop(bool tLoop)
+{
+	mLoop = tLoop;
+}
+
+
 void			Animation::ResetAnimation()
 {
 	mClock.restart();
+}
+
+size_t			Animation::GetAnimationStep()
+{
+	if (!mLoop && mClock.getElapsedTime().asSeconds() > mLength * mFrames.size())
+		return (mFrames.size() - 1);
+	return ((int)(((1.0 / mLength) * mClock.getElapsedTime().asSeconds())) % mFrames.size());
 }
 
 bool			Animation::IsDone()
@@ -33,6 +46,6 @@ bool			Animation::IsDone()
 
 sf::IntRect		Animation::GetTextureRect()
 {
-	sf::IntRect	frame = mFrames.at((int)(((1.0 / mLength) * mClock.getElapsedTime().asSeconds())) % mFrames.size());
+	sf::IntRect	frame = mFrames.at(GetAnimationStep());
 	return (frame);
 }

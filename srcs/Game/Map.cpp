@@ -15,6 +15,7 @@ Map::Map(std::string path)
 		/* code */
 	}
 
+	//Textures/sprites
 	mDirtSprite.setTexture(mDirtTexture);
 	mGrassSprite.setTexture(mGrassTexture);
 	mSkySprite.setTexture(mSkyTexture);
@@ -27,6 +28,7 @@ Map::Map(std::string path)
 	std::string					tmp;
 	map.open(path);
 
+	//Read trough map file lines
 	while (!map.eof())
 	{
 		std::getline(map, tmp);
@@ -106,9 +108,8 @@ void		Map::SpawnEntities(std::list<Entity *> *tEntities)
 		{
 			if (i[x] == '3')
 			{
-				Skeleton *entity = new Skeleton();
-				entity->mPosition = sf::Vector2f(x * BLOCK_SIZE, y * BLOCK_SIZE);
-				tEntities->push_front(entity);
+				tEntities->push_front(new Skeleton());
+				tEntities->front()->mPosition = sf::Vector2f(x * BLOCK_SIZE, y * BLOCK_SIZE);
 			}
 		}
 		y++;

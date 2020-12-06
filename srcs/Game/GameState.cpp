@@ -41,13 +41,23 @@ void		GameState::Update()
 {
 	mMap.HandleCollisions(mPlayer.GetEntity());
 	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
-	mPlayer.Update();
+	mPlayer.Update(mEntities);
 	for (auto &entity : mEntities)
 	{
 		mMap.HandleCollisions(entity);
+		if (entity->GetHealth() > 0)
+			AI::ProcessEntity(&mPlayer, entity);
 		entity->Update();
 	}
-		
+	for (auto &entity : mEntities)
+	{
+		if (entity->IsAlive() <= 0)
+		{
+			delete entity;
+			mEntities.remove(entity);
+			break;
+		}
+	}
 }
 
 void		GameState::Render()

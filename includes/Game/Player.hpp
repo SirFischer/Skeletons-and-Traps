@@ -9,13 +9,12 @@ class Player
 {
 private:
 	std::unique_ptr<Entity>	mCharacter;
-
 public:
 	Player(/* args */);
 	~Player();
 
 	
-	void	Update();
+	void	Update(std::list<Entity *> tEntities);
 	void	Render(Window	*tWindow);
 	
 	Entity	*GetEntity(){return mCharacter.get();}
