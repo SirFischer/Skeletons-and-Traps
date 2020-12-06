@@ -44,6 +44,8 @@ void		GameState::Update()
 	for (auto &entity : mEntities)
 	{
 		mMap.HandleCollisions(entity);
+		if (entity->GetHealth() > 0)
+			AI::ProcessEntity(&mPlayer, entity);
 		entity->Update();
 	}
 	for (auto &entity : mEntities)

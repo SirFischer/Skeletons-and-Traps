@@ -5,6 +5,7 @@
 #include "Player.hpp"
 #include "Map.hpp"
 #include "Camera.hpp"
+#include "AI.hpp"
 
 
 class GameState : public State

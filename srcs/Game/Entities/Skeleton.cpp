@@ -23,6 +23,8 @@ Skeleton::Skeleton(/* args */)
 	if (mAnimations.count(mAction))
 		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
 	mSprite.setOrigin(16, 8);
+
+	mSpeed = 0.15f;
 }
 
 Skeleton::~Skeleton()

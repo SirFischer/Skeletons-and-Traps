@@ -2,6 +2,7 @@
 #include "Window.hpp"
 #include "Animation.hpp"
 #include "EntityAction.hpp"
+#include "AIMode.hpp"
 
 #include <map>
 
@@ -17,6 +18,9 @@ protected:
 	float						mJumpForce = 6.f;
 	bool						mOnGround = false;
 	bool						mIsAlive = true;
+
+	AIMode						mAIMode = AIMode::PATROL;
+	EntityAction				mAIAction = EntityAction::WALK_RIGHT;
 
 	sf::Clock					mDeathClock;
 
@@ -48,5 +52,6 @@ public:
 	float						GetHealth(){return (mHealth);}
 	bool						IsAlive(){return (mIsAlive);}
 	friend class				Map;
+	friend class				AI;
 };
 
