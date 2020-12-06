@@ -58,5 +58,10 @@ public:
 	 **/
 	void			View();
 
+	/**
+	 * Camera
+	 **/
+	void			SetDefaultView();
+
 	bool			IsOpen(){return (mWindow.isOpen());}
 };

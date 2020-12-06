@@ -11,6 +11,7 @@ MenuState::~MenuState()
 
 void		MenuState::Init()
 {
+	mWindow->SetDefaultView();
 	mf::GUI::ClearWidgets();
 	mIsActive = true;
 	mStateReturnAction = StateAction::POP;

@@ -73,9 +73,13 @@ void	Window::ShowCursor()
 void	Window::View()
 {
 	mView.setSize(1600, 900);
-	while (true)
-	{
-		mWindow.setView(mView);
-	}
-	
+	mWindow.setView(mView);	
+}
+
+void	Window::SetDefaultView()
+{
+	sf::View	defaultView;
+	defaultView = mWindow.getDefaultView();
+	mWindow.setView(defaultView);	
+
 }
