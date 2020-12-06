@@ -123,11 +123,6 @@ void		Map::Draw(Window *tWindow)
 	{
 		for (size_t x = 0; x < i.length(); x++)
 		{
-			if (i[x] == '0' || i[x] == '3')
-			{
-				mSkySprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
-				tWindow->Draw(mSkySprite);
-			}
 			if (i[x] == '1')
 			{
 				mGrassSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
