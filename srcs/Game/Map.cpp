@@ -60,7 +60,7 @@ void				Map::HandleCollisions(Entity	*tEntity)
 			if (x >= (int)mMapLines[y].length())
 				break;
 			//if block is solid
-			if (mMapLines[y][x] == '1' || mMapLines[y][x] == '2')
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_')
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
@@ -123,12 +123,12 @@ void		Map::Draw(Window *tWindow)
 	{
 		for (size_t x = 0; x < i.length(); x++)
 		{
-			if (i[x] == '1')
+			if (i[x] == '.')
 			{
 				mGrassSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mGrassSprite);
 			}
-			if (i[x] == '2')
+			if (i[x] == '_')
 			{
 				mDirtSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mDirtSprite);
