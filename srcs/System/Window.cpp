@@ -72,5 +72,6 @@ void	Window::ShowCursor()
 
 void	Window::View()
 {
+	mView.setSize(800, 800);
 	mWindow.setView(mView);
 }

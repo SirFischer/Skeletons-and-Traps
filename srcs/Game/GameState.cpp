@@ -40,8 +40,8 @@ void		GameState::HandleEvents()
 void		GameState::Update()
 {
 	mMap.HandleCollisions(mPlayer.GetEntity());
+	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
 	mPlayer.Update();
-	mView.setCenter(mPlayer.)
 	for (auto &entity : mEntities)
 	{
 		mMap.HandleCollisions(entity);
@@ -52,7 +52,7 @@ void		GameState::Update()
 
 void		GameState::Render()
 {
-	mWindow->View(mView);
+	mWindow->View();
 	mMap.Draw(mWindow);
 	mPlayer.Render(mWindow);
 	for (auto &entity : mEntities)
