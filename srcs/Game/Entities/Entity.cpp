@@ -30,6 +30,7 @@ void				Entity::Attack(std::list<Entity *> tEntities)
 			if (entity->mSprite.getGlobalBounds().intersects(mSprite.getGlobalBounds()))
 			{
 				entity->mHealth -= mAttackDamage;
+				entity->mDeathClock.restart();
 				if (entity->GetPosition().x + (entity->mSize.x / 2.f) < mPosition.x + (mSize.x / 2.f))
 					entity->mVelocity += sf::Vector2f(-5, -1);
 				else

@@ -48,7 +48,7 @@ void	Skeleton::Update()
 	if (mHealth <= 0)
 	{
 		mAction = EntityAction::DIE;
-		if (mDeathClock.getElapsedTime().asSeconds() > 3)
+		if (mDeathClock.getElapsedTime().asSeconds() > 6.0)
 			mIsAlive = false;
 	}
 }
