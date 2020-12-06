@@ -69,3 +69,8 @@ void	Window::ShowCursor()
 {
 	mWindow.setMouseCursorVisible(true);
 }
+
+void	Window::View()
+{
+	mWindow.setView(mView);
+}

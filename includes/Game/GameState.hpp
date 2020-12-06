@@ -1,6 +1,7 @@
 #pragma once
 
 #include "State.hpp"
+#include "Window.hpp"
 #include "InputManager.hpp"
 #include "Player.hpp"
 #include "Map.hpp"
@@ -12,6 +13,7 @@ private:
 	Map						mMap;
 	Player					mPlayer;
 	std::list<Entity *>		mEntities;
+	sf::View				mView;
 	
 public:
 	GameState(Window *tWindow);
