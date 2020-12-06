@@ -69,3 +69,17 @@ void	Window::ShowCursor()
 {
 	mWindow.setMouseCursorVisible(true);
 }
+
+void	Window::View()
+{
+	mView.setSize(1600, 900);
+	mWindow.setView(mView);	
+}
+
+void	Window::SetDefaultView()
+{
+	sf::View	defaultView;
+	defaultView = mWindow.getDefaultView();
+	mWindow.setView(defaultView);	
+
+}

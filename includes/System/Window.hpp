@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "mfGUI.hpp"
+#include "SFML/Graphics/View.hpp"
 
 class Window
 {
@@ -14,11 +15,12 @@ private:
 	
 	bool				mFullscreen = false;
 	sf::VideoMode		mMode = sf::VideoMode(1600, 900);
-	sf::View			mView;
 
 public:
 					Window(/* args */);
 					~Window();
+
+	sf::View 			mView;
 
 
 	/**
@@ -49,6 +51,16 @@ public:
 	void			ChangeResolution(int tWidth, int tHeight);
 	void			HideCursor();
 	void			ShowCursor();
+
+	/**
+	 * Camera
+	 **/
+	void			View();
+
+	/**
+	 * Camera
+	 **/
+	void			SetDefaultView();
 
 	bool			IsOpen(){return (mWindow.isOpen());}
 };

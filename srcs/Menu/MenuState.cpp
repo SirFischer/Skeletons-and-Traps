@@ -11,6 +11,7 @@ MenuState::~MenuState()
 
 void		MenuState::Init()
 {
+	mWindow->SetDefaultView();
 	mf::GUI::ClearWidgets();
 	mIsActive = true;
 	mStateReturnAction = StateAction::POP;
@@ -68,13 +69,11 @@ void		MenuState::HandleEvents()
 
 void		MenuState::Update()
 {
-	
 }
 
 void		MenuState::Render()
 {
 	mWindow->Clear(sf::Color::Black);
-	
 	mf::GUI::Render();
 	mWindow->Render();
 }
