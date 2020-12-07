@@ -99,6 +99,7 @@ void				Map::HandleCollisions(Entity	*tEntity)
 	}
 }
 
+//function to spawn enemy on map
 void		Map::SpawnEntities(std::list<Entity *> *tEntities)
 {
 	int y = 0;

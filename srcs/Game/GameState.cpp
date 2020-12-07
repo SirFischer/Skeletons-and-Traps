@@ -18,6 +18,7 @@ void		GameState::Init()
 	mf::GUI::ClearWidgets();
 	mIsActive = true;
 	mStateReturnAction = StateAction::POP;
+
 	/**
 	 * INIT STATE AND GUI
 	 **/
@@ -58,6 +59,13 @@ void		GameState::Update()
 			break;
 		}
 	}
+
+	if (mPlayer.GetEntity()->GetPosition().x >= mGoal.GetPosition().x)
+	{
+		mIsActive = false;
+		mStateReturnAction = StateAction::POP;
+		
+	}
 }
 
 void		GameState::Render()
@@ -65,6 +73,7 @@ void		GameState::Render()
 	mWindow->Clear(sf::Color(135,206,235));
 	mWindow->View();
 	mMap.Draw(mWindow);
+	mGoal.Draw(mWindow);
 	mPlayer.Render(mWindow);
 	for (auto &entity : mEntities)
 		entity->Render(mWindow);

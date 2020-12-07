@@ -7,6 +7,7 @@
 #include "Player.hpp"
 #include "Map.hpp"
 #include "AI.hpp"
+#include "Goal.hpp"
 
 
 class GameState : public State
@@ -16,7 +17,7 @@ private:
 	Map										mMap;
 	Player									mPlayer;
 	std::list<Entity *>						mEntities;
-	
+	Goal									mGoal;
 	
 	
 public:
