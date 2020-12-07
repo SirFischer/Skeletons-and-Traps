@@ -20,22 +20,25 @@ void		MenuState::Init()
 	/**
 	 * INIT STATE AND GUI
 	 **/
-	mPlayBtn = mf::Button::Create(sf::Color::Green, sf::Color::Cyan);
-	mPlayBtn->SetPositionPercentage(true)->SetPosition(45, 40);
+
 	StateAction	*actionReturn = &mStateReturnAction;
 	bool		*active = &mIsActive;
+	
+
+	/**
+	 * Button coloring/text/state return
+	 **/
+
+	mPlayBtn = mf::Button::Create(sf::Color::Green, sf::Color::Cyan);
+	mPlayBtn->SetSize(150, 50);
+	mPlayBtn->SetPositionPercentage(true)->SetPosition(45, 40);
 	mPlayBtn->SetClickEvent([actionReturn, active] {
 		*actionReturn = StateAction::GAME;
 		*active = false;
 	});
 
-	mPlayBtn->SetTextFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));
-	mPlayBtn->SetTextColor(sf::Color::Black);
-	mPlayBtn->SetTextPosition(sf::Vector2f(15, 5));
-	mPlayBtn->SetText("Play!");
-
-
 	mOptionBtn = mf::Button::Create(sf::Color::Blue, sf::Color::Cyan);
+	mOptionBtn->SetSize(150, 50);
 	mOptionBtn->SetPositionPercentage(true)->SetPosition(45, 50);
 	mOptionBtn->SetClickEvent([actionReturn, active] {
 		*actionReturn = StateAction::OPTIONS;
@@ -43,11 +46,26 @@ void		MenuState::Init()
 	});
 
 	mQuitBtn = mf::Button::Create(sf::Color::Red, sf::Color::Yellow);
+	mQuitBtn->SetSize(150, 50);
 	mQuitBtn->SetPositionPercentage(true)->SetPosition(45, 60);
 	mQuitBtn->SetClickEvent([actionReturn, active] {
 		*actionReturn = StateAction::POP;
 		*active = false;
 	});
+	mPlayBtn->SetTextFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));
+	mPlayBtn->SetTextColor(sf::Color::Black);
+	mPlayBtn->SetTextPosition(sf::Vector2f(45, 5));
+	mPlayBtn->SetText("Play!");
+
+	mOptionBtn->SetTextFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));
+	mOptionBtn->SetTextColor(sf::Color::Black);
+	mOptionBtn->SetTextPosition(sf::Vector2f(20, 5));
+	mOptionBtn->SetText("Options");
+	
+	mQuitBtn->SetTextFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));
+	mQuitBtn->SetTextColor(sf::Color::Black);
+	mQuitBtn->SetTextPosition(sf::Vector2f(45, 5));
+	mQuitBtn->SetText("Quit!");
 
 	mf::GUI::AddWidget(mPlayBtn);
 	mf::GUI::AddWidget(mOptionBtn);

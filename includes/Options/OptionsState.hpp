@@ -7,6 +7,7 @@ class OptionsState : public State
 {
 private:
 	mf::Button	*mFullscreenButton;
+	mf::Button	*mQuitButton;
 	
 public:
 	OptionsState(Window *tWindow);
