@@ -41,6 +41,29 @@ void				Entity::Attack(std::list<Entity *> tEntities)
 }
 
 
+void				Entity::Attack(Entity *tEntity)
+{
+	if (mVelocity.x < 0)
+		mAction = EntityAction::ATTACK_LEFT;
+	else
+		mAction = EntityAction::ATTACK_RIGHT;
+	if (mAnimations[mAction].IsDone())
+	{
+		mAnimations[mAction].ResetAnimation();
+	
+		if (tEntity->mSprite.getGlobalBounds().intersects(mSprite.getGlobalBounds()))
+		{
+			tEntity->mHealth -= mAttackDamage;
+			tEntity->mDeathClock.restart();
+			if (tEntity->GetPosition().x + (tEntity->mSize.x / 2.f) < mPosition.x + (mSize.x / 2.f))
+				tEntity->mVelocity += sf::Vector2f(-5, -1);
+			else
+				tEntity->mVelocity += sf::Vector2f(5, -1);
+		}
+	}	
+}
+
+
 void				Entity::MoveLeft()
 {
 	mVelocity.x -= mSpeed;
