@@ -46,6 +46,8 @@ void		GameState::Update()
 	mMap.HandleCollisions(mPlayer.GetEntity());
 	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
 	mPlayer.Update(mEntities);
+	
+	
 	for (auto &entity : mEntities)
 	{
 		mMap.HandleCollisions(entity);
@@ -53,6 +55,7 @@ void		GameState::Update()
 			AI::ProcessEntity(&mPlayer, entity);
 		entity->Update();
 	}
+
 	for (auto &entity : mEntities)
 	{
 		if (entity->IsAlive() == false)
