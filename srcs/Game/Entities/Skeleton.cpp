@@ -55,7 +55,6 @@ void	Skeleton::Update()
 		mDeathClock.restart();
 		mAnimations[EntityAction::DIE].ResetAnimation();
 	}
-		
 	if (mHealth <= 0)
 	{
 		mAction = EntityAction::DIE;

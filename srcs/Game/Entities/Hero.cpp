@@ -21,6 +21,10 @@ Hero::Hero(/* args */)
 	mAnimations[EntityAction::ATTACK_LEFT].SetLength(0.05);
 	if (mAnimations.count(mAction))
 		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
+	for (size_t i = 0; i < 6; i++)
+		mAnimations[EntityAction::DIE].AddFrame(sf::IntRect(64 * i, 64 * 20, 64, 64));
+	mAnimations[EntityAction::DIE].SetLength(0.1);
+	mAnimations[EntityAction::DIE].SetLoop(false);
 	mSprite.setOrigin(16, 8);
 }
 
@@ -40,6 +44,17 @@ void	Hero::Update()
 	ApplyAnimation();
 	if (!mOnGround)
 		mVelocity.y += 0.1;
+	if (mHealth > 0)
+	{
+		mDeathClock.restart();
+		mAnimations[EntityAction::DIE].ResetAnimation();
+	}
+	if (mHealth <= 0)
+	{
+		mAction = EntityAction::DIE;
+		if (mDeathClock.getElapsedTime().asSeconds() > 6.0)
+			mIsAlive = false;
+	}
 }
 
 
