@@ -48,6 +48,7 @@ void				Map::HandleCollisions(Entity	*tEntity)
 	sf::Vector2f	position = tEntity->GetPosition() + tEntity->mVelocity;
 	sf::Vector2f	prevposition = tEntity->GetPosition();
 	sf::Vector2i	index = sf::Vector2i((position.x - BLOCK_SIZE) / BLOCK_SIZE, (position.y - BLOCK_SIZE) / BLOCK_SIZE);
+
 	tEntity->mOnGround = false;
 	index.x = (index.x < 0) ? 0 : index.x;
 	index.y = (index.y < 0) ? 0 : index.y;
@@ -94,7 +95,6 @@ void				Map::HandleCollisions(Entity	*tEntity)
 					prevposition = tEntity->GetPosition();
 				}
 			}
-			
 		}
 	}
 }
@@ -117,6 +117,8 @@ void		Map::SpawnEntities(std::list<Entity *> *tEntities)
 	}
 }
 
+
+//drawing sprites on map->screen
 void		Map::Draw(Window *tWindow)
 {
 	int y = 0;

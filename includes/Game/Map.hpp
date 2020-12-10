@@ -17,7 +17,9 @@ private:
 	sf::Texture				mSkyTexture;
 	sf::Texture				mDirtTexture;
 	sf::Texture				mGrassTexture;
+	sf::Texture				mSpikeTexture;
 
+	sf::Sprite				mSpikeSprite;
 	sf::Sprite				mSkySprite;
 	sf::Sprite				mDirtSprite;
 	sf::Sprite				mGrassSprite;
