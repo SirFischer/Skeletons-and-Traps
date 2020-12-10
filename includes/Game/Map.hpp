@@ -8,6 +8,7 @@
 
 #include "Window.hpp"
 #include "Entities.hpp"
+#include "Player.hpp"
 
 #define		BLOCK_SIZE 64.f
 
@@ -31,6 +32,8 @@ public:
 	void					HandleCollisions(Entity	*tEntity);
 
 	void					SpawnEntities(std::list<Entity *> *tEntities);
+
+	void					SpawnPlayer(Player *tPlayer);
 
 	void					Draw(Window *tWindow);
 };

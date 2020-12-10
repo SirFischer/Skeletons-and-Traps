@@ -1,0 +1,6 @@
+s = spawn //does not set the spawn
+g = goal //does not set the goal
+3 = enemy
+_ = ground
+. = grass block
+  = emty space

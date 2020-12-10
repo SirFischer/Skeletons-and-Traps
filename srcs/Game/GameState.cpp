@@ -6,6 +6,7 @@ GameState::GameState(Window *tWindow)
 	mWindow = tWindow;
 	mWindow->HideCursor();
 	mMap.SpawnEntities(&mEntities);
+	mMap.SpawnPlayer(&mPlayer);
 }
 
 GameState::~GameState()

@@ -119,6 +119,23 @@ void		Map::SpawnEntities(std::list<Entity *> *tEntities)
 	}
 }
 
+void		Map::SpawnPlayer(Player *tPlayer)
+{
+	int y = 0;
+	for (auto &&i : mMapLines)
+	{
+		for (size_t x = 0; x < i.length(); x++)
+		{
+			if (i[x] == 's')
+			{
+				tPlayer->GetEntity()->mPosition = sf::Vector2f(x * BLOCK_SIZE, y * BLOCK_SIZE);
+			}
+		}
+		y++;
+	}
+}
+
+
 void		Map::Draw(Window *tWindow)
 {
 	int y = 0;
