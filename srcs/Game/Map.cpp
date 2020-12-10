@@ -4,22 +4,24 @@ Map::Map(std::string path)
 {
 	if (!mDirtTexture.loadFromFile("assets/Textures/dirt400x400.png"))
 	{
-		/* code */
 	}
 	if (!mGrassTexture.loadFromFile("assets/Textures/green400x400.png"))
 	{
-		/* code */
 	}
 	if (!mSkyTexture.loadFromFile("assets/Textures/blue400x400.jpg"))
 	{
-		/* code */
+	}
+	if (!mSpikeTexture.loadFromFile("assets/Textures/spike.png"))
+	{
 	}
 
 	//Textures/sprites
 	mDirtSprite.setTexture(mDirtTexture);
 	mGrassSprite.setTexture(mGrassTexture);
 	mSkySprite.setTexture(mSkyTexture);
+	mSpikeSprite.setTexture(mSpikeTexture);
 
+	mSpikeSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mDirtSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mGrassSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mSkySprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
@@ -61,7 +63,7 @@ void				Map::HandleCollisions(Entity	*tEntity)
 			if (x >= (int)mMapLines[y].length())
 				break;
 			//if block is solid
-			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_')
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == 'x')
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
@@ -98,6 +100,23 @@ void				Map::HandleCollisions(Entity	*tEntity)
 				}
 			}
 		}
+	}
+}
+
+//Traps(damage)
+void		Map::Traps()
+{
+	int y = 0;
+	for (auto &&i : mMapLines)
+	{
+		for (size_t x = 0; x < i.length(); x++)
+		{
+			if (i[x] == 'x')
+			{
+				mSpikeSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+			}
+		}
+		y++;
 	}
 }
 

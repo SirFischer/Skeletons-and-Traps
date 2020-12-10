@@ -32,6 +32,8 @@ public:
 
 	void					HandleCollisions(Entity	*tEntity);
 
+	void					Traps();
+
 	void					SpawnEntities(std::list<Entity *> *tEntities);
 
 	void					Draw(Window *tWindow);
