@@ -19,6 +19,8 @@ void		GameState::Init()
 	mIsActive = true;
 	mStateReturnAction = StateAction::POP;
 
+	InputManager::ResetActionStates();
+
 	/**
 	 * INIT STATE AND GUI
 	 **/

@@ -36,6 +36,13 @@ void		InputManager::HandleInput(sf::Event	&tEvent)
 	}
 }
 
+void		InputManager::ResetActionStates()
+{
+	for (auto &state : mActionMap)
+		state.second = false;
+}
+
+
 void		InputManager::HandleKeyPress(sf::Event	&tEvent)
 {
 	sf::Keyboard::Key	key;
