@@ -18,6 +18,9 @@ void				Entity::ApplyAnimation()
 
 void				Entity::Attack(std::list<Entity *> tEntities)
 {
+	if (mAttackClock.getElapsedTime().asSeconds() < mAttackCooldown)
+		return ;
+	mAttackClock.restart();
 	if (mVelocity.x < 0)
 		mAction = EntityAction::ATTACK_LEFT;
 	else

@@ -20,11 +20,13 @@ protected:
 	bool						mOnGround = false;
 	bool						mIsAlive = true;
 	bool						mIsBlocked = false;
+	float						mAttackCooldown = 0.5f;
 
 	AIMode						mAIMode = AIMode::PATROL;
 	EntityAction				mAIAction = EntityAction::WALK_RIGHT;
 
 	sf::Clock					mDeathClock;
+	sf::Clock					mAttackClock;
 
 	sf::Sprite					mSprite;
 
