@@ -5,6 +5,8 @@
 
 #include "AIMode.hpp"
 
+#include <math.h>
+
 #define SIGHT_RANGE 50.f
 
 class AI
@@ -15,6 +17,7 @@ private:
 	static bool		IsWidthinSight(Player *tPlayer, Entity *tEntity);
 
 	static void		EntityPatrol(Entity *tEntity);
+	static void		EntityAttack(Player *tPlayer, Entity *tEntity);
 	
 public:
 	~AI();

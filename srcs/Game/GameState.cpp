@@ -67,7 +67,6 @@ void		GameState::Update()
 	{
 		mIsActive = false;
 		mStateReturnAction = StateAction::POP;
-		
 	}
 }
 

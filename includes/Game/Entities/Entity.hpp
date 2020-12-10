@@ -16,6 +16,7 @@ protected:
 	float						mAttackDamage = 30.f;
 	float						mSpeed = 0.35f;
 	float						mJumpForce = 6.f;
+	float						mViewDistance = 300.f;
 	bool						mOnGround = false;
 	bool						mIsAlive = true;
 
@@ -40,6 +41,7 @@ public:
 	virtual void				Render(Window *tWindow) = 0;
 
 	virtual void				Attack(std::list<Entity *> tEntities);
+	virtual void				Attack(Entity *tEntity);
 
 
 	void						MoveLeft();
