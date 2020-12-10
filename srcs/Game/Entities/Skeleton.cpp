@@ -30,7 +30,7 @@ Skeleton::Skeleton(/* args */)
 		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
 	mSprite.setOrigin(16, 8);
 
-	mSpeed = 0.15f;
+	mSpeed = 0.17f;
 	mJumpForce = 4.f;
 }
 
