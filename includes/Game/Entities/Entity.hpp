@@ -19,6 +19,7 @@ protected:
 	float						mViewDistance = 300.f;
 	bool						mOnGround = false;
 	bool						mIsAlive = true;
+	bool						mIsBlocked = false;
 
 	AIMode						mAIMode = AIMode::PATROL;
 	EntityAction				mAIAction = EntityAction::WALK_RIGHT;

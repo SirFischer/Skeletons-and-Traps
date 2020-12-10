@@ -9,6 +9,7 @@ class Animation
 private:
 	std::vector<sf::IntRect>		mFrames;
 	sf::Clock						mClock;
+	sf::Time						mElapsedTime = sf::seconds(10.f);
 	float							mLength = 2.0f;
 	bool							mLoop = true;
 

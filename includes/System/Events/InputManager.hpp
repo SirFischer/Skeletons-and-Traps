@@ -23,6 +23,8 @@ public:
 
 	static void		LoadDefaultKeyBindings();
 
+	static void		ResetActionStates();
+
 	static void		HandleInput(sf::Event	&tEvent);
 
 	static bool		IsActive(InputAction	tAction);
