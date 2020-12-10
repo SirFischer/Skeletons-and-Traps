@@ -44,7 +44,7 @@ void		AI::EntityAttack(Player *tPlayer, Entity *tEntity)
 	sf::Vector2f	diff = (tEntity->mPosition - tPlayer->GetEntity()->GetPosition());
 	float distance = std::sqrt((diff.x * diff.x) + (diff.y * diff.y));
 	
-	if (std::abs(tEntity->mVelocity.x) < 0.1f && tPlayer->GetEntity()->GetPosition().y < tEntity->GetPosition().y - tEntity->mSize.y)
+	if (std::abs(tEntity->mVelocity.x) < 0.1f && tPlayer->GetEntity()->GetPosition().y < tEntity->GetPosition().y - tEntity->mSize.y && tEntity->mIsBlocked)
 		tEntity->Jump();
 	if (distance < 30.f)
 		tEntity->Attack(tPlayer->GetEntity());

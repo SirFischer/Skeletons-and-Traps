@@ -81,10 +81,12 @@ void				Map::HandleCollisions(Entity	*tEntity)
 					{
 						tEntity->mVelocity.x = 0;
 						tEntity->mPosition = sf::Vector2f(mx - size.x, prevposition.y);
+						tEntity->mIsBlocked = true;
 					} else if ((angle > 135 && angle < 225) && tEntity->mVelocity.x < 0)
 					{
 						tEntity->mVelocity.x = 0;
 						tEntity->mPosition = sf::Vector2f(mx + BLOCK_SIZE, prevposition.y);
+						tEntity->mIsBlocked = true;
 					} else if ((angle > 229  && angle < 305) && tEntity->mVelocity.y < 0)
 					{
 						tEntity->mVelocity.y = 0;

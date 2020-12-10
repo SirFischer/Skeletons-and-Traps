@@ -40,6 +40,7 @@ Skeleton::~Skeleton()
 
 void	Skeleton::Update()
 {
+	mIsBlocked = false;
 	if (!mAnimations[EntityAction::ATTACK_LEFT].IsDone())
 		mAction = EntityAction::ATTACK_LEFT;
 	if (!mAnimations[EntityAction::ATTACK_RIGHT].IsDone())
