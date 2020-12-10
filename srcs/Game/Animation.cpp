@@ -28,19 +28,21 @@ void			Animation::SetLoop(bool tLoop)
 
 void			Animation::ResetAnimation()
 {
+	mElapsedTime = sf::seconds(0);
 	mClock.restart();
 }
 
 size_t			Animation::GetAnimationStep()
 {
-	if (!mLoop && mClock.getElapsedTime().asSeconds() > mLength * mFrames.size())
+	mElapsedTime += mClock.restart();
+	if (!mLoop && mElapsedTime.asSeconds() > mLength * mFrames.size())
 		return (mFrames.size() - 1);
-	return ((int)(((1.0 / mLength) * mClock.getElapsedTime().asSeconds())) % mFrames.size());
+	return ((int)(((1.0 / mLength) * mElapsedTime.asSeconds())) % mFrames.size());
 }
 
 bool			Animation::IsDone()
 {
-	return ((mClock.getElapsedTime().asSeconds() > (mLength * mFrames.size())) ? true : false);
+	return ((mElapsedTime.asSeconds() > (mLength * mFrames.size())) ? true : false);
 }
 
 
