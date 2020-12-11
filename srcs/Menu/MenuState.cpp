@@ -1,7 +1,10 @@
 #include "MenuState.hpp"
 
 MenuState::MenuState(Window *tWindow)
+:mMap("assets/Map/menu.txt")
 {
+	mMap.SpawnEntities(&mEntities);
+	mMap.SpawnPlayer(&mPlayer);
 	mWindow = tWindow;
 }
 
@@ -16,6 +19,7 @@ void		MenuState::Init()
 	mIsActive = true;
 	mStateReturnAction = StateAction::POP;
 	mWindow->ShowCursor();
+
 
 	/**
 	 * INIT STATE AND GUI
@@ -87,11 +91,40 @@ void		MenuState::HandleEvents()
 
 void		MenuState::Update()
 {
+	mMap.HandleCollisions(mPlayer.GetEntity(), &mParticleEffects);
+	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
+	mPlayer.Update(mEntities, &mParticleEffects);
+	for (auto &particleEffect : mParticleEffects)
+	{
+		particleEffect.Update();
+		mMap.HandleParticleCollisions(&particleEffect);
+		if (!particleEffect.IsActive())
+		{
+			mParticleEffects.remove(particleEffect);
+			break;
+		}
+			
+	}
+	for (auto &entity : mEntities)
+	{
+		mMap.HandleCollisions(entity, &mParticleEffects);
+		if (entity->GetHealth() > 0)
+		AI::ProcessEntity(&mPlayer, entity, &mParticleEffects);
+		entity->Update();
+	}
+	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
 }
 
 void		MenuState::Render()
 {
-	mWindow->Clear(sf::Color::Black);
+	mWindow->Clear(sf::Color();
+	mWindow->View();
+	mPlayer.Render(mWindow);
+	for (auto &entity : mEntities)
+		entity->Render(mWindow);
+	for (auto &particleEffect : mParticleEffects)
+		particleEffect.Render(mWindow);
+	mMap.Draw(mWindow);
 	mf::GUI::Render();
 	mWindow->Render();
 }
