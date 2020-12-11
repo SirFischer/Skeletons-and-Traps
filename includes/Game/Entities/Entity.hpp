@@ -10,6 +10,11 @@
 class Entity
 {
 protected:
+	enum class	Direction {
+		RIGHT,
+		LEFT
+	}							mDirection;
+
 	sf::Vector2f				mSize = sf::Vector2f(32, 48);
 	sf::Vector2f				mPosition = sf::Vector2f(0, 0);
 	sf::Vector2f				mVelocity = sf::Vector2f(0, 0);

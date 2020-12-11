@@ -35,7 +35,7 @@ public:
 	sf::Sprite				GetSprite(){return (mSpikeSprite);}
 
 
-	void					HandleCollisions(Entity	*tEntity);
+	void					HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParticleEffects);
 	void					HandleParticleCollisions(ParticleEffect	*tEffect);
 
 	void					SpawnEntities(std::list<Entity *> *tEntities);

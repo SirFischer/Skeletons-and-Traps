@@ -43,7 +43,7 @@ void		GameState::HandleEvents()
 
 void		GameState::Update()
 {
-	mMap.HandleCollisions(mPlayer.GetEntity());
+	mMap.HandleCollisions(mPlayer.GetEntity(), &mParticleEffects);
 	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
 	mPlayer.Update(mEntities, &mParticleEffects);
 	for (auto &particleEffect : mParticleEffects)
@@ -59,7 +59,7 @@ void		GameState::Update()
 	}
 	for (auto &entity : mEntities)
 	{
-		mMap.HandleCollisions(entity);
+		mMap.HandleCollisions(entity, &mParticleEffects);
 		if (entity->GetHealth() > 0)
 			AI::ProcessEntity(&mPlayer, entity, &mParticleEffects);
 		entity->Update();

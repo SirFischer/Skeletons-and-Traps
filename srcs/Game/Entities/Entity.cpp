@@ -22,7 +22,7 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 		return ;
 	mAttackClock.restart();
 	(void)tParticleEffects;
-	if (mVelocity.x < 0)
+	if (mDirection == Direction::LEFT)
 		mAction = EntityAction::ATTACK_LEFT;
 	else
 		mAction = EntityAction::ATTACK_RIGHT;
@@ -31,7 +31,9 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 		mAnimations[mAction].ResetAnimation();
 		for (auto &entity : tEntities)
 		{
-			if (entity->mSprite.getGlobalBounds().intersects(mSprite.getGlobalBounds() ))
+
+			if ((mDirection == Direction::LEFT && (entity->GetPosition().x + entity->GetSize().x > mPosition.x - (mSize.x / 2.f) && entity->GetPosition().x < mPosition.x + (mSize.x / 2.f))) ||
+				(mDirection == Direction::RIGHT && (entity->GetPosition().x > mPosition.x + (mSize.x / 2.f) && entity->GetPosition().x < mPosition.x + (1.5 * mSize.x))))
 			{
 				entity->mHealth -= mAttackDamage;
 				entity->mDeathClock.restart();
@@ -62,7 +64,7 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 	if (mAttackClock.getElapsedTime().asSeconds() < mAttackCooldown)
 		return ;
 	mAttackClock.restart();
-	if (mVelocity.x < 0)
+	if (mDirection == Direction::LEFT)
 		mAction = EntityAction::ATTACK_LEFT;
 	else
 		mAction = EntityAction::ATTACK_RIGHT;
@@ -99,12 +101,14 @@ void				Entity::MoveLeft()
 {
 	mVelocity.x -= mSpeed;
 	mAction = EntityAction::WALK_LEFT;
+	mDirection = Direction::LEFT;
 }
 
 void				Entity::MoveRight()
 {
 	mVelocity.x += mSpeed;
 	mAction = EntityAction::WALK_RIGHT;
+	mDirection = Direction::RIGHT;
 }
 
 void				Entity::Jump()

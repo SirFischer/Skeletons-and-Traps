@@ -44,7 +44,7 @@ Map::~Map()
 {
 }
 
-void				Map::HandleCollisions(Entity	*tEntity)
+void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParticleEffects)
 {
 
 	sf::Vector2f	size = tEntity->GetSize();
@@ -67,12 +67,17 @@ void				Map::HandleCollisions(Entity	*tEntity)
 			if(mMapLines[y][x] == 'k')
 			{
 				int my = y * BLOCK_SIZE;
-				if(position.y < (my * BLOCK_SIZE) && (position.y + size.y) < my && tEntity->mHealth > 0)
+				int mx = x * BLOCK_SIZE;
+				if((position.x < (mx + BLOCK_SIZE) && (position.x + size.x) > mx) && (position.y < (my + BLOCK_SIZE) && (position.y + size.y) > my) < my && tEntity->mHealth > 0)
 				{
 					//std::cout<<"Hit"<<std::endl;
+					
 					tEntity->mVelocity.y = 0.f;
 					tEntity->mHealth -= 30.f;
 					tEntity->mVelocity.y -= 3.f;
+					ParticleEffect effect(sf::Vector2f((x * BLOCK_SIZE) + (BLOCK_SIZE / 2.f), y * BLOCK_SIZE), 3.f, 0.8f, 300);
+					effect.SetParticleColor(sf::Color::Red);
+					tParticleEffects->push_back(effect);
 				}
 			}
 
