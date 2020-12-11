@@ -75,6 +75,7 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 					tEntity->mVelocity.y = 0.f;
 					tEntity->mHealth -= 30.f;
 					tEntity->mVelocity.y -= 3.f;
+					tEntity->mVelocity.x += ((position.x + (size.x / 2.f)) - (mx + (BLOCK_SIZE / 2.f))) * 0.2f;
 					ParticleEffect effect(sf::Vector2f((x * BLOCK_SIZE) + (BLOCK_SIZE / 2.f), y * BLOCK_SIZE), 3.f, 0.8f, 300);
 					effect.SetParticleColor(sf::Color::Red);
 					tParticleEffects->push_back(effect);
