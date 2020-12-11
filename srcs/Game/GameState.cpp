@@ -57,7 +57,6 @@ void		GameState::Update()
 		}
 			
 	}
-	
 	for (auto &entity : mEntities)
 	{
 		mMap.HandleCollisions(entity);

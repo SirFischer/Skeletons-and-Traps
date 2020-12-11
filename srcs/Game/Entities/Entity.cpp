@@ -31,7 +31,7 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 		mAnimations[mAction].ResetAnimation();
 		for (auto &entity : tEntities)
 		{
-			if (entity->mSprite.getGlobalBounds().intersects(mSprite.getGlobalBounds()))
+			if (entity->mSprite.getGlobalBounds().intersects(mSprite.getGlobalBounds() ))
 			{
 				entity->mHealth -= mAttackDamage;
 				entity->mDeathClock.restart();

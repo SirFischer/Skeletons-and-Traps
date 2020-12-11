@@ -16,21 +16,24 @@
 class Map
 {
 private:
-	sf::Texture				mSkyTexture;
-	sf::Texture				mDirtTexture;
-	sf::Texture				mGrassTexture;
-	sf::Texture				mSpikeTexture;
+	sf::Texture					mSkyTexture;
+	sf::Texture					mDirtTexture;
+	sf::Texture					mGrassTexture;
+	sf::Texture					mSpikeTexture;
 
-	sf::Sprite				mSpikeSprite;
-	sf::Sprite				mSkySprite;
-	sf::Sprite				mDirtSprite;
-	sf::Sprite				mGrassSprite;
+	sf::Sprite					mSpikeSprite;
+	sf::Sprite					mSkySprite;
+	sf::Sprite					mDirtSprite;
+	sf::Sprite					mGrassSprite;
 
 	std::vector<std::string>	mMapLines;
 
 public:
 	Map(std::string path);
 	~Map();
+
+	sf::Sprite				GetSprite(){return (mSpikeSprite);}
+
 
 	void					HandleCollisions(Entity	*tEntity);
 	void					HandleParticleCollisions(ParticleEffect	*tEffect);

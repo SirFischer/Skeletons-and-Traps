@@ -4,22 +4,24 @@ Map::Map(std::string path)
 {
 	if (!mDirtTexture.loadFromFile("assets/Textures/dirt400x400.png"))
 	{
-		/* code */
 	}
 	if (!mGrassTexture.loadFromFile("assets/Textures/green400x400.png"))
 	{
-		/* code */
 	}
 	if (!mSkyTexture.loadFromFile("assets/Textures/blue400x400.jpg"))
 	{
-		/* code */
+	}
+	if (!mSpikeTexture.loadFromFile("assets/Textures/grey-block.png"))
+	{
 	}
 
 	//Textures/sprites
 	mDirtSprite.setTexture(mDirtTexture);
 	mGrassSprite.setTexture(mGrassTexture);
 	mSkySprite.setTexture(mSkyTexture);
+	mSpikeSprite.setTexture(mSpikeTexture);
 
+	mSpikeSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mDirtSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mGrassSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mSkySprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
@@ -44,6 +46,7 @@ Map::~Map()
 
 void				Map::HandleCollisions(Entity	*tEntity)
 {
+
 	sf::Vector2f	size = tEntity->GetSize();
 	sf::Vector2f	position = tEntity->GetPosition() + tEntity->mVelocity;
 	sf::Vector2f	prevposition = tEntity->GetPosition();
@@ -60,8 +63,21 @@ void				Map::HandleCollisions(Entity	*tEntity)
 		{
 			if (x >= (int)mMapLines[y].length())
 				break;
+
+			if(mMapLines[y][x] == 'k')
+			{
+				int my = y * BLOCK_SIZE;
+				if(position.y < (my * BLOCK_SIZE) && (position.y + size.y) < my && tEntity->mHealth > 0)
+				{
+					//std::cout<<"Hit"<<std::endl;
+					tEntity->mVelocity.y = 0.f;
+					tEntity->mHealth -= 30.f;
+					tEntity->mVelocity.y -= 3.f;
+				}
+			}
+
 			//if block is solid
-			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_')
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == 'k')
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
@@ -135,6 +151,7 @@ void				Map::HandleParticleCollisions(ParticleEffect	*tEffect)
 	
 }
 
+
 //function to spawn enemy on map
 void		Map::SpawnEntities(std::list<Entity *> *tEntities)
 {
@@ -188,6 +205,12 @@ void		Map::Draw(Window *tWindow)
 			{
 				mDirtSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mDirtSprite);
+			}
+			if (i[x] == 'k')
+			{
+				mSpikeSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mSpikeSprite);
+				
 			}
 		}
 		y++;
