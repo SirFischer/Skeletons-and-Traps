@@ -11,7 +11,7 @@ Map::Map(std::string path)
 	if (!mSkyTexture.loadFromFile("assets/Textures/blue400x400.jpg"))
 	{
 	}
-	if (!mSpikeTexture.loadFromFile("assets/Textures/dirt400x400.png"))
+	if (!mSpikeTexture.loadFromFile("assets/Textures/grey-block.png"))
 	{
 	}
 
@@ -67,15 +67,17 @@ void				Map::HandleCollisions(Entity	*tEntity)
 			if(mMapLines[y][x] == 'k')
 			{
 				int my = y * BLOCK_SIZE;
-				if(position.y < (my * BLOCK_SIZE) && (position.y + size.y) < my)
+				if(position.y < (my * BLOCK_SIZE) && (position.y + size.y) < my && tEntity->mHealth > 0)
 				{
 					std::cout<<"Hit"<<std::endl;
-					
+					tEntity->mHealth -= 30.f;
+					tEntity->mVelocity.y = 0.f;
+					tEntity->mVelocity.y -= 3.f;
 				}
 			}
 
 			//if block is solid
-			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_')
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == 'k')
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
