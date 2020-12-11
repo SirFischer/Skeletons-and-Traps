@@ -3,6 +3,7 @@
 #include "Animation.hpp"
 #include "EntityAction.hpp"
 #include "AIMode.hpp"
+#include "ParticleEffect.hpp"
 
 #include <map>
 
@@ -43,8 +44,8 @@ public:
 	virtual void				Update() = 0;
 	virtual void				Render(Window *tWindow) = 0;
 
-	virtual void				Attack(std::list<Entity *> tEntities);
-	virtual void				Attack(Entity *tEntity);
+	virtual void				Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> *tParticleEffects);
+	virtual void				Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffects);
 
 
 	void						MoveLeft();

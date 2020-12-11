@@ -10,7 +10,7 @@ Player::~Player()
 }
 
 
-void	Player::Update(std::list<Entity *> tEntities)
+void	Player::Update(std::list<Entity *> tEntities, std::list<ParticleEffect> *tParticleEffects)
 {
 	mCharacter->Update();
 	if (mCharacter->GetHealth() > 0)
@@ -22,7 +22,7 @@ void	Player::Update(std::list<Entity *> tEntities)
 		if (InputManager::IsActive(InputAction::MOVE_LEFT))
 			mCharacter->MoveLeft();
 		if (InputManager::IsActive(InputAction::ATTACK))
-			mCharacter->Attack(tEntities);
+			mCharacter->Attack(tEntities, tParticleEffects);
 	}
 }
 

@@ -17,9 +17,9 @@ private:
 	static bool		IsWidthinSight(Player *tPlayer, Entity *tEntity);
 
 	static void		EntityPatrol(Entity *tEntity);
-	static void		EntityAttack(Player *tPlayer, Entity *tEntity);
+	static void		EntityAttack(Player *tPlayer, Entity *tEntity, std::list<ParticleEffect> *tParticleEffects);
 	
 public:
 	~AI();
-	static void		ProcessEntity(Player *tPlayer, Entity *tEntity);
+	static void		ProcessEntity(Player *tPlayer, Entity *tEntity, std::list<ParticleEffect> *tParticleEffects);
 };

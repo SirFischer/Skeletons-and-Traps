@@ -45,12 +45,24 @@ void		GameState::Update()
 {
 	mMap.HandleCollisions(mPlayer.GetEntity());
 	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
-	mPlayer.Update(mEntities);
+	mPlayer.Update(mEntities, &mParticleEffects);
+	for (auto &particleEffect : mParticleEffects)
+	{
+		particleEffect.Update();
+		mMap.HandleParticleCollisions(&particleEffect);
+		if (!particleEffect.IsActive())
+		{
+			mParticleEffects.remove(particleEffect);
+			break;
+		}
+			
+	}
+	
 	for (auto &entity : mEntities)
 	{
 		mMap.HandleCollisions(entity);
 		if (entity->GetHealth() > 0)
-			AI::ProcessEntity(&mPlayer, entity);
+			AI::ProcessEntity(&mPlayer, entity, &mParticleEffects);
 		entity->Update();
 	}
 	for (auto &entity : mEntities)
@@ -79,6 +91,8 @@ void		GameState::Render()
 	mPlayer.Render(mWindow);
 	for (auto &entity : mEntities)
 		entity->Render(mWindow);
+	for (auto &particleEffect : mParticleEffects)
+		particleEffect.Render(mWindow);
 	mf::GUI::Render();
 	mWindow->Render();
 }

@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <math.h>
 
 struct Particle {
 	sf::Vector2f	mPos;
@@ -20,20 +21,30 @@ private:
 	sf::CircleShape			mCircle;
 
 	float					mGravity = 0.1f;
+	float					mForce = 0.1f;
 
-public:
-	friend class Map;
+	sf::Clock				mLifeTimeClock;
+	sf::Time				mLifeTime = sf::seconds(3);
 
-	ParticleEffect(sf::Vector2f tPos, float tRadius, int tCount, float tDirection, float tSpread);
-	ParticleEffect(sf::Vector2f tPos, float tRadius, int tCount);
-	~ParticleEffect();
+	bool					mIsActive = true;
 
 	void					InitSpray(float tDirection, float tSpread);
 	void					InitExplosion();
+public:
+	friend class Map;
+
+	ParticleEffect(sf::Vector2f tPos, float tForce, float tRadius, int tCount, float tDirection, float tSpread);
+	ParticleEffect(sf::Vector2f tPos, float tForce, float tRadius, int tCount);
+	~ParticleEffect();
+
+	bool operator == (const ParticleEffect& s) const { return mLifeTimeClock.getElapsedTime().asSeconds() == s.mLifeTimeClock.getElapsedTime().asSeconds(); }
+
+	void					SetParticleColor(sf::Color	tColor);				
 
 	void					Update();
 	void					Render(Window *tWindow);
 
+	bool					IsActive(){return (mIsActive);}
 	
 };
 
