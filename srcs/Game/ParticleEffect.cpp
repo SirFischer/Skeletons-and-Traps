@@ -72,9 +72,7 @@ void		ParticleEffect::Update()
 		}
 		if (mLifeTimeClock.getElapsedTime().asSeconds() > mLifeTime.asSeconds())
 		{
-			std::cout << (int)particle.mColor.a << std::endl;
-			particle.mColor = sf::Color(particle.mColor.r, particle.mColor.g, particle.mColor.b, (short)(255.f / (mLifeTimeClock.getElapsedTime().asSeconds() - mLifeTime.asSeconds())));
-			std::cout << (int)particle.mColor.a << std::endl;
+			particle.mColor = sf::Color(particle.mColor.r, particle.mColor.g, particle.mColor.b, (255.f / (((mLifeTimeClock.getElapsedTime().asSeconds() - mLifeTime.asSeconds()) * 4.f) + 1.f)));
 			if (particle.mColor.a < 5.f)
 				mIsActive = false;
 		}
@@ -86,6 +84,7 @@ void		ParticleEffect::Render(Window *tWindow)
 	for (auto &particle : mParticles)
 	{
 		mCircle.setPosition(particle.mPos);
+		mCircle.setFillColor(particle.mColor);
 		tWindow->Draw(mCircle);
 	}
 }

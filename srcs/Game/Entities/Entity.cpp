@@ -56,6 +56,9 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffects)
 {
 	(void)tParticleEffects;
+	if (mAttackClock.getElapsedTime().asSeconds() < mAttackCooldown)
+		return ;
+	mAttackClock.restart();
 	if (mVelocity.x < 0)
 		mAction = EntityAction::ATTACK_LEFT;
 	else
