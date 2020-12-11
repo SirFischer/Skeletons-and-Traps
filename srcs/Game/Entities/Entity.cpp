@@ -100,6 +100,7 @@ void				Entity::Reset()
 {
 	mHealth = 30;
 	mIsAlive = true;
+	mVelocity = sf::Vector2f(0, 0);
 }
 
 
