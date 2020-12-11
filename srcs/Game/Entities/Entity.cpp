@@ -46,8 +46,8 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 					entity->mVelocity += sf::Vector2f(5, -1);
 					particlePos.x += 20;
 				}
-				float angle = std::atan2(mPosition.y - entity->GetPosition().y, mPosition.x - entity->GetPosition().x) + (M_PI);
-				ParticleEffect effect(particlePos, 5.f, 2.f, 200, angle, M_PI);
+				float angle = std::atan2(mPosition.y - entity->GetPosition().y, mPosition.x - entity->GetPosition().x) + M_PI;
+				ParticleEffect effect(particlePos, 5.f, 2.f, 200, angle, M_PI / 2.f);
 				effect.SetParticleColor(sf::Color::Red);
 				tParticleEffects->push_back(effect);
 			}
@@ -87,7 +87,7 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 
 			}
 			float angle = std::atan2(mPosition.y - tEntity->GetPosition().y, mPosition.x - tEntity->GetPosition().x) + M_PI;
-			ParticleEffect effect(particlePos, 5.f, 2.f, 200, angle, M_PI);
+			ParticleEffect effect(particlePos, 5.f, 2.f, 200, angle, M_PI / 2.f);
 			effect.SetParticleColor(sf::Color::Red);
 			tParticleEffects->push_back(effect);
 		}

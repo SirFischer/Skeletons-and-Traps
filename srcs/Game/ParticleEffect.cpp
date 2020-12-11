@@ -39,7 +39,7 @@ void		ParticleEffect::InitSpray(float tDirection, float tSpread)
 	for (auto &particle : mParticles)
 	{
 		float	spread = ((1.f/1000.f) * tSpread) * (float)(random() % 1000) - (tSpread / 2.0f);
-		float	angle = tDirection + (tan(spread / 2.0));
+		float	angle = tDirection + (tan(spread / 2.0) * 2.f);
 		float	forceVariation = ((1.f/1000.f) * mForce) * (float)(random() % 1000);
 		particle.mVelocity = sf::Vector2f(cos(angle) * (forceVariation), sin(angle) * (forceVariation));
 	}
