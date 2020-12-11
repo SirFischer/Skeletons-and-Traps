@@ -7,7 +7,6 @@
 #include "Player.hpp"
 #include "Map.hpp"
 #include "AI.hpp"
-#include "Goal.hpp"
 #include "ParticleEffect.hpp"
 
 
@@ -18,7 +17,6 @@ private:
 	Map										mMap;
 	Player									mPlayer;
 	std::list<Entity *>						mEntities;
-	Goal									mGoal;
 	
 	std::list<ParticleEffect>				mParticleEffects;
 	

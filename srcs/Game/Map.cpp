@@ -14,14 +14,20 @@ Map::Map(std::string path)
 	if (!mSpikeTexture.loadFromFile("assets/Textures/grey-block.png"))
 	{
 	}
+	if (!mGoalTexture.loadFromFile("assets/Textures/flag.png"))
+	{
+	}
 
 	//Textures/sprites
 	mDirtSprite.setTexture(mDirtTexture);
 	mGrassSprite.setTexture(mGrassTexture);
 	mSkySprite.setTexture(mSkyTexture);
 	mSpikeSprite.setTexture(mSpikeTexture);
+	mGoalSprite.setTexture(mGoalTexture);
+
 
 	mSpikeSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mGoalSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mDirtSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mGrassSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mSkySprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
@@ -73,6 +79,16 @@ void				Map::HandleCollisions(Entity	*tEntity)
 					tEntity->mVelocity.y = 0.f;
 					tEntity->mHealth -= 30.f;
 					tEntity->mVelocity.y -= 3.f;
+				}
+			}
+			if(mMapLines[y][x] == 'g')
+			{
+				int mx = x * BLOCK_SIZE;
+				int my = y * BLOCK_SIZE;
+				if((position.x < (mx + BLOCK_SIZE) && (position.x + size.x) > mx) && (position.y < (my + BLOCK_SIZE) && (position.y + size.y) > my))
+				{
+					//std::cout<<"Hit"<<std::endl;
+					mGoalReached = true;
 				}
 			}
 
@@ -210,10 +226,13 @@ void		Map::Draw(Window *tWindow)
 			{
 				mSpikeSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mSpikeSprite);
-				
+			}
+			if (i[x] == 'g')
+			{
+				mGoalSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mGoalSprite);
 			}
 		}
 		y++;
 	}
 }
-

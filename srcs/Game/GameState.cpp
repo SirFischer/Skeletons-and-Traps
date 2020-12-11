@@ -75,7 +75,7 @@ void		GameState::Update()
 		}
 	}
 
-	if (mPlayer.GetEntity()->GetPosition().x >= mGoal.GetPosition().x)
+	if (mMap.GetGoalStatus() == true)
 	{
 		mIsActive = false;
 		mStateReturnAction = StateAction::POP;
@@ -87,7 +87,6 @@ void		GameState::Render()
 	mWindow->Clear(sf::Color(135,206,235));
 	mWindow->View();
 	mMap.Draw(mWindow);
-	mGoal.Draw(mWindow);
 	mPlayer.Render(mWindow);
 	for (auto &entity : mEntities)
 		entity->Render(mWindow);
