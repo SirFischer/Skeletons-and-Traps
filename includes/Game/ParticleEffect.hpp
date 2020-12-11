@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <math.h>
+#include <random>
 
 struct Particle {
 	sf::Vector2f	mPos;

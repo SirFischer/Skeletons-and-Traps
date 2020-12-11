@@ -36,10 +36,15 @@ ParticleEffect::~ParticleEffect()
 void		ParticleEffect::InitSpray(float tDirection, float tSpread)
 {
 	srand(time(0));
+	std::default_random_engine generator;
+	std::normal_distribution<float> distribution(tSpread, tSpread / 2.f);
 	for (auto &particle : mParticles)
 	{
-		float	spread = ((1.f/1000.f) * tSpread) * (float)(random() % 1000) - (tSpread / 2.0f);
-		float	angle = tDirection + (tan(spread / 2.0) * 2.f);
+		
+		float	newspread = distribution(generator);
+		newspread -= (newspread / 2.0f);
+		//float	spread = ((1.f/1000.f) * tSpread) * (float)(random() % 1000) - (tSpread / 2.0f);
+		float	angle = tDirection + newspread; //(tan(newspread / 2.0) * 2.f);
 		float	forceVariation = ((1.f/1000.f) * mForce) * (float)(random() % 1000);
 		particle.mVelocity = sf::Vector2f(cos(angle) * (forceVariation), sin(angle) * (forceVariation));
 	}
