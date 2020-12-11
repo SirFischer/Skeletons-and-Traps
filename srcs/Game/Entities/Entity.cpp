@@ -22,7 +22,7 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 		return ;
 	mAttackClock.restart();
 	(void)tParticleEffects;
-	if (mVelocity.x < 0)
+	if (mDirection == Direction::LEFT)
 		mAction = EntityAction::ATTACK_LEFT;
 	else
 		mAction = EntityAction::ATTACK_RIGHT;
@@ -62,7 +62,7 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 	if (mAttackClock.getElapsedTime().asSeconds() < mAttackCooldown)
 		return ;
 	mAttackClock.restart();
-	if (mVelocity.x < 0)
+	if (mDirection == Direction::LEFT)
 		mAction = EntityAction::ATTACK_LEFT;
 	else
 		mAction = EntityAction::ATTACK_RIGHT;
@@ -99,12 +99,14 @@ void				Entity::MoveLeft()
 {
 	mVelocity.x -= mSpeed;
 	mAction = EntityAction::WALK_LEFT;
+	mDirection = Direction::LEFT;
 }
 
 void				Entity::MoveRight()
 {
 	mVelocity.x += mSpeed;
 	mAction = EntityAction::WALK_RIGHT;
+	mDirection = Direction::RIGHT;
 }
 
 void				Entity::Jump()
