@@ -35,7 +35,7 @@ void		MenuState::Init()
 
 	mPlayBtn = mf::Button::Create(sf::Color::Green, sf::Color::Cyan);
 	mPlayBtn->SetSize(150, 50);
-	mPlayBtn->SetPositionPercentage(true)->SetPosition(45, 40);
+	mPlayBtn->SetPositionPercentage(true)->SetPosition(45, 35);
 	mPlayBtn->SetClickEvent([actionReturn, active] {
 		*actionReturn = StateAction::GAME;
 		*active = false;
@@ -43,7 +43,7 @@ void		MenuState::Init()
 
 	mOptionBtn = mf::Button::Create(sf::Color::Blue, sf::Color::Cyan);
 	mOptionBtn->SetSize(150, 50);
-	mOptionBtn->SetPositionPercentage(true)->SetPosition(45, 50);
+	mOptionBtn->SetPositionPercentage(true)->SetPosition(45, 45);
 	mOptionBtn->SetClickEvent([actionReturn, active] {
 		*actionReturn = StateAction::OPTIONS;
 		*active = false;
@@ -51,7 +51,7 @@ void		MenuState::Init()
 
 	mQuitBtn = mf::Button::Create(sf::Color::Red, sf::Color::Yellow);
 	mQuitBtn->SetSize(150, 50);
-	mQuitBtn->SetPositionPercentage(true)->SetPosition(45, 60);
+	mQuitBtn->SetPositionPercentage(true)->SetPosition(45, 55);
 	mQuitBtn->SetClickEvent([actionReturn, active] {
 		*actionReturn = StateAction::POP;
 		*active = false;
@@ -117,8 +117,7 @@ void		MenuState::Update()
 
 void		MenuState::Render()
 {
-	mWindow->Clear(sf::Color();
-	mWindow->View();
+	mWindow->Clear(sf::Color(135,206,235));
 	mPlayer.Render(mWindow);
 	for (auto &entity : mEntities)
 		entity->Render(mWindow);

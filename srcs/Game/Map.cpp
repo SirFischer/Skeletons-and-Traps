@@ -17,9 +17,13 @@ Map::Map(std::string path)
 	if (!mGoalTexture.loadFromFile("assets/Textures/flag.png"))
 	{
 	}
+	if (!mDeathTexture.loadFromFile("assets/Textures/spike.png"))
+	{
+	}
 
 	//Textures/sprites
 	mDirtSprite.setTexture(mDirtTexture);
+	mDeathSprite.setTexture(mDeathTexture);
 	mGrassSprite.setTexture(mGrassTexture);
 	mSkySprite.setTexture(mSkyTexture);
 	mSpikeSprite.setTexture(mSpikeTexture);
@@ -27,6 +31,7 @@ Map::Map(std::string path)
 
 
 	mSpikeSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mDeathSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mGoalSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mDirtSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mGrassSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
@@ -82,6 +87,21 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 					tEntity->mHealth -= 30.f;
 					tEntity->mVelocity.y -= 3.f;
 					tEntity->mVelocity.x += ((position.x + (size.x / 2.f)) - (mx + (BLOCK_SIZE / 2.f))) * 0.2f;
+					ParticleEffect effect(sf::Vector2f((x * BLOCK_SIZE) + (BLOCK_SIZE / 2.f), y * BLOCK_SIZE), 3.f, 0.8f, 300);
+					effect.SetParticleColor(sf::Color::Red);
+					tParticleEffects->push_back(effect);
+				}
+			}
+			if(mMapLines[y][x] == 'z')
+			{
+				int my = y * BLOCK_SIZE;
+				int mx = x * BLOCK_SIZE;
+				if((position.x < (mx + BLOCK_SIZE) && (position.x + size.x) > mx) && (position.y < (my + BLOCK_SIZE) && (position.y + size.y) > my) < my && tEntity->mHealth > 0)
+				{
+					//std::cout<<"Hit"<<std::endl;
+					
+					tEntity->mVelocity.y = 0.f;
+					tEntity->mHealth -= 100.f;
 					ParticleEffect effect(sf::Vector2f((x * BLOCK_SIZE) + (BLOCK_SIZE / 2.f), y * BLOCK_SIZE), 3.f, 0.8f, 300);
 					effect.SetParticleColor(sf::Color::Red);
 					tParticleEffects->push_back(effect);
@@ -233,6 +253,11 @@ void		Map::Draw(Window *tWindow)
 				mGoalSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				mGoalPos = sf::Vector2f(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mGoalSprite);
+			}
+			if (i[x] == 'z')
+			{
+				mDeathSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mDeathSprite);
 			}
 		}
 		y++;

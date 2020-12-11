@@ -21,7 +21,9 @@ private:
 	sf::Texture					mGrassTexture;
 	sf::Texture					mSpikeTexture;
 	sf::Texture					mGoalTexture;
+	sf::Texture					mDeathTexture;
 
+	sf::Sprite					mDeathSprite;
 	sf::Sprite					mGoalSprite;
 	sf::Sprite					mSpikeSprite;
 	sf::Sprite					mSkySprite;
