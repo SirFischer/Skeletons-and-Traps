@@ -35,16 +35,19 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 			{
 				entity->mHealth -= mAttackDamage;
 				entity->mDeathClock.restart();
+				sf::Vector2f	particlePos = entity->GetPosition() + (mSize / 2.f);
 				if (entity->GetPosition().x + (entity->mSize.x / 2.f) < mPosition.x + (mSize.x / 2.f))
 				{
-					entity->mVelocity += sf::Vector2f(-5, -1);	
+					entity->mVelocity += sf::Vector2f(-5, -1);
+					particlePos.x -= 20;
 				}
 				else
 				{
 					entity->mVelocity += sf::Vector2f(5, -1);
+					particlePos.x += 20;
 				}
 				float angle = std::atan2(mPosition.y - entity->GetPosition().y, mPosition.x - entity->GetPosition().x) + (M_PI);
-				ParticleEffect effect(entity->GetPosition() + (mSize / 2.f), 5.f, 3.f, 200, angle, 0.5f);
+				ParticleEffect effect(particlePos, 5.f, 2.f, 200, angle, M_PI);
 				effect.SetParticleColor(sf::Color::Red);
 				tParticleEffects->push_back(effect);
 			}
@@ -71,16 +74,20 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 		{
 			tEntity->mHealth -= mAttackDamage;
 			tEntity->mDeathClock.restart();
+			sf::Vector2f	particlePos = tEntity->GetPosition() + (mSize / 2.f);
 			if (tEntity->GetPosition().x + (tEntity->mSize.x / 2.f) < mPosition.x + (mSize.x / 2.f))
 			{
-				tEntity->mVelocity += sf::Vector2f(-5, -1);	
+				tEntity->mVelocity += sf::Vector2f(-5, -1);
+				particlePos.x -= 20;
 			}
 			else
 			{
 				tEntity->mVelocity += sf::Vector2f(5, -1);
+				particlePos.x += 20;
+
 			}
 			float angle = std::atan2(mPosition.y - tEntity->GetPosition().y, mPosition.x - tEntity->GetPosition().x) + M_PI;
-			ParticleEffect effect(tEntity->GetPosition() + (mSize / 2.f), 5.f, 3.f, 200, angle, 0.5f);
+			ParticleEffect effect(particlePos, 5.f, 2.f, 200, angle, M_PI);
 			effect.SetParticleColor(sf::Color::Red);
 			tParticleEffects->push_back(effect);
 		}
