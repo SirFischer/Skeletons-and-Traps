@@ -96,6 +96,12 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 	}	
 }
 
+void				Entity::Reset()
+{
+	mHealth = 30;
+	mIsAlive = true;
+}
+
 
 void				Entity::MoveLeft()
 {

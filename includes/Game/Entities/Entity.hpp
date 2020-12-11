@@ -52,6 +52,7 @@ public:
 	virtual void				Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> *tParticleEffects);
 	virtual void				Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffects);
 
+	void						Reset();
 
 	void						MoveLeft();
 	void						MoveRight();

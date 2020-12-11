@@ -3,8 +3,6 @@
 MenuState::MenuState(Window *tWindow)
 :mMap("assets/Map/menu.txt")
 {
-	mMap.SpawnEntities(&mEntities);
-	mMap.SpawnPlayer(&mPlayer);
 	mWindow = tWindow;
 }
 
@@ -19,6 +17,10 @@ void		MenuState::Init()
 	mIsActive = true;
 	mStateReturnAction = StateAction::POP;
 	mWindow->ShowCursor();
+	mEntities.clear();
+	mPlayer.GetEntity()->Reset();
+	mMap.SpawnEntities(&mEntities);
+	mMap.SpawnPlayer(&mPlayer);
 
 
 	/**
