@@ -74,7 +74,8 @@ void		GameState::Update()
 			break;
 		}
 	}
-
+	if (mParticleEffects.size() > 20)
+		mParticleEffects.pop_front();
 	if (mMap.GetGoalStatus(mPlayer.GetEntity()))
 	{
 		mIsActive = false;
