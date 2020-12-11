@@ -46,7 +46,6 @@ void		GameState::Update()
 	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
 	mPlayer.Update(mEntities);
 	
-	
 	for (auto &entity : mEntities)
 	{
 		mMap.HandleCollisions(entity);

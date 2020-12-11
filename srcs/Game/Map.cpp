@@ -11,7 +11,7 @@ Map::Map(std::string path)
 	if (!mSkyTexture.loadFromFile("assets/Textures/blue400x400.jpg"))
 	{
 	}
-	if (!mSpikeTexture.loadFromFile("assets/Textures/spike.png"))
+	if (!mSpikeTexture.loadFromFile("assets/Textures/dirt400x400.png"))
 	{
 	}
 
@@ -46,6 +46,7 @@ Map::~Map()
 
 void				Map::HandleCollisions(Entity	*tEntity)
 {
+
 	sf::Vector2f	size = tEntity->GetSize();
 	sf::Vector2f	position = tEntity->GetPosition() + tEntity->mVelocity;
 	sf::Vector2f	prevposition = tEntity->GetPosition();
@@ -63,7 +64,7 @@ void				Map::HandleCollisions(Entity	*tEntity)
 			if (x >= (int)mMapLines[y].length())
 				break;
 			//if block is solid
-			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == 'x')
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == 'k')
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
@@ -97,28 +98,23 @@ void				Map::HandleCollisions(Entity	*tEntity)
 					}
 					position = tEntity->GetPosition() + tEntity->mVelocity;
 					prevposition = tEntity->GetPosition();
+
+					/*if ()
+					{
+						std::cout << "Collision" << std::endl;
+					}
+					else
+					{
+						std::cout << "No Collision" << std::endl;
+					}*/
 				}
 			}
+				
 		}
 	}
 }
 
-//Traps(damage)
-void		Map::Traps()
-{
-	int y = 0;
-	for (auto &&i : mMapLines)
-	{
-		for (size_t x = 0; x < i.length(); x++)
-		{
-			if (i[x] == 'x')
-			{
-				mSpikeSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
-			}
-		}
-		y++;
-	}
-}
+
 
 //function to spawn enemy on map
 void		Map::SpawnEntities(std::list<Entity *> *tEntities)
@@ -156,6 +152,12 @@ void		Map::Draw(Window *tWindow)
 			{
 				mDirtSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mDirtSprite);
+			}
+			if (i[x] == 'k')
+			{
+				mSpikeSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mSpikeSprite);
+				
 			}
 		}
 		y++;
