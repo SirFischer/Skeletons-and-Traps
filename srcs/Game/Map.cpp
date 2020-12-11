@@ -63,8 +63,19 @@ void				Map::HandleCollisions(Entity	*tEntity)
 		{
 			if (x >= (int)mMapLines[y].length())
 				break;
+
+			if(mMapLines[y][x] == 'k')
+			{
+				int my = y * BLOCK_SIZE;
+				if(position.y < (my * BLOCK_SIZE) && (position.y + size.y) < my)
+				{
+					std::cout<<"Hit"<<std::endl;
+					
+				}
+			}
+
 			//if block is solid
-			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == 'k')
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_')
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
@@ -98,18 +109,8 @@ void				Map::HandleCollisions(Entity	*tEntity)
 					}
 					position = tEntity->GetPosition() + tEntity->mVelocity;
 					prevposition = tEntity->GetPosition();
-
-					/*if ()
-					{
-						std::cout << "Collision" << std::endl;
-					}
-					else
-					{
-						std::cout << "No Collision" << std::endl;
-					}*/
 				}
 			}
-				
 		}
 	}
 }
