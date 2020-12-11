@@ -14,7 +14,7 @@ public:
 	~Player();
 
 	
-	void	Update(std::list<Entity *> tEntities);
+	void	Update(std::list<Entity *> tEntities, std::list<ParticleEffect> *tParticleEffects);
 	void	Render(Window	*tWindow);
 	
 	Entity	*GetEntity(){return mCharacter.get();}

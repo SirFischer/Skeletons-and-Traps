@@ -39,7 +39,7 @@ void		AI::EntityPatrol(Entity *tEntity)
 }
 
 
-void		AI::EntityAttack(Player *tPlayer, Entity *tEntity)
+void		AI::EntityAttack(Player *tPlayer, Entity *tEntity, std::list<ParticleEffect> *tParticleEffects)
 {
 	sf::Vector2f	diff = (tEntity->mPosition - tPlayer->GetEntity()->GetPosition());
 	float distance = std::sqrt((diff.x * diff.x) + (diff.y * diff.y));
@@ -47,7 +47,7 @@ void		AI::EntityAttack(Player *tPlayer, Entity *tEntity)
 	if (std::abs(tEntity->mVelocity.x) < 0.1f && tPlayer->GetEntity()->GetPosition().y < tEntity->GetPosition().y - tEntity->mSize.y && tEntity->mIsBlocked)
 		tEntity->Jump();
 	if (distance < 30.f)
-		tEntity->Attack(tPlayer->GetEntity());
+		tEntity->Attack(tPlayer->GetEntity(), tParticleEffects);
 	else if (tEntity->GetPosition().x < tPlayer->GetEntity()->GetPosition().x)
 		tEntity->MoveRight();
 	else if (tEntity->GetPosition().x > tPlayer->GetEntity()->GetPosition().x)
@@ -57,7 +57,7 @@ void		AI::EntityAttack(Player *tPlayer, Entity *tEntity)
 
 
 
-void		AI::ProcessEntity(Player *tPlayer, Entity *tEntity)
+void		AI::ProcessEntity(Player *tPlayer, Entity *tEntity, std::list<ParticleEffect> *tParticleEffects)
 {
 	if (IsWidthinSight(tPlayer, tEntity))
 		tEntity->mAIMode = AIMode::ATTACK;
@@ -71,7 +71,7 @@ void		AI::ProcessEntity(Player *tPlayer, Entity *tEntity)
 		break;
 
 	case AIMode::ATTACK:
-		EntityAttack(tPlayer, tEntity);
+		EntityAttack(tPlayer, tEntity, tParticleEffects);
 		break;
 	
 	default:

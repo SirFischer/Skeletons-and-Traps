@@ -8,6 +8,7 @@
 #include "Map.hpp"
 #include "AI.hpp"
 #include "Goal.hpp"
+#include "ParticleEffect.hpp"
 
 
 class GameState : public State
@@ -19,6 +20,7 @@ private:
 	std::list<Entity *>						mEntities;
 	Goal									mGoal;
 	
+	std::list<ParticleEffect>				mParticleEffects;
 	
 public:
 	GameState(Window *tWindow);

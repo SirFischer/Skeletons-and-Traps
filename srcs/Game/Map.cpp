@@ -101,6 +101,40 @@ void				Map::HandleCollisions(Entity	*tEntity)
 	}
 }
 
+void				Map::HandleParticleCollisions(ParticleEffect	*tEffect)
+{
+	for (auto &particle : tEffect->mParticles)
+	{
+		sf::Vector2f	position = particle.mPos;
+		sf::Vector2i	index = sf::Vector2i((position.x - BLOCK_SIZE) / BLOCK_SIZE, (position.y - BLOCK_SIZE) / BLOCK_SIZE);
+		index.x = (index.x < 0) ? 0 : index.x;
+		index.y = (index.y < 0) ? 0 : index.y;
+		for (int y = index.y; y < index.y + 3; y++)
+		{
+			if (y >= (int)mMapLines.size())
+					break;
+			for ( int x = index.x; x < index.x + 3; x++)
+			{
+				if (x >= (int)mMapLines[y].length())
+					break;
+				//if block is solid
+				if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_')
+				{
+					int mx = x * BLOCK_SIZE;
+					int my = y * BLOCK_SIZE;
+					//AABB collision?
+					if ((position.x < (mx + BLOCK_SIZE) && position.x > mx) && (position.y < (my + BLOCK_SIZE) && position.y > my))
+					{
+						particle.mIsHit = true;
+					}
+				}
+				
+			}
+		}
+	}
+	
+}
+
 //function to spawn enemy on map
 void		Map::SpawnEntities(std::list<Entity *> *tEntities)
 {
