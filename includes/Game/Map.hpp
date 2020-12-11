@@ -28,7 +28,7 @@ private:
 	sf::Sprite					mDirtSprite;
 	sf::Sprite					mGrassSprite;
 
-	bool						mGoalReached = false;
+	sf::Vector2f				mGoalPos;
 
 	std::vector<std::string>	mMapLines;
 
@@ -38,7 +38,7 @@ public:
 
 	sf::Sprite				GetSprite(){return (mSpikeSprite);}
 
-	bool					GetGoalStatus(){return (mGoalReached);}
+	bool					GetGoalStatus(Entity *tEntity);
 
 	void					HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParticleEffects);
 

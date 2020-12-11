@@ -75,7 +75,7 @@ void		GameState::Update()
 		}
 	}
 
-	if (mMap.GetGoalStatus() == true)
+	if (mMap.GetGoalStatus(mPlayer.GetEntity()))
 	{
 		mIsActive = false;
 		mStateReturnAction = StateAction::POP;

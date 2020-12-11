@@ -81,19 +81,10 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 					tEntity->mVelocity.y = 0.f;
 					tEntity->mHealth -= 30.f;
 					tEntity->mVelocity.y -= 3.f;
+					tEntity->mVelocity.x += ((position.x + (size.x / 2.f)) - (mx + (BLOCK_SIZE / 2.f))) * 0.2f;
 					ParticleEffect effect(sf::Vector2f((x * BLOCK_SIZE) + (BLOCK_SIZE / 2.f), y * BLOCK_SIZE), 3.f, 0.8f, 300);
 					effect.SetParticleColor(sf::Color::Red);
 					tParticleEffects->push_back(effect);
-				}
-			}
-			if(mMapLines[y][x] == 'g')
-			{
-				int mx = x * BLOCK_SIZE;
-				int my = y * BLOCK_SIZE;
-				if((position.x < (mx + BLOCK_SIZE) && (position.x + size.x) > mx) && (position.y < (my + BLOCK_SIZE) && (position.y + size.y) > my))
-				{
-					//std::cout<<"Hit"<<std::endl;
-					mGoalReached = true;
 				}
 			}
 
@@ -136,6 +127,11 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 			}
 		}
 	}
+}
+
+bool				Map::GetGoalStatus(Entity *tEntity)
+{
+	return ((tEntity->GetPosition().x < (mGoalPos.x + BLOCK_SIZE) && (tEntity->GetPosition().x + tEntity->GetSize().x) > mGoalPos.x) && (tEntity->GetPosition().y < (mGoalPos.y + BLOCK_SIZE) && (tEntity->GetPosition().y + tEntity->GetSize().y) > mGoalPos.y));
 }
 
 void				Map::HandleParticleCollisions(ParticleEffect	*tEffect)
@@ -235,6 +231,7 @@ void		Map::Draw(Window *tWindow)
 			if (i[x] == 'g')
 			{
 				mGoalSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				mGoalPos = sf::Vector2f(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mGoalSprite);
 			}
 		}
