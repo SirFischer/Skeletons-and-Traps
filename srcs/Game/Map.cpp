@@ -261,7 +261,7 @@ void		Map::Draw(Window *tWindow)
 			if (i[x] == 'z')
 			{
 				mDeathSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
-				tWindow->Draw(mDeathSprite);
+				//tWindow->Draw(mDeathSprite);
 			}
 		}
 		y++;
