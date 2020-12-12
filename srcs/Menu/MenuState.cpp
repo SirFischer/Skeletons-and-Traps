@@ -22,14 +22,13 @@ void		MenuState::Init()
 	mMap.SpawnEntities(&mEntities);
 	mMap.SpawnPlayer(&mPlayer);
 
-
+	
 	/**
 	 * INIT STATE AND GUI
 	 **/
 
 	StateAction	*actionReturn = &mStateReturnAction;
 	bool		*active = &mIsActive;
-	
 
 	/**
 	 * Button coloring/text/state return
@@ -47,7 +46,7 @@ void		MenuState::Init()
 	mOptionBtn->SetSize(150, 50);
 	mOptionBtn->SetPositionPercentage(true)->SetPosition(45, 45);
 	mOptionBtn->SetClickEvent([actionReturn, active] {
-		*actionReturn = StateAction::OPTIONS;
+		*actionReturn = StateAction::GameOverState;
 		*active = false;
 	});
 
@@ -107,6 +106,7 @@ void		MenuState::Update()
 		}
 			
 	}
+	
 	for (auto &entity : mEntities)
 	{
 		mMap.HandleCollisions(entity, &mParticleEffects);
