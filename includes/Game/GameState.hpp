@@ -17,6 +17,8 @@ private:
 	Map										mMap;
 	Player									mPlayer;
 	std::list<Entity *>						mEntities;
+
+	mf::Text								*mHPText;
 	
 	std::list<ParticleEffect>				mParticleEffects;
 	
