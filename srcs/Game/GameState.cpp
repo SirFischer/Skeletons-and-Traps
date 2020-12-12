@@ -25,6 +25,12 @@ void		GameState::Init()
 	/**
 	 * INIT STATE AND GUI
 	 **/
+
+	mHPText = mf::Text::Create("assets/fonts/Roboto-Regular.ttf", "HP: 100");
+	mHPText->SetPositionPercentage(true)
+	->SetPosition(90, 95)
+	->SetTextColor(sf::Color::Black);
+	mf::GUI::AddWidget(mHPText);
 }
 
 void		GameState::HandleEvents()
@@ -45,6 +51,7 @@ void		GameState::Update()
 {
 	mMap.HandleCollisions(mPlayer.GetEntity(), &mParticleEffects);
 	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
+	mHPText->SetText("HP: " + std::to_string((int)mPlayer.GetEntity()->GetHealth()));
 	mPlayer.Update(mEntities, &mParticleEffects);
 	for (auto &particleEffect : mParticleEffects)
 	{
@@ -86,6 +93,7 @@ void		GameState::Update()
 void		GameState::Render()
 {
 	mWindow->Clear(sf::Color(135,206,235));
+
 	mWindow->View();
 	mMap.Draw(mWindow);
 	mPlayer.Render(mWindow);
@@ -93,6 +101,7 @@ void		GameState::Render()
 		entity->Render(mWindow);
 	for (auto &particleEffect : mParticleEffects)
 		particleEffect.Render(mWindow);
+	mWindow->SetDefaultView();
 	mf::GUI::Render();
 	mWindow->Render();
 }
