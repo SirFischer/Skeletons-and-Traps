@@ -31,9 +31,10 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 		mAnimations[mAction].ResetAnimation();
 		for (auto &entity : tEntities)
 		{
-
-			if ((mDirection == Direction::LEFT && (entity->GetPosition().x + entity->GetSize().x > mPosition.x - (mSize.x / 2.f) && entity->GetPosition().x < mPosition.x + (mSize.x / 2.f))) ||
-				(mDirection == Direction::RIGHT && (entity->GetPosition().x + entity->GetSize().x > mPosition.x + (mSize.x / 2.f) && entity->GetPosition().x < mPosition.x + (1.5 * mSize.x))))
+			//CHECK Y AXIS
+			if (((entity->GetPosition().y < mPosition.y + mSize.y && entity->GetPosition().y + entity->GetSize().y > mPosition.y)) &&
+				((mDirection == Direction::LEFT && (entity->GetPosition().x + entity->GetSize().x > mPosition.x - (mSize.x / 2.f) && entity->GetPosition().x < mPosition.x + (mSize.x / 2.f))) ||
+				(mDirection == Direction::RIGHT && (entity->GetPosition().x + entity->GetSize().x > mPosition.x + (mSize.x / 2.f) && entity->GetPosition().x < mPosition.x + (1.5 * mSize.x)))))
 			{
 				entity->mHealth -= mAttackDamage;
 				entity->mDeathClock.restart();

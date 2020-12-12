@@ -11,7 +11,7 @@ Map::Map(std::string path)
 	if (!mSkyTexture.loadFromFile("assets/Textures/blue400x400.jpg"))
 	{
 	}
-	if (!mSpikeTexture.loadFromFile("assets/Textures/grey-block.png"))
+	if (!mSpikeTexture.loadFromFile("assets/Textures/spike.png"))
 	{
 	}
 	if (!mGoalTexture.loadFromFile("assets/Textures/flag.png"))
@@ -80,7 +80,7 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 			{
 				int my = y * BLOCK_SIZE;
 				int mx = x * BLOCK_SIZE;
-				if((position.x < (mx + BLOCK_SIZE) && (position.x + size.x) > mx) && (position.y < (my + BLOCK_SIZE) && (position.y + size.y) > my) < my && tEntity->mHealth > 0)
+				if((position.x < (mx + BLOCK_SIZE) && (position.x + size.x) > mx) && (position.y < (my + BLOCK_SIZE) && (position.y + size.y) > my + (BLOCK_SIZE / 4.f)) && tEntity->mHealth > 0)
 				{
 					//std::cout<<"Hit"<<std::endl;
 					
