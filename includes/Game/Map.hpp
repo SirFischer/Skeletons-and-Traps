@@ -18,6 +18,7 @@ class Map
 private:
 	sf::Texture					mSkyTexture;
 	sf::Texture					mDirtTexture;
+	sf::Texture					mDirt2Texture;
 	sf::Texture					mGrassTexture;
 	sf::Texture					mSpikeTexture;
 	sf::Texture					mGoalTexture;
@@ -28,6 +29,7 @@ private:
 	sf::Sprite					mSpikeSprite;
 	sf::Sprite					mSkySprite;
 	sf::Sprite					mDirtSprite;
+	sf::Sprite					mDirt2Sprite;
 	sf::Sprite					mGrassSprite;
 
 	sf::Vector2f				mGoalPos;

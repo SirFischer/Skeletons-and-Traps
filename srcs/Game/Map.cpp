@@ -5,6 +5,9 @@ Map::Map(std::string path)
 	if (!mDirtTexture.loadFromFile("assets/Textures/dirt400x400.png"))
 	{
 	}
+	if (!mDirt2Texture.loadFromFile("assets/Textures/dirt_w_grass.png"))
+	{
+	}
 	if (!mGrassTexture.loadFromFile("assets/Textures/green400x400.png"))
 	{
 	}
@@ -23,6 +26,7 @@ Map::Map(std::string path)
 
 	//Textures/sprites
 	mDirtSprite.setTexture(mDirtTexture);
+	mDirt2Sprite.setTexture(mDirt2Texture);
 	mDeathSprite.setTexture(mDeathTexture);
 	mGrassSprite.setTexture(mGrassTexture);
 	mSkySprite.setTexture(mSkyTexture);
@@ -111,7 +115,7 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 			}
 
 			//if block is solid
-			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_'/* || mMapLines[y][x] == 'k'*/)
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == '-'/* || mMapLines[y][x] == 'k'*/)
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
@@ -177,7 +181,7 @@ void				Map::HandleParticleCollisions(ParticleEffect	*tEffect)
 				if (x >= (int)mMapLines[y].length())
 					break;
 				//if block is solid
-				if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_')
+				if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == '-')
 				{
 					int mx = x * BLOCK_SIZE;
 					int my = y * BLOCK_SIZE;
@@ -246,6 +250,11 @@ void		Map::Draw(Window *tWindow)
 			{
 				mDirtSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mDirtSprite);
+			}
+			if (i[x] == '-')
+			{
+				mDirt2Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mDirt2Sprite);
 			}
 			if (i[x] == 'k')
 			{
