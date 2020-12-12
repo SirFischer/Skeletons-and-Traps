@@ -40,10 +40,17 @@ void	Hero::Update()
 		mAction = EntityAction::ATTACK_RIGHT;
 	mSprite.setPosition(mPosition);
 	mPosition += mVelocity;
+	
 	mVelocity.x *= 0.90;
 	ApplyAnimation();
-	if (!mOnGround)
+	if (mVelocity.y > 0 && (mCollisionDirection == Entity::CollisionDirection::LEFT || mCollisionDirection == Entity::CollisionDirection::RIGHT))
+	{
+		mVelocity.y += (0.1 / 3.f);
+		mOnGround = true;
+	}
+	else
 		mVelocity.y += 0.1;
+
 	if (mHealth > 0)
 	{
 		mDeathClock.restart();
