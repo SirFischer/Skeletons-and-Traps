@@ -14,6 +14,7 @@ void		MenuState::Init()
 {
 	mWindow->SetDefaultView();
 	mf::GUI::ClearWidgets();
+	InputManager::ResetActionStates();
 	mIsActive = true;
 	mStateReturnAction = StateAction::POP;
 	mWindow->ShowCursor();

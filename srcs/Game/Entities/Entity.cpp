@@ -121,5 +121,17 @@ void				Entity::MoveRight()
 void				Entity::Jump()
 {
 	if (mOnGround)
-		mVelocity.y -= mJumpForce;
+	{
+		if (mVelocity.y > 0 && (mCollisionDirection == Entity::CollisionDirection::LEFT || mCollisionDirection == Entity::CollisionDirection::RIGHT))
+		{
+			if (mCollisionDirection == Entity::CollisionDirection::LEFT)
+				mVelocity.x += 15.f;
+			else
+				mVelocity.x -= 15.f;
+			mVelocity.y -= mJumpForce / 1.5f;
+		}
+		else
+			mVelocity.y -= mJumpForce;
+	}
+	
 }

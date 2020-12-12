@@ -14,6 +14,13 @@ protected:
 		RIGHT,
 		LEFT
 	}							mDirection;
+	enum class	CollisionDirection {
+		NONE,
+		RIGHT,
+		LEFT,
+		BOTTOM,
+		TOP
+	}							mCollisionDirection;
 
 	sf::Vector2f				mSize = sf::Vector2f(32, 48);
 	sf::Vector2f				mPosition = sf::Vector2f(0, 0);

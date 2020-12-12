@@ -63,6 +63,7 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 	sf::Vector2f	prevposition = tEntity->GetPosition();
 	sf::Vector2i	index = sf::Vector2i((position.x - BLOCK_SIZE) / BLOCK_SIZE, (position.y - BLOCK_SIZE) / BLOCK_SIZE);
 
+	tEntity->mCollisionDirection = Entity::CollisionDirection::NONE;
 	tEntity->mOnGround = false;
 	index.x = (index.x < 0) ? 0 : index.x;
 	index.y = (index.y < 0) ? 0 : index.y;
@@ -105,11 +106,12 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 					ParticleEffect effect(sf::Vector2f((x * BLOCK_SIZE) + (BLOCK_SIZE / 2.f), y * BLOCK_SIZE), 3.f, 0.8f, 300);
 					effect.SetParticleColor(sf::Color::Red);
 					tParticleEffects->push_back(effect);
+					break ;
 				}
 			}
 
 			//if block is solid
-			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == 'k')
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_'/* || mMapLines[y][x] == 'k'*/)
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
@@ -124,21 +126,25 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 					{
 						tEntity->mVelocity.y = 0;
 						tEntity->mOnGround = true;
+						tEntity->mCollisionDirection = Entity::CollisionDirection::BOTTOM;
 						tEntity->mPosition = sf::Vector2f(prevposition.x, my - size.y);
 						
 					} else if ((angle < 45 || angle > 315) && tEntity->mVelocity.x > 0)
 					{
 						tEntity->mVelocity.x = 0;
 						tEntity->mPosition = sf::Vector2f(mx - size.x, prevposition.y);
+						tEntity->mCollisionDirection = Entity::CollisionDirection::RIGHT;
 						tEntity->mIsBlocked = true;
 					} else if ((angle > 135 && angle < 225) && tEntity->mVelocity.x < 0)
 					{
 						tEntity->mVelocity.x = 0;
+						tEntity->mCollisionDirection = Entity::CollisionDirection::LEFT;
 						tEntity->mPosition = sf::Vector2f(mx + BLOCK_SIZE, prevposition.y);
 						tEntity->mIsBlocked = true;
-					} else if ((angle > 229  && angle < 305) && tEntity->mVelocity.y < 0)
+					} else if ((angle > 235  && angle < 305) && tEntity->mVelocity.y < 0)
 					{
 						tEntity->mVelocity.y = 0;
+						tEntity->mCollisionDirection = Entity::CollisionDirection::TOP;
 						tEntity->mPosition = sf::Vector2f(prevposition.x, my + BLOCK_SIZE);
 					}
 					position = tEntity->GetPosition() + tEntity->mVelocity;
@@ -181,11 +187,9 @@ void				Map::HandleParticleCollisions(ParticleEffect	*tEffect)
 						particle.mIsHit = true;
 					}
 				}
-				
 			}
 		}
 	}
-	
 }
 
 
