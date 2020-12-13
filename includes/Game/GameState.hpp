@@ -8,6 +8,7 @@
 #include "Map.hpp"
 #include "AI.hpp"
 #include "ParticleEffect.hpp"
+#include "MusicPlayer.hpp"
 
 
 class GameState : public State
@@ -19,6 +20,8 @@ private:
 	Map										mMap;
 	Player									mPlayer;
 	std::list<Entity *>						mEntities;
+
+	MusicPlayer								mMusic;
 
 	mf::Text								*mHPText;
 	

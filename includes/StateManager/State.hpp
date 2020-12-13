@@ -2,6 +2,7 @@
 
 #include "Window.hpp"
 #include "StateAction.hpp"
+#include <MusicPlayer/MusicPlayer.hpp>
 
 class State
 {
@@ -12,7 +13,6 @@ protected:
 
 	bool			mIsActive = true;
 	Window			*mWindow = NULL;
-
 
 public:
 

@@ -4,6 +4,8 @@ MenuState::MenuState(Window *tWindow)
 :mMap("assets/Map/menu.txt")
 {
 	mWindow = tWindow;
+
+	
 }
 
 MenuState::~MenuState()
@@ -22,6 +24,12 @@ void		MenuState::Init()
 	mPlayer.GetEntity()->Reset();
 	mMap.SpawnEntities(&mEntities);
 	mMap.SpawnPlayer(&mPlayer);
+
+	if (mIsActive == true)
+	{
+		mMusic.Play(Music::MenuTheme);
+	}
+	
 
 	
 	/**
@@ -107,6 +115,12 @@ void		MenuState::Update()
 		}
 			
 	}
+
+	if (mIsActive == false)
+	{
+		mMusic.Stop();
+	}
+	
 	
 	for (auto &entity : mEntities)
 	{

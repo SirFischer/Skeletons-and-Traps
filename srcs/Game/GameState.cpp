@@ -7,6 +7,7 @@ GameState::GameState(Window *tWindow)
 	mWindow->HideCursor();
 	mMap.SpawnEntities(&mEntities);
 	mMap.SpawnPlayer(&mPlayer);
+	mMusic.Play(Music::GameTheme);
 }
 
 GameState::~GameState()
@@ -90,6 +91,7 @@ void		GameState::Update()
 		mIsActive = false;
 		mStateReturnAction = StateAction::POP;
 	}
+	
 	if (mPlayer.GetEntity()->GetHealth() > 0)
 	{
 		mTimer.restart();

@@ -6,6 +6,7 @@
 #include <Player.hpp>
 #include <Entities.hpp>
 #include <AI.hpp>
+#include <MusicPlayer/MusicPlayer.hpp>
 
 class MenuState : public State
 {
@@ -15,6 +16,8 @@ private:
 	mf::Button		*mQuitBtn;
 	Map				 mMap;
 	Player			 mPlayer;
+
+	MusicPlayer		 mMusic;
 
 	std::list<Entity *>						mEntities;
 	

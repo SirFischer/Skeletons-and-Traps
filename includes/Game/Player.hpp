@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Window.hpp"
 #include "Entities.hpp"
 #include "InputManager.hpp"
