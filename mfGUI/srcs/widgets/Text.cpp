@@ -48,7 +48,7 @@ void		Text::Render(sf::RenderWindow *tWindow)
 Text      *Text::Create(std::string tFontPath, std::string tString)
 {
     Text *txt = new Text();
-    txt->mBackground.SetBackground(sf::Color::White);
+    txt->mBackground.SetBackground(sf::Color::Transparent);
     txt->SetSize(sf::Vector2f(200, 100));
 	txt->SetTextFont(tFontPath);
 	txt->SetText(tString);
@@ -92,6 +92,12 @@ Text		*Text::SetTextFont(sf::Font tFont)
 	return (this);
 }
 
+Text		*Text::SetTextFontSize(unsigned int tSize)
+{
+	mText.SetSize(tSize);
+	return (this);
+}
+
 Text		*Text::SetTextPosition(sf::Vector2f tPos)
 {
 	mText.SetPos(tPos);
@@ -113,6 +119,13 @@ Text		*Text::SetOutlineThickness(float tThickness)
 Text		*Text::SetOutlineColor(sf::Color tColor)
 {
 	mBackground.SetOutlineColor(tColor);
+	return (this);
+}
+
+
+Text		*Text::SetBackgroundColor(sf::Color tColor)
+{
+	mBackground.SetBackground(tColor);
 	return (this);
 }
 

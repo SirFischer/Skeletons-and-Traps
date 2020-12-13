@@ -26,10 +26,12 @@ void		GameState::Init()
 	 * INIT STATE AND GUI
 	 **/
 
-	mHPText = mf::Text::Create("assets/fonts/Roboto-Regular.ttf", "HP: 100");
+	mHPText = mf::Text::Create("assets/fonts/PressStart2P-Regular.ttf", "HP: 100");
 	mHPText->SetPositionPercentage(true)
 	->SetPosition(90, 95)
-	->SetTextColor(sf::Color::Black);
+	->SetTextColor(sf::Color::Black)
+	->SetBackgroundColor(sf::Color::Transparent)
+	->SetTextFontSize(20);
 	mf::GUI::AddWidget(mHPText);
 }
 

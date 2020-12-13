@@ -40,11 +40,14 @@ namespace mf
 		Text			*DeleteText(size_t tNum) {mText.DeleteString(tNum); return (this);}
 		Text			*SetTextFont(std::string tPath);
 		Text			*SetTextFont(sf::Font tFont);
+		Text			*SetTextFontSize(unsigned int tSize);
 		Text			*SetTextPosition(sf::Vector2f tPos);
 		Text			*SetTextColor(sf::Color tColor);
 
 		Text			*SetOutlineThickness(float tThickness);
 		Text			*SetOutlineColor(sf::Color tColor);
+
+		Text			*SetBackgroundColor(sf::Color tColor);
 
 		/**
 		 * Overides
