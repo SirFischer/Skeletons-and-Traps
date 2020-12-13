@@ -18,9 +18,14 @@ private:
 	Player									mPlayer;
 	std::list<Entity *>						mEntities;
 
+	sf::Vector2f							mCameraVelocity = sf::Vector2f(0, 0);
+	sf::Vector2f							mCameraPosition = sf::Vector2f(0, 0);
+
 	mf::Text								*mHPText;
 	
 	std::list<ParticleEffect>				mParticleEffects;
+
+	void		UpdateCameraPosition();
 	
 public:
 	GameState(Window *tWindow);

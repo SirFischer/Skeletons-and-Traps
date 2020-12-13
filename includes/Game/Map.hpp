@@ -46,6 +46,8 @@ public:
 
 	bool					GetGoalStatus(Entity *tEntity);
 
+	sf::Vector2f			GetGoalPosition(){return (mGoalPos);}
+
 	void					HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParticleEffects);
 
 	void					HandleParticleCollisions(ParticleEffect	*tEffect);

@@ -56,6 +56,18 @@ Map::Map(std::string path)
 		mMapLines.push_back(tmp);
 	}
 	
+	int y = 0;
+	for (auto &&i : mMapLines)
+	{
+		for (size_t x = 0; x < i.length(); x++)
+		{
+			if (i[x] == 'g')
+			{
+				mGoalPos = sf::Vector2f(x * BLOCK_SIZE, y * BLOCK_SIZE);
+			}
+		}
+		y++;
+	}
 	
 }
 
@@ -273,7 +285,6 @@ void		Map::Draw(Window *tWindow)
 			if (i[x] == 'g')
 			{
 				mGoalSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
-				mGoalPos = sf::Vector2f(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mGoalSprite);
 			}
 			if (i[x] == 'z')

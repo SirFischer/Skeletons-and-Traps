@@ -22,6 +22,10 @@ void		GameState::Init()
 
 	InputManager::ResetActionStates();
 
+	mCameraPosition = mMap.GetGoalPosition();
+
+	std::cout << mCameraPosition.x << " " << mCameraPosition.y << std::endl;
+
 	/**
 	 * INIT STATE AND GUI
 	 **/
@@ -52,7 +56,7 @@ void		GameState::HandleEvents()
 void		GameState::Update()
 {
 	mMap.HandleCollisions(mPlayer.GetEntity(), &mParticleEffects);
-	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
+	UpdateCameraPosition();
 	mHPText->SetText("HP: " + std::to_string((int)mPlayer.GetEntity()->GetHealth()));
 	mPlayer.Update(mEntities, &mParticleEffects);
 	for (auto &particleEffect : mParticleEffects)
@@ -106,4 +110,23 @@ void		GameState::Render()
 	mWindow->SetDefaultView();
 	mf::GUI::Render();
 	mWindow->Render();
+}
+
+
+void		GameState::UpdateCameraPosition()
+{
+	float cameraSpeed = 1.0f;
+	
+	if (mPlayer.GetEntity()->GetPosition().x > mCameraPosition.x + 100.f)
+		mCameraPosition.x = mPlayer.GetEntity()->GetPosition().x - 100.f;
+	if (mPlayer.GetEntity()->GetPosition().x < mCameraPosition.x - 100.f)
+		mCameraPosition.x = mPlayer.GetEntity()->GetPosition().x + 100.f;
+	if (mPlayer.GetEntity()->GetPosition().y > mCameraPosition.y + 100.f)
+		mCameraVelocity.y += cameraSpeed;
+	if (mPlayer.GetEntity()->GetPosition().y < mCameraPosition.y - 100.f)
+		mCameraVelocity.y -= cameraSpeed;
+	mCameraPosition += mCameraVelocity;
+	mCameraVelocity.y *= 0.90;
+	mCameraVelocity.x *= 0.90;
+	mWindow->mView.setCenter(mCameraPosition);
 }
