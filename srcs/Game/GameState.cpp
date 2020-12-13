@@ -29,7 +29,7 @@ void		GameState::Init()
 	mHPText = mf::Text::Create("assets/fonts/PressStart2P-Regular.ttf", "HP: 100");
 	mHPText->SetPositionPercentage(true)
 	->SetPosition(90, 95)
-	->SetTextColor(sf::Color::Black)
+	->SetTextColor(sf::Color::White)
 	->SetBackgroundColor(sf::Color::Transparent)
 	->SetTextFontSize(20);
 	mf::GUI::AddWidget(mHPText);
