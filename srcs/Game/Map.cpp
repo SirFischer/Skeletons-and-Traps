@@ -252,11 +252,23 @@ void		Map::SpawnPlayer(Player *tPlayer)
 //drawing sprites on map->screen
 void		Map::Draw(Window *tWindow)
 {
-	int y = 0;
-	for (auto &&i : mMapLines)
+	sf::Vector2f	pos = tWindow->mView.getCenter();
+	int				drawSize = 13;
+	pos.x /= BLOCK_SIZE;
+	pos.y /= BLOCK_SIZE;
+	if (pos.y - drawSize < 0)
+		pos.y = drawSize;
+	if (pos.x - drawSize < 0)
+		pos.x = drawSize;
+	for (size_t y = pos.y - drawSize; y < pos.y + drawSize; y++)
 	{
-		for (size_t x = 0; x < i.length(); x++)
+		if (y >= mMapLines.size())
+			break;
+		std::string &i = mMapLines[y];
+		for (size_t x = pos.x - drawSize; x < pos.x + drawSize; x++)
 		{
+			if (x >= i.length())
+				break;
 			if (i[x] == '.')
 			{
 				mGrassSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
@@ -293,6 +305,5 @@ void		Map::Draw(Window *tWindow)
 				//tWindow->Draw(mDeathSprite);
 			}
 		}
-		y++;
 	}
 }
