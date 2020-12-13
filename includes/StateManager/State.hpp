@@ -2,7 +2,6 @@
 
 #include "Window.hpp"
 #include "StateAction.hpp"
-#include <MusicPlayer/MusicPlayer.hpp>
 
 class State
 {

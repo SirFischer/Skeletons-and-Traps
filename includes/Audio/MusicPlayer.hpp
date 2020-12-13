@@ -4,8 +4,6 @@
 #include "SFML/Audio.hpp"
 #include <map>
 
-
-
 class MusicPlayer : sf::NonCopyable
 {
 private:

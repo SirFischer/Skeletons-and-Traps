@@ -2,6 +2,7 @@
 
 FontList	ResourceManager::mFontResources = FontList();
 TextureList	ResourceManager::mTextureResources = TextureList();
+SoundBufferList ResourceManager::mSoundBufferResources = SoundBufferList();
 
 ResourceManager::ResourceManager(/* args */)
 {
@@ -57,4 +58,25 @@ sf::Texture		*ResourceManager::LoadTexture(std::string tPath)
 	texture->loadFromFile(tPath);
 	mTextureResources[tPath] = std::shared_ptr<sf::Texture>(texture);
 	return (texture);
+}
+
+sf::SoundBuffer		*ResourceManager::LoadSoundBuffer(std::string tPath)
+{
+	sf::SoundBuffer	*soundbuffer = NULL;
+
+	if (mSoundBufferResources.count(tPath))
+		return (sf::SoundBuffer *)(mSoundBufferResources[tPath].get());
+	try
+	{
+		soundbuffer = new sf::SoundBuffer();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Failed to load SoundBuffer: " << tPath << std::endl;
+		std::cerr << e.what() << '\n';
+		return (NULL);
+	}
+	soundbuffer->loadFromFile(tPath);
+	mSoundBufferResources[tPath] = std::shared_ptr<sf::SoundBuffer>(soundbuffer);
+	return (soundbuffer);
 }
