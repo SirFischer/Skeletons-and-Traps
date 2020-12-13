@@ -46,7 +46,7 @@ void		MenuState::Init()
 	mOptionBtn->SetSize(150, 50);
 	mOptionBtn->SetPositionPercentage(true)->SetPosition(45, 45);
 	mOptionBtn->SetClickEvent([actionReturn, active] {
-		*actionReturn = StateAction::GameOverState;
+		*actionReturn = StateAction::OPTIONS;
 		*active = false;
 	});
 
