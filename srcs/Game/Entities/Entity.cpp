@@ -158,3 +158,54 @@ void				Entity::Jump()
 	}
 	
 }
+
+void				Entity::HandleCollisions(std::list<Entity *> tEntities)
+{
+	sf::Vector2f	position = GetPosition() + mVelocity;
+	sf::Vector2f	prevposition = GetPosition();
+	for (auto &entity : tEntities)
+	{
+		if (entity == this)
+			continue ;
+		if (std::abs(position.x - entity->mPosition.x) < entity->mSize.x * 3.f && std::abs(position.y - entity->mPosition.y) < entity->mSize.y * 3.f)
+		{
+			
+			int mx = entity->mPosition.x;
+			int my = entity->mPosition.y;
+			//AABB collision?
+			if ((position.x < (mx + entity->mSize.x) && (position.x + mSize.x) > mx) && (position.y < (my + entity->mSize.y) && (position.y + mSize.y) > my))
+			{
+				float middleX =  (position.x + (mSize.x / 2.0)) - (mx + (entity->mSize.x / 2.0));
+				float middleY = (position.y + (mSize.y / 2.0)) - (my + (entity->mSize.y / 2.0));
+				float angle = std::atan2(middleY, middleX) + M_PI;
+				angle = ((angle / 3.1416) * 180.0);
+				if ((angle > 45 && angle < 135) && mVelocity.y > 0)
+				{
+					mVelocity.y = 0;
+					mOnGround = true;
+					mCollisionDirection = Entity::CollisionDirection::BOTTOM;
+					mPosition = sf::Vector2f(prevposition.x, my - mSize.y);
+					
+				} else 
+				if ((angle < 45 || angle > 315) && mVelocity.x > 0)
+				{
+					mVelocity.x = 0;
+					mPosition = sf::Vector2f(mx - mSize.x, prevposition.y);
+					mCollisionDirection = Entity::CollisionDirection::RIGHT;
+				} else if ((angle > 135 && angle < 225) && mVelocity.x < 0)
+				{
+					mVelocity.x = 0;
+					mCollisionDirection = Entity::CollisionDirection::LEFT;
+					mPosition = sf::Vector2f(mx + entity->mSize.x, prevposition.y);
+				} else if ((angle > 235  && angle < 305) && mVelocity.y < 0)
+				{
+					mVelocity.y = 0;
+					mCollisionDirection = Entity::CollisionDirection::TOP;
+					mPosition = sf::Vector2f(prevposition.x, my + entity->mSize.y);
+				}
+				position = GetPosition() + mVelocity;
+				prevposition = GetPosition();
+			}
+		}
+	}
+}

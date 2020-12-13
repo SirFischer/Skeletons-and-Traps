@@ -70,9 +70,11 @@ void		GameState::Update()
 		}
 			
 	}
+
 	for (auto &entity : mEntities)
 	{
 		mMap.HandleCollisions(entity, &mParticleEffects);
+		entity->HandleCollisions(mEntities);
 		if (entity->GetHealth() > 0)
 			AI::ProcessEntity(&mPlayer, entity, &mParticleEffects);
 		entity->Update();

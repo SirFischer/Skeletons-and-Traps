@@ -62,6 +62,8 @@ public:
 
 	void						Reset();
 
+	void						HandleCollisions(std::list<Entity *> tEntities);
+
 	void						MoveLeft();
 	void						MoveRight();
 	void						RunLeft();
