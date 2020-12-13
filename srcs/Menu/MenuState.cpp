@@ -23,14 +23,13 @@ void		MenuState::Init()
 	mMap.SpawnEntities(&mEntities);
 	mMap.SpawnPlayer(&mPlayer);
 
-
+	
 	/**
 	 * INIT STATE AND GUI
 	 **/
 
 	StateAction	*actionReturn = &mStateReturnAction;
 	bool		*active = &mIsActive;
-	
 
 	/**
 	 * Button coloring/text/state return
@@ -108,6 +107,7 @@ void		MenuState::Update()
 		}
 			
 	}
+	
 	for (auto &entity : mEntities)
 	{
 		mMap.HandleCollisions(entity, &mParticleEffects);

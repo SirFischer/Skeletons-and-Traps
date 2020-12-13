@@ -40,6 +40,12 @@ void		StateManager::Run()
 			mStates.push(new OptionsState(mWindow));
 			break;
 
+		case StateAction::GameOverState:
+			delete mStates.top();
+			mStates.pop();
+			mStates.push(new GameOverState(mWindow));
+			break;
+
 		default:
 			delete mStates.top();
 			mStates.pop();

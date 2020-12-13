@@ -7,5 +7,6 @@ enum class StateAction
 	OPTIONS,
 	SETUP,
 	GAME,
+	GameOverState,
 	INGAME_MENU
 };
