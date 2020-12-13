@@ -14,6 +14,8 @@ class GameState : public State
 {
 private:
 
+	sf::Clock								mTimer;
+
 	Map										mMap;
 	Player									mPlayer;
 	std::list<Entity *>						mEntities;

@@ -94,6 +94,20 @@ void		GameState::Update()
 		mIsActive = false;
 		mStateReturnAction = StateAction::POP;
 	}
+	if (mPlayer.GetEntity()->GetHealth() > 0)
+	{
+		mTimer.restart();
+	}
+	
+	if(mPlayer.GetEntity()->IsAlive() == false || mPlayer.GetEntity()->GetHealth() <= 0)
+	{
+		if (mTimer.getElapsedTime().asSeconds() > 4.0)
+		{
+			mIsActive = false;
+			mStateReturnAction = StateAction::GameOverState;
+		}
+			
+	}
 }
 
 void		GameState::Render()

@@ -9,4 +9,5 @@
 #include "GameState.hpp"
 #include "MenuState.hpp"
 #include "OptionsState.hpp"
+#include "GameOverState.hpp"
 
