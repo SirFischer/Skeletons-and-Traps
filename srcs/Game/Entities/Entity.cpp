@@ -41,13 +41,13 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 				sf::Vector2f	particlePos = entity->GetPosition() + (mSize / 2.f);
 				if (entity->GetPosition().x + (entity->mSize.x / 2.f) < mPosition.x + (mSize.x / 2.f))
 				{
-					entity->mVelocity += sf::Vector2f(-5, -1);
-					particlePos.x -= 20;
+					entity->mVelocity = sf::Vector2f(-6, -2);
+					particlePos.x -= 10;
 				}
 				else
 				{
-					entity->mVelocity += sf::Vector2f(5, -1);
-					particlePos.x += 20;
+					entity->mVelocity = sf::Vector2f(6, -2);
+					particlePos.x += 10;
 				}
 				float angle = std::atan2(mPosition.y - entity->GetPosition().y, mPosition.x - entity->GetPosition().x) + M_PI;
 				ParticleEffect effect(particlePos, 3.f, 0.8f, 300, angle, M_PI / 3.5f);
@@ -107,14 +107,36 @@ void				Entity::Reset()
 
 void				Entity::MoveLeft()
 {
-	mVelocity.x -= mSpeed;
+
+	if (mOnGround)
+		mVelocity.x -= mSpeed;
+	else
+		mVelocity.x -= mSpeed / 4.f;
 	mAction = EntityAction::WALK_LEFT;
 	mDirection = Direction::LEFT;
 }
 
 void				Entity::MoveRight()
 {
-	mVelocity.x += mSpeed;
+	if (mOnGround)
+		mVelocity.x += mSpeed;
+	else
+		mVelocity.x += mSpeed / 4.f;
+	mAction = EntityAction::WALK_RIGHT;
+	mDirection = Direction::RIGHT;
+}
+
+void				Entity::RunLeft()
+{
+	mVelocity.x -= mRunSpeed;
+	mAction = EntityAction::WALK_LEFT;
+	mDirection = Direction::LEFT;
+}
+
+void				Entity::RunRight()
+{
+	mVelocity.x += mRunSpeed;
+	
 	mAction = EntityAction::WALK_RIGHT;
 	mDirection = Direction::RIGHT;
 }
@@ -126,9 +148,9 @@ void				Entity::Jump()
 		if (mVelocity.y > 0 && (mCollisionDirection == Entity::CollisionDirection::LEFT || mCollisionDirection == Entity::CollisionDirection::RIGHT))
 		{
 			if (mCollisionDirection == Entity::CollisionDirection::LEFT)
-				mVelocity.x += 15.f;
+				mVelocity.x += 5.f;
 			else
-				mVelocity.x -= 15.f;
+				mVelocity.x -= 5.f;
 			mVelocity.y -= mJumpForce / 1.5f;
 		}
 		else

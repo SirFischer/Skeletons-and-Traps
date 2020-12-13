@@ -26,6 +26,7 @@ Hero::Hero(/* args */)
 	mAnimations[EntityAction::DIE].SetLength(0.1);
 	mAnimations[EntityAction::DIE].SetLoop(false);
 	mSprite.setOrigin(16, 8);
+	mAttackDamage = 40.f;
 }
 
 Hero::~Hero()
@@ -40,8 +41,10 @@ void	Hero::Update()
 		mAction = EntityAction::ATTACK_RIGHT;
 	mSprite.setPosition(mPosition);
 	mPosition += mVelocity;
-	
-	mVelocity.x *= 0.90;
+	if (mOnGround)
+		mVelocity.x *= 0.90;
+	else
+		mVelocity.x *= 0.98;
 	ApplyAnimation();
 	if (mVelocity.y > 0 && (mCollisionDirection == Entity::CollisionDirection::LEFT || mCollisionDirection == Entity::CollisionDirection::RIGHT))
 	{
@@ -49,7 +52,7 @@ void	Hero::Update()
 		mOnGround = true;
 	}
 	else
-		mVelocity.y += 0.1;
+		mVelocity.y += 0.15;
 
 	if (mHealth > 0)
 	{

@@ -28,7 +28,8 @@ protected:
 	float						mHealth = 100.f;
 	float						mAttackDamage = 30.f;
 	float						mSpeed = 0.35f;
-	float						mJumpForce = 6.f;
+	float						mRunSpeed = 0.30f;
+	float						mJumpForce = 6.5f;
 	float						mViewDistance = 300.f;
 	bool						mOnGround = false;
 	bool						mIsAlive = true;
@@ -63,6 +64,8 @@ public:
 
 	void						MoveLeft();
 	void						MoveRight();
+	void						RunLeft();
+	void						RunRight();
 	void						Jump();
 
 	sf::Sprite					GetSprite(){return (mSprite);}
