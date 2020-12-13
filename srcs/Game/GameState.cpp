@@ -101,7 +101,7 @@ void		GameState::Update()
 	
 	if(mPlayer.GetEntity()->IsAlive() == false || mPlayer.GetEntity()->GetHealth() <= 0)
 	{
-		if (mTimer.getElapsedTime().asSeconds() > 4.0)
+		if (mTimer.getElapsedTime().asSeconds() > 6.0)
 		{
 			mIsActive = false;
 			mStateReturnAction = StateAction::GameOverState;
