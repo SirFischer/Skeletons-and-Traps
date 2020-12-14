@@ -94,7 +94,7 @@ void		MenuState::HandleEvents()
 void		MenuState::Update()
 {
 	mMap.HandleCollisions(mPlayer.GetEntity(), &mParticleEffects);
-	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
+	mWindow->mView.setCenter(sf::Vector2f(500, 500));
 	mPlayer.Update(mEntities, &mParticleEffects);
 	for (auto &particleEffect : mParticleEffects)
 	{
@@ -115,7 +115,7 @@ void		MenuState::Update()
 		AI::ProcessEntity(&mPlayer, entity, &mParticleEffects);
 		entity->Update();
 	}
-	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
+	//mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
 }
 
 void		MenuState::Render()
