@@ -2,24 +2,22 @@
 
 #include <Sound.hpp>
 #include <SFML/Audio.hpp>
-#include <list>
-#include "Animation.hpp"
+#include <map>
 
 class SoundPlayer : sf::NonCopyable
 {
 private:
-    SoundBufferHolder        mSoundBuffers;
-    std::list<sf::Sound>     mSounds;
+    sf::Sound                                  mSound;
+    sf::SoundBuffer                            mBuffer;
+    std::map<SoundEffect::ID, std::string>     mSoundNames;
+    float                                      mVolume;
 public:
     SoundPlayer(/* args */);
     ~SoundPlayer();
 
     void            Play(SoundEffect::ID effect);
-    void            Play(SoundEffect::ID effect,
-                         sf::Vector2f position);
 
     void             RemoveStoppedSounds();
     void             SetListenerPosition(sf::Vector2f position);
-    sf::Vector2f     GetListenerPosition() const; 
 
 };

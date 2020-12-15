@@ -5,8 +5,8 @@ MusicPlayer::MusicPlayer()
 , mFilenames()
 , mVolume(100.f)
 {
-    mFilenames[Music::MenuTheme]    = "assets/Audio/Sounnd effects/Music themes/extra_G#_122bpm_dripchord.wav";
-    mFilenames[Music::GameTheme]    = "assets/Audio/Sounnd effects/Music themes/musicbyaden-rise.wav";
+    mFilenames[Music::MenuTheme]    = "assets/Music/extra_G#_122bpm_dripchord.wav";
+    mFilenames[Music::GameTheme]    = "assets/Music/musicbyaden-rise.wav";
 }
 
 MusicPlayer::~MusicPlayer()

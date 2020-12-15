@@ -4,6 +4,7 @@
 #include "EntityAction.hpp"
 #include "AIMode.hpp"
 #include "ParticleEffect.hpp"
+#include "SoundPlayer.hpp"
 
 #include <map>
 
@@ -37,6 +38,8 @@ protected:
 
 	AIMode						mAIMode = AIMode::PATROL;
 	EntityAction				mAIAction = EntityAction::WALK_RIGHT;
+
+	SoundPlayer					mSound;
 
 	sf::Clock					mDeathClock;
 	sf::Clock					mAttackClock;

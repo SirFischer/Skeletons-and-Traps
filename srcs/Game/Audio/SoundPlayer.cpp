@@ -1,9 +1,25 @@
 #include "SoundPlayer.hpp"
 
 SoundPlayer::SoundPlayer(/* args */)
+: mSound()
+,mSoundNames()
+,mVolume(100.f)
 {
-    mSoundBuffers.load(SoundEffect::PlayerAttack,"assets/Sound effects/sword swing_01.wav");
-    mSoundBuffers.load(SoundEffect::EnemyAttack,"assets/Sound effects/sword swing_04.wav");
+    mSoundNames[SoundEffect::PlayerAttack]              = "assets/Sound effects/sword swing_01.wav";
+    mSoundNames[SoundEffect::PlayerWalk]                = "assets/Sound effects/Footstep_01.wav";
+    mSoundNames[SoundEffect::PlayerDeath]               = "assets/Sound effects/wind.wav";
+    mSoundNames[SoundEffect::PlayerHit]                 = "assets/Sound effects/waterdrop_01.wav";
+    mSoundNames[SoundEffect::PlayerHitGround]           = "assets/Sound effects/Crouch_03.wav";
+    mSoundNames[SoundEffect::PlayerJump]                = "assets/Sound effects/Crouch_01.wav";
+
+    mSoundNames[SoundEffect::EnemyAttack]               = "assets/Sound effects/sword swing_04.wav";
+    mSoundNames[SoundEffect::EnemyHit]                  = "assets/Sound effects/Door_Openning.wav";
+
+    mSoundNames[SoundEffect::TrapCollision]             = "assets/Sound effects/Rocks Moving.wav";
+    mSoundNames[SoundEffect::GoalReached]               = "assets/Sound effects/itempickup.wav";
+    mSoundNames[SoundEffect::MenuButtonPressed]         = "assets/Sound effects/Lever.wav";
+
+    mSound.setBuffer(mBuffer);
 }
 
 SoundPlayer::~SoundPlayer()
@@ -12,14 +28,18 @@ SoundPlayer::~SoundPlayer()
 
 void    SoundPlayer::Play(SoundEffect::ID effect)
 {
-   mSounds.push_back(sf::Sound(mSoundBuffers.get(effect)));
-   mSounds.back().play();
+    std::string SoundName = mSoundNames[effect];
+
+    if (!mBuffer.loadFromFile(SoundName))
+        throw std::runtime_error("Music " + SoundName + "could no be loaded.");
+
+    mSound.setVolume(mVolume);
+    mSound.setLoop(false);
+    mSound.play();
 }
 
 void    SoundPlayer::RemoveStoppedSounds()
 {
-    mSounds.remove_if([] (const sf::Sound& s)
-    {
-        return s.getStatus() == sf::Sound::Stopped;
-    });
+    mSound.stop();
+    mSound.resetBuffer();
 }

@@ -7,6 +7,7 @@
 #include <Entities.hpp>
 #include <AI.hpp>
 #include <Audio/MusicPlayer.hpp>
+#include <Audio/SoundPlayer.hpp>
 
 class MenuState : public State
 {
@@ -18,10 +19,13 @@ private:
 	Player			 mPlayer;
 
 	MusicPlayer		mMusic;
+	SoundPlayer		mSound;
 
 	std::list<Entity *>						mEntities;
 	
 	std::list<ParticleEffect>				mParticleEffects;
+
+	bool									mButtonPressed = false;
 	
 public:
 	MenuState(Window *tWindow);

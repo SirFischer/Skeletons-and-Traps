@@ -4,8 +4,6 @@ MenuState::MenuState(Window *tWindow)
 :mMap("assets/Map/menu.txt")
 {
 	mWindow = tWindow;
-
-	
 }
 
 MenuState::~MenuState()
@@ -25,13 +23,6 @@ void		MenuState::Init()
 	mMap.SpawnEntities(&mEntities);
 	mMap.SpawnPlayer(&mPlayer);
 
-	if (mIsActive == true)
-	{
-		mMusic.Play(Music::MenuTheme);
-	}
-	
-
-	
 	/**
 	 * INIT STATE AND GUI
 	 **/
@@ -81,9 +72,16 @@ void		MenuState::Init()
 	mQuitBtn->SetTextPosition(sf::Vector2f(45, 5));
 	mQuitBtn->SetText("Quit!");
 
+
 	mf::GUI::AddWidget(mPlayBtn);
 	mf::GUI::AddWidget(mOptionBtn);
 	mf::GUI::AddWidget(mQuitBtn);
+
+
+	if (mIsActive == true)
+	{
+		mMusic.Play(Music::MenuTheme);
+	}
 }
 
 void		MenuState::HandleEvents()
@@ -116,12 +114,6 @@ void		MenuState::Update()
 			
 	}
 
-	if (mIsActive == false)
-	{
-		mMusic.Stop();
-	}
-	
-	
 	for (auto &entity : mEntities)
 	{
 		mMap.HandleCollisions(entity, &mParticleEffects);
@@ -130,6 +122,15 @@ void		MenuState::Update()
 		entity->Update();
 	}
 	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
+
+
+	if (mIsActive == false)
+	{
+		mMusic.Stop();
+	}
+
+
+	
 }
 
 void		MenuState::Render()

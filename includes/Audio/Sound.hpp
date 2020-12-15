@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ResourceHolder.hpp"
+#include "SFML/Audio.hpp"
 
 namespace SoundEffect
 {
@@ -24,7 +24,5 @@ namespace SoundEffect
 
         MenuButtonPressed,
     };
+    
 }
-
-typedef ResourceHolder<sf::SoundBuffer, SoundEffect::ID>
-SoundBufferHolder;
