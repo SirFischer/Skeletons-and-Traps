@@ -10,6 +10,7 @@
 #include "Entities.hpp"
 #include "Player.hpp"
 #include "ParticleEffect.hpp"
+#include "SoundPlayer.hpp"
 
 #define		BLOCK_SIZE 64.f
 
@@ -33,6 +34,8 @@ private:
 	sf::Sprite					mDirt2Sprite;
 	sf::Sprite					mDirt3Sprite;
 	sf::Sprite					mGrassSprite;
+
+	sf::Sound					mSound;
 
 	sf::Vector2f				mGoalPos;
 

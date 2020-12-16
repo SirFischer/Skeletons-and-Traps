@@ -34,6 +34,7 @@ void		GameState::Init()
 	->SetBackgroundColor(sf::Color::Transparent)
 	->SetTextFontSize(20);
 	mf::GUI::AddWidget(mHPText);
+
 }
 
 void		GameState::HandleEvents()

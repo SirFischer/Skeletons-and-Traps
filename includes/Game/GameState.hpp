@@ -9,6 +9,7 @@
 #include "AI.hpp"
 #include "ParticleEffect.hpp"
 #include "MusicPlayer.hpp"
+#include "SoundPlayer.hpp"
 
 
 class GameState : public State
@@ -22,10 +23,13 @@ private:
 	std::list<Entity *>						mEntities;
 
 	MusicPlayer								mMusic;
+	SoundPlayer								mSound;
 
 	mf::Text								*mHPText;
 	
 	std::list<ParticleEffect>				mParticleEffects;
+
+	int										mDead;
 	
 public:
 	GameState(Window *tWindow);

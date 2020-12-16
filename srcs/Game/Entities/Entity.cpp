@@ -18,6 +18,7 @@ void				Entity::ApplyAnimation()
 
 void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> *tParticleEffects)
 {
+	mSound.Play(SoundEffect::EnemyAttack);
 	if (mAttackClock.getElapsedTime().asSeconds() < mAttackCooldown)
 		return ;
 	mAttackClock.restart();
@@ -61,6 +62,7 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 
 void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffects)
 {
+	mSound.Play(SoundEffect::PlayerAttack);
 	(void)tParticleEffects;
 	if (mAttackClock.getElapsedTime().asSeconds() < mAttackCooldown)
 		return ;
@@ -123,6 +125,7 @@ void				Entity::Jump()
 {
 	if (mOnGround)
 	{
+		mSound.Play(SoundEffect::PlayerJump);
 		if (mVelocity.y > 0 && (mCollisionDirection == Entity::CollisionDirection::LEFT || mCollisionDirection == Entity::CollisionDirection::RIGHT))
 		{
 			if (mCollisionDirection == Entity::CollisionDirection::LEFT)

@@ -35,6 +35,7 @@ protected:
 	bool						mIsAlive = true;
 	bool						mIsBlocked = false;
 	float						mAttackCooldown = 0.55f;
+	int							mDead = 0;
 
 	AIMode						mAIMode = AIMode::PATROL;
 	EntityAction				mAIAction = EntityAction::WALK_RIGHT;

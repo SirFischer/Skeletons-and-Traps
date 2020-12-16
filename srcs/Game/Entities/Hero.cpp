@@ -62,6 +62,11 @@ void	Hero::Update()
 		if (mDeathClock.getElapsedTime().asSeconds() > 6.0)
 			mIsAlive = false;
 	}
+	if (mDeathClock.getElapsedTime().asSeconds() < 0.1 && mHealth <= 0)
+	{
+		mSound.Play(SoundEffect::PlayerDeath);
+	}
+	
 }
 
 

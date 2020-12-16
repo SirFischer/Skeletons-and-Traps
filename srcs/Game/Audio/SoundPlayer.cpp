@@ -7,7 +7,7 @@ SoundPlayer::SoundPlayer(/* args */)
 {
     mSoundNames[SoundEffect::PlayerAttack]              = "assets/Sound effects/sword swing_01.wav";
     mSoundNames[SoundEffect::PlayerWalk]                = "assets/Sound effects/Footstep_01.wav";
-    mSoundNames[SoundEffect::PlayerDeath]               = "assets/Sound effects/wind.wav";
+    mSoundNames[SoundEffect::PlayerDeath]               = "assets/Sound effects/sword swing_01.wav";
     mSoundNames[SoundEffect::PlayerHit]                 = "assets/Sound effects/waterdrop_01.wav";
     mSoundNames[SoundEffect::PlayerHitGround]           = "assets/Sound effects/Crouch_03.wav";
     mSoundNames[SoundEffect::PlayerJump]                = "assets/Sound effects/Crouch_01.wav";
@@ -30,16 +30,16 @@ void    SoundPlayer::Play(SoundEffect::ID effect)
 {
     std::string SoundName = mSoundNames[effect];
 
-    if (!mBuffer.loadFromFile(SoundName))
+         if (!mBuffer.loadFromFile(SoundName))
         throw std::runtime_error("Music " + SoundName + "could no be loaded.");
 
+    mSound.setBuffer(*ResourceManager::LoadSoundBuffer(SoundName));
     mSound.setVolume(mVolume);
     mSound.setLoop(false);
     mSound.play();
 }
 
-void    SoundPlayer::RemoveStoppedSounds()
+void    SoundPlayer::StopSound()
 {
     mSound.stop();
-    mSound.resetBuffer();
 }
