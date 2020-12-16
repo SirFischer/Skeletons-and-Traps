@@ -81,12 +81,12 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 			if (tEntity->GetPosition().x + (tEntity->mSize.x / 2.f) < mPosition.x + (mSize.x / 2.f))
 			{
 				tEntity->mVelocity += sf::Vector2f(-5, -1);
-				particlePos.x -= 20;
+				particlePos.x -= 10;
 			}
 			else
 			{
 				tEntity->mVelocity += sf::Vector2f(5, -1);
-				particlePos.x += 20;
+				particlePos.x += 10;
 
 			}
 			float angle = std::atan2(mPosition.y - tEntity->GetPosition().y, mPosition.x - tEntity->GetPosition().x) + M_PI;

@@ -226,6 +226,11 @@ void		Map::SpawnEntities(std::list<Entity *> *tEntities)
 				tEntities->push_front(new Skeleton());
 				tEntities->front()->mPosition = sf::Vector2f(x * BLOCK_SIZE, y * BLOCK_SIZE);
 			}
+			if (i[x] == '4')
+			{
+				tEntities->push_front(new DarkArcher());
+				tEntities->front()->mPosition = sf::Vector2f(x * BLOCK_SIZE, y * BLOCK_SIZE);
+			}
 		}
 		y++;
 	}
