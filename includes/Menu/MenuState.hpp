@@ -20,6 +20,7 @@ private:
 
 	MusicPlayer		mMusic;
 	SoundPlayer		mSound;
+	sf::Sound		mButton;
 
 	std::list<Entity *>						mEntities;
 	

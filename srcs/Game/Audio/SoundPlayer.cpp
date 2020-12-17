@@ -7,13 +7,14 @@ SoundPlayer::SoundPlayer(/* args */)
 {
     mSoundNames[SoundEffect::PlayerAttack]              = "assets/Sound effects/sword swing_01.wav";
     mSoundNames[SoundEffect::PlayerWalk]                = "assets/Sound effects/Footstep_01.wav";
-    mSoundNames[SoundEffect::PlayerDeath]               = "assets/Sound effects/sword swing_01.wav";
+    mSoundNames[SoundEffect::PlayerDeath]               = "assets/Sound effects/holnoo.wav";
     mSoundNames[SoundEffect::PlayerHit]                 = "assets/Sound effects/waterdrop_01.wav";
     mSoundNames[SoundEffect::PlayerHitGround]           = "assets/Sound effects/Crouch_03.wav";
     mSoundNames[SoundEffect::PlayerJump]                = "assets/Sound effects/Crouch_01.wav";
 
     mSoundNames[SoundEffect::EnemyAttack]               = "assets/Sound effects/sword swing_04.wav";
     mSoundNames[SoundEffect::EnemyHit]                  = "assets/Sound effects/Door_Openning.wav";
+    mSoundNames[SoundEffect::EnemyDeath]                = "assets/Sound effects/Rocks Moving.wav";
 
     mSoundNames[SoundEffect::TrapCollision]             = "assets/Sound effects/Rocks Moving.wav";
     mSoundNames[SoundEffect::GoalReached]               = "assets/Sound effects/itempickup.wav";

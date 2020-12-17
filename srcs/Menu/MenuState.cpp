@@ -29,7 +29,6 @@ void		MenuState::Init()
 
 	StateAction	*actionReturn = &mStateReturnAction;
 	bool		*active = &mIsActive;
-
 	/**
 	 * Button coloring/text/state return
 	 **/
@@ -127,6 +126,7 @@ void		MenuState::Update()
 	if (mIsActive == false)
 	{
 		mMusic.Stop();
+		mSound.StopSound();
 	}
 
 

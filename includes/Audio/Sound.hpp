@@ -16,6 +16,7 @@ namespace SoundEffect
         EnemyWalk,
         EnemyJump,
         EnemyAttack,
+        EnemyDeath,
         EnemyHit,
 
         TrapCollision,

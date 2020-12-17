@@ -34,6 +34,7 @@ protected:
 	bool						mOnGround = false;
 	bool						mIsAlive = true;
 	bool						mIsBlocked = false;
+	bool						mKilled = false;
 	float						mAttackCooldown = 0.55f;
 	int							mDead = 0;
 
@@ -44,6 +45,7 @@ protected:
 
 	sf::Clock					mDeathClock;
 	sf::Clock					mAttackClock;
+	sf::Clock					mKilledClock;
 
 	sf::Sprite					mSprite;
 

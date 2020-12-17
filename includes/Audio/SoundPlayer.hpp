@@ -19,6 +19,8 @@ public:
 
     void            Play(SoundEffect::ID effect);
 
-    void             StopSound();
+    void            StopSound();
+
+    sf::Sound       GetSound(){return (mSound);}
 
 };
