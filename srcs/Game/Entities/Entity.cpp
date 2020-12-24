@@ -38,6 +38,7 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 			{
 				entity->mHealth -= mAttackDamage;
 				entity->mDeathClock.restart();
+				entity->mAttackClock.restart();
 				sf::Vector2f	particlePos = entity->GetPosition() + (mSize / 2.f);
 				if (entity->GetPosition().x + (entity->mSize.x / 2.f) < mPosition.x + (mSize.x / 2.f))
 				{
