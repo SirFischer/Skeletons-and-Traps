@@ -12,7 +12,7 @@ bool		AI::IsWidthinSight(Player *tPlayer, Entity *tEntity)
 {
 	sf::Vector2f	diff = (tEntity->mPosition - tPlayer->GetEntity()->GetPosition());
 	float distance = std::sqrt((diff.x * diff.x) + (diff.y * diff.y));
-	if (distance < tEntity->mViewDistance)
+	if (distance < tEntity->mViewDistance && std::abs(tEntity->mPosition.y - tPlayer->GetEntity()->mPosition.y) < tEntity->mVerticalViewDistance)
 		return (true);
 	return (false);
 }
@@ -46,7 +46,7 @@ void		AI::EntityAttack(Player *tPlayer, Entity *tEntity, std::list<ParticleEffec
 	
 	if (tEntity->mIsBlocked)
 		tEntity->Jump();
-	if (distance < 30.f)
+	if (distance < 15.f)
 		tEntity->Attack(tPlayer->GetEntity(), tParticleEffects);
 	else if (tEntity->GetPosition().x < tPlayer->GetEntity()->GetPosition().x)
 		tEntity->RunRight();
@@ -55,9 +55,28 @@ void		AI::EntityAttack(Player *tPlayer, Entity *tEntity, std::list<ParticleEffec
 	
 }
 
+void		AI::EntityRangeAttack(Player *tPlayer, Entity *tEntity, std::list<ParticleEffect> *tParticleEffects, std::list<Projectile> *tProjectiles)
+{
+	// sf::Vector2f	diff = (tEntity->mPosition - tPlayer->GetEntity()->GetPosition());
+	// float distance = std::sqrt((diff.x * diff.x) + (diff.y * diff.y));
+	if (tEntity->mAction != EntityAction::SHOOT_LEFT && tEntity->mAction != EntityAction::SHOOT_RIGHT)
+	{
+		if (tEntity->GetPosition().x < tPlayer->GetEntity()->GetPosition().x)
+			tEntity->mDirection = Entity::Direction::RIGHT;
+		else if (tEntity->GetPosition().x > tPlayer->GetEntity()->GetPosition().x)
+			tEntity->mDirection = Entity::Direction::LEFT;
+		tEntity->Shoot(tProjectiles);
+	}
+	
+	(void)tPlayer;
+
+	(void)tParticleEffects;
+	
+}
 
 
-void		AI::ProcessEntity(Player *tPlayer, Entity *tEntity, std::list<ParticleEffect> *tParticleEffects)
+
+void		AI::ProcessEntity(Player *tPlayer, Entity *tEntity, std::list<ParticleEffect> *tParticleEffects, std::list<Projectile> *tProjectiles)
 {
 	if (IsWidthinSight(tPlayer, tEntity))
 		tEntity->mAIMode = AIMode::ATTACK;
@@ -71,7 +90,10 @@ void		AI::ProcessEntity(Player *tPlayer, Entity *tEntity, std::list<ParticleEffe
 		break;
 
 	case AIMode::ATTACK:
-		EntityAttack(tPlayer, tEntity, tParticleEffects);
+		if (tEntity->mType == Entity::Type::MELEE)
+			EntityAttack(tPlayer, tEntity, tParticleEffects);
+		else
+			EntityRangeAttack(tPlayer, tEntity, tParticleEffects, tProjectiles);
 		break;
 	
 	default:

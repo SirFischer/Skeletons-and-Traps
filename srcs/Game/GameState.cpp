@@ -24,7 +24,6 @@ void		GameState::Init()
 
 	mCameraPosition = mMap.GetGoalPosition();
 
-	std::cout << mCameraPosition.x << " " << mCameraPosition.y << std::endl;
 
 	/**
 	 * INIT STATE AND GUI
@@ -70,13 +69,24 @@ void		GameState::Update()
 		}
 			
 	}
+	for (auto &projectile : mProjectiles)
+	{
+		projectile.Update();
+		mMap.HandleProjectileCollision(&projectile);
+		if (!projectile.IsActive())
+		{
+			mProjectiles.remove(projectile);
+			break;
+		}
+			
+	}
 
 	for (auto &entity : mEntities)
 	{
 		mMap.HandleCollisions(entity, &mParticleEffects);
 		entity->HandleCollisions(mEntities);
 		if (entity->GetHealth() > 0)
-			AI::ProcessEntity(&mPlayer, entity, &mParticleEffects);
+			AI::ProcessEntity(&mPlayer, entity, &mParticleEffects, &mProjectiles);
 		entity->Update();
 	}
 
@@ -119,6 +129,8 @@ void		GameState::Render()
 	mWindow->View();
 	mMap.Draw(mWindow);
 	mPlayer.Render(mWindow);
+	for (auto &projectile : mProjectiles)
+		projectile.Render(mWindow);
 	for (auto &entity : mEntities)
 		entity->Render(mWindow);
 	for (auto &particleEffect : mParticleEffects)

@@ -97,6 +97,25 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 	}	
 }
 
+void	Entity::Shoot(std::list<Projectile> *tProjectiles)
+{
+	if (mAttackClock.getElapsedTime().asSeconds() < mAttackCooldown)
+		return ;
+	mAttackClock.restart();
+	if (mDirection == Direction::LEFT)
+		mAction = EntityAction::SHOOT_LEFT;
+	else
+		mAction = EntityAction::SHOOT_RIGHT;
+	
+	if (mAnimations[mAction].IsDone())
+	{
+		mAnimations[mAction].ResetAnimation();
+		Projectile projectile(mPosition + sf::Vector2f(20, 30), (mDirection == Direction::LEFT) ? M_PI : 0, 15.f);
+		tProjectiles->push_back(projectile);
+		std::cout << "added projectile to list: " << tProjectiles->size() << std::endl;
+	}
+}
+
 void				Entity::Reset()
 {
 	mHealth = 30;
@@ -192,10 +211,12 @@ void				Entity::HandleCollisions(std::list<Entity *> tEntities)
 					mVelocity.x = 0;
 					mPosition = sf::Vector2f(mx - mSize.x, prevposition.y);
 					mCollisionDirection = Entity::CollisionDirection::RIGHT;
+					mIsBlocked = true;
 				} else if ((angle > 135 && angle < 225) && mVelocity.x < 0)
 				{
 					mVelocity.x = 0;
 					mCollisionDirection = Entity::CollisionDirection::LEFT;
+					mIsBlocked = true;
 					mPosition = sf::Vector2f(mx + entity->mSize.x, prevposition.y);
 				} else if ((angle > 235  && angle < 305) && mVelocity.y < 0)
 				{

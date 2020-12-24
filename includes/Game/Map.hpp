@@ -10,6 +10,7 @@
 #include "Entities.hpp"
 #include "Player.hpp"
 #include "ParticleEffect.hpp"
+#include "Projectile.hpp"
 
 #define		BLOCK_SIZE 64.f
 
@@ -51,6 +52,7 @@ public:
 	void					HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParticleEffects);
 
 	void					HandleParticleCollisions(ParticleEffect	*tEffect);
+	void					HandleProjectileCollision(Projectile *tProjectile);
 
 	void					SpawnEntities(std::list<Entity *> *tEntities);
 

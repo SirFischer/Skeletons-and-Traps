@@ -5,6 +5,8 @@
 
 #include "AIMode.hpp"
 
+#include "Projectile.hpp"
+
 #include <math.h>
 
 #define SIGHT_RANGE 50.f
@@ -18,8 +20,9 @@ private:
 
 	static void		EntityPatrol(Entity *tEntity);
 	static void		EntityAttack(Player *tPlayer, Entity *tEntity, std::list<ParticleEffect> *tParticleEffects);
+	static void		EntityRangeAttack(Player *tPlayer, Entity *tEntity, std::list<ParticleEffect> *tParticleEffects, std::list<Projectile> *tProjectiles);
 	
 public:
 	~AI();
-	static void		ProcessEntity(Player *tPlayer, Entity *tEntity, std::list<ParticleEffect> *tParticleEffects);
+	static void		ProcessEntity(Player *tPlayer, Entity *tEntity, std::list<ParticleEffect> *tParticleEffects, std::list<Projectile> *tProjectiles);
 };

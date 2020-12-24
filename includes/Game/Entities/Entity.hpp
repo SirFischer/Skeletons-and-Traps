@@ -4,12 +4,17 @@
 #include "EntityAction.hpp"
 #include "AIMode.hpp"
 #include "ParticleEffect.hpp"
+#include "Projectile.hpp"
 
 #include <map>
 
 class Entity
 {
 protected:
+	enum class	Type {
+		MELEE,
+		ARCHER
+	}							mType = Type::MELEE;
 	enum class	Direction {
 		RIGHT,
 		LEFT
@@ -31,6 +36,7 @@ protected:
 	float						mRunSpeed = 0.30f;
 	float						mJumpForce = 6.5f;
 	float						mViewDistance = 300.f;
+	float						mVerticalViewDistance = 200.f;
 	bool						mOnGround = false;
 	bool						mIsAlive = true;
 	bool						mIsBlocked = false;
@@ -59,6 +65,8 @@ public:
 
 	virtual void				Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> *tParticleEffects);
 	virtual void				Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffects);
+
+	virtual void				Shoot(std::list<Projectile> *tProjectiles);
 
 	void						Reset();
 

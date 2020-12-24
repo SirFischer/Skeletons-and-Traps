@@ -8,6 +8,7 @@
 #include "Map.hpp"
 #include "AI.hpp"
 #include "ParticleEffect.hpp"
+#include "Projectile.hpp"
 
 
 class GameState : public State
@@ -26,6 +27,7 @@ private:
 	mf::Text								*mHPText;
 	
 	std::list<ParticleEffect>				mParticleEffects;
+	std::list<Projectile>					mProjectiles;
 
 	void		UpdateCameraPosition();
 	

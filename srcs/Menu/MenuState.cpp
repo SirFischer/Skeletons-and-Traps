@@ -112,7 +112,7 @@ void		MenuState::Update()
 	{
 		mMap.HandleCollisions(entity, &mParticleEffects);
 		if (entity->GetHealth() > 0)
-		AI::ProcessEntity(&mPlayer, entity, &mParticleEffects);
+		AI::ProcessEntity(&mPlayer, entity, &mParticleEffects, NULL);
 		entity->Update();
 	}
 	//mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
