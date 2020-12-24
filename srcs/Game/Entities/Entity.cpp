@@ -179,6 +179,24 @@ void				Entity::Jump()
 	
 }
 
+void				Entity::HandleProjectileCollision(Projectile *tProjectile, std::list<ParticleEffect> *tParticleEffects)
+{
+	if (tProjectile->mSprite.getGlobalBounds().intersects(mSprite.getGlobalBounds()))
+	{
+		tProjectile->mIsHit = true;
+		tProjectile->mActive = false;
+		if (tProjectile->mPosition.x > mPosition.x + (mSize.x / 2.f))
+			mVelocity += sf::Vector2f(-5, -1);
+		else
+			mVelocity += sf::Vector2f(5, -1);
+		float angle = std::atan2(mPosition.y - tProjectile->mPosition.y, mPosition.x - tProjectile->mPosition.x) + M_PI;
+		ParticleEffect effect(mPosition, 3.f, 0.8f, 300, angle, M_PI / 3.5f);
+		effect.SetParticleColor(sf::Color::Red);
+		tParticleEffects->push_back(effect);
+		mHealth -= 30.f;
+	}
+}
+
 void				Entity::HandleCollisions(std::list<Entity *> tEntities)
 {
 	sf::Vector2f	position = GetPosition() + mVelocity;

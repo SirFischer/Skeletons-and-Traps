@@ -73,6 +73,7 @@ void		GameState::Update()
 	{
 		projectile.Update();
 		mMap.HandleProjectileCollision(&projectile);
+		mPlayer.GetEntity()->HandleProjectileCollision(&projectile, &mParticleEffects);
 		if (!projectile.IsActive())
 		{
 			mProjectiles.remove(projectile);

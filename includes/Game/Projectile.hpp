@@ -31,5 +31,6 @@ public:
 	bool		IsActive(){return (mActive);}
 
 	friend class Map;
+	friend class Entity;
 };
 

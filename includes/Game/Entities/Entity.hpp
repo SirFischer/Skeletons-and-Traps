@@ -71,6 +71,7 @@ public:
 	void						Reset();
 
 	void						HandleCollisions(std::list<Entity *> tEntities);
+	void						HandleProjectileCollision(Projectile *tProjectile, std::list<ParticleEffect> *tParticleEffects);
 
 	void						MoveLeft();
 	void						MoveRight();
