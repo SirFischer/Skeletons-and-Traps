@@ -112,6 +112,7 @@ void	Entity::Shoot(std::list<Projectile> *tProjectiles)
 	{
 		mAnimations[mAction].ResetAnimation();
 		Projectile projectile(mPosition + sf::Vector2f(20, 30), (mDirection == Direction::LEFT) ? M_PI : 0, 15.f);
+		projectile.mParent = this;
 		tProjectiles->push_back(projectile);
 		std::cout << "added projectile to list: " << tProjectiles->size() << std::endl;
 	}
@@ -181,6 +182,8 @@ void				Entity::Jump()
 
 void				Entity::HandleProjectileCollision(Projectile *tProjectile, std::list<ParticleEffect> *tParticleEffects)
 {
+	if (tProjectile->mIsHit)
+		return ;
 	if (tProjectile->mSprite.getGlobalBounds().intersects(mSprite.getGlobalBounds()))
 	{
 		tProjectile->mIsHit = true;
@@ -189,7 +192,7 @@ void				Entity::HandleProjectileCollision(Projectile *tProjectile, std::list<Par
 			mVelocity += sf::Vector2f(-5, -1);
 		else
 			mVelocity += sf::Vector2f(5, -1);
-		float angle = std::atan2(mPosition.y - tProjectile->mPosition.y, mPosition.x - tProjectile->mPosition.x) + M_PI;
+		float angle = std::atan2(mPosition.y - tProjectile->mPosition.y, mPosition.x - tProjectile->mPosition.x);// + M_PI;
 		ParticleEffect effect(mPosition, 3.f, 0.8f, 300, angle, M_PI / 3.5f);
 		effect.SetParticleColor(sf::Color::Red);
 		tParticleEffects->push_back(effect);

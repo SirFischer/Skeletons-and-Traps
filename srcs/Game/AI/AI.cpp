@@ -48,9 +48,9 @@ void		AI::EntityAttack(Player *tPlayer, Entity *tEntity, std::list<ParticleEffec
 		tEntity->Jump();
 	if (distance < 15.f)
 		tEntity->Attack(tPlayer->GetEntity(), tParticleEffects);
-	else if (tEntity->GetPosition().x < tPlayer->GetEntity()->GetPosition().x)
+	else if (tEntity->GetPosition().x < tPlayer->GetEntity()->GetPosition().x - 10)
 		tEntity->RunRight();
-	else if (tEntity->GetPosition().x > tPlayer->GetEntity()->GetPosition().x)
+	else if (tEntity->GetPosition().x > tPlayer->GetEntity()->GetPosition().x + 10)
 		tEntity->RunLeft();
 	
 }

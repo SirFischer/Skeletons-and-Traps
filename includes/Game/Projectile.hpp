@@ -18,6 +18,8 @@ private:
 	sf::Clock		mClock;
 	float			mHitLifeTime = 5.f;
 
+	void			*mParent = NULL;
+
 public:
 	Projectile(sf::Vector2f	tPosition, float tAngle, float tForce);
 	~Projectile();
@@ -29,6 +31,7 @@ public:
 	void		Render(Window *tWindow);
 
 	bool		IsActive(){return (mActive);}
+	void		*GetParent(){return (mParent);}
 
 	friend class Map;
 	friend class Entity;

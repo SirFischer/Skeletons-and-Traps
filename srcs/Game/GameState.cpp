@@ -74,6 +74,9 @@ void		GameState::Update()
 		projectile.Update();
 		mMap.HandleProjectileCollision(&projectile);
 		mPlayer.GetEntity()->HandleProjectileCollision(&projectile, &mParticleEffects);
+		for (auto &entity : mEntities)
+			if (entity != projectile.GetParent())
+				entity->HandleProjectileCollision(&projectile, &mParticleEffects);
 		if (!projectile.IsActive())
 		{
 			mProjectiles.remove(projectile);
@@ -125,7 +128,7 @@ void		GameState::Update()
 
 void		GameState::Render()
 {
-	mWindow->Clear(sf::Color(135,206,235));
+	mWindow->Clear(sf::Color(29,64,89));
 
 	mWindow->View();
 	mMap.Draw(mWindow);
