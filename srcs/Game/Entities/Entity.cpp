@@ -111,7 +111,7 @@ void	Entity::Shoot(std::list<Projectile> *tProjectiles)
 	if (mAnimations[mAction].IsDone())
 	{
 		mAnimations[mAction].ResetAnimation();
-		Projectile projectile(mPosition + sf::Vector2f(20, 30), (mDirection == Direction::LEFT) ? M_PI : 0, 15.f);
+		Projectile projectile(mPosition + sf::Vector2f(20, 30), (mDirection == Direction::LEFT) ? M_PI : 0, 10.f);
 		projectile.mParent = this;
 		tProjectiles->push_back(projectile);
 		std::cout << "added projectile to list: " << tProjectiles->size() << std::endl;
@@ -184,7 +184,9 @@ void				Entity::HandleProjectileCollision(Projectile *tProjectile, std::list<Par
 {
 	if (tProjectile->mIsHit)
 		return ;
-	if (tProjectile->mSprite.getGlobalBounds().intersects(mSprite.getGlobalBounds()))
+	// if (tProjectile->mSprite.getGlobalBounds().intersects(mSprite.getGlobalBounds()))
+	if (tProjectile->mSprite.getGlobalBounds().left < mPosition.x + mSize.x && tProjectile->mSprite.getGlobalBounds().left + tProjectile->mSprite.getGlobalBounds().width > mPosition.x &&
+		tProjectile->mSprite.getGlobalBounds().top < mPosition.y + mSize.y && tProjectile->mSprite.getGlobalBounds().top + tProjectile->mSprite.getGlobalBounds().height > mPosition.y)
 	{
 		tProjectile->mIsHit = true;
 		tProjectile->mActive = false;

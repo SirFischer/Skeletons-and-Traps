@@ -3,9 +3,10 @@
 Projectile::Projectile(sf::Vector2f	tPosition, float tAngle, float tForce)
 {
 	mSprite.setTexture(*ResourceManager::LoadTexture("assets/Textures/arrow.png"));
+	mSprite.setTextureRect(sf::IntRect(145, 190, 290, 70));
 	mSprite.setOrigin(mSprite.getTextureRect().width / 2.f, mSprite.getTextureRect().height / 2.f);
 	mSprite.setRotation((tAngle * 180.f) / M_PI);
-	mSprite.setScale(0.1f, 0.1f);
+	mSprite.setScale(0.15f, 0.1f);
 	mPosition = tPosition;
 	mVelocity.x = std::cos(tAngle) * tForce;
 	mVelocity.y = std::sin(tAngle) * tForce;

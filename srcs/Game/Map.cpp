@@ -219,7 +219,8 @@ void				Map::HandleProjectileCollision(Projectile *tProjectile)
 {
 	if (tProjectile->mIsHit)
 		return ;
-	sf::Vector2f	position = tProjectile->mPosition;
+	sf::Vector2f	position = sf::Vector2f(tProjectile->mSprite.getGlobalBounds().left, tProjectile->mSprite.getGlobalBounds().top);
+	sf::Vector2f	size = sf::Vector2f(tProjectile->mSprite.getGlobalBounds().width, tProjectile->mSprite.getGlobalBounds().height);
 	sf::Vector2i	index = sf::Vector2i((position.x - BLOCK_SIZE) / BLOCK_SIZE, (position.y - BLOCK_SIZE) / BLOCK_SIZE);
 	index.x = (index.x < 0) ? 0 : index.x;
 	index.y = (index.y < 0) ? 0 : index.y;
@@ -237,7 +238,7 @@ void				Map::HandleProjectileCollision(Projectile *tProjectile)
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
 				//AABB collision?
-				if ((position.x < (mx + BLOCK_SIZE) && position.x > mx) && (position.y < (my + BLOCK_SIZE) && position.y > my))
+				if ((position.x < (mx + BLOCK_SIZE) && position.x + size.x > mx) && (position.y < (my + BLOCK_SIZE) && position.y > my))
 				{
 					tProjectile->mIsHit = true;
 				}

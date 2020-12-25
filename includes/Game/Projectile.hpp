@@ -8,6 +8,7 @@ class Projectile
 {
 private:
 	sf::Vector2f	mPosition;
+	sf::Vector2f	mSize;
 	sf::Vector2f	mVelocity;
 
 	sf::Sprite		mSprite;
