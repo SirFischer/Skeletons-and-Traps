@@ -38,11 +38,11 @@ void		OptionsState::Init()
 	});
 	mf::GUI::AddWidget(mQuitButton);
 
-	mAttackKey = mf::Button::Create(sf::Color(15, 15, 15, 255), sf::Color(155, 155, 155, 255));
-	mAttackKey->SetPositionPercentage(true)->SetPosition(10, 30);
-	mAttackKey->SetTextFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));
-	mAttackKey->SetText(std::to_string(InputManager::GetKeyBinding(InputAction::ATTACK)));
-	mf::GUI::AddWidget(mAttackKey);
+	// mAttackKey = mf::Button::Create(sf::Color(15, 15, 15, 255), sf::Color(155, 155, 155, 255));
+	// mAttackKey->SetPositionPercentage(true)->SetPosition(10, 30);
+	// mAttackKey->SetTextFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));
+	// mAttackKey->SetText(std::to_string(InputManager::GetKeyBinding(InputAction::ATTACK)));
+	//mf::GUI::AddWidget(mAttackKey);
 }
 
 void		OptionsState::HandleEvents()
