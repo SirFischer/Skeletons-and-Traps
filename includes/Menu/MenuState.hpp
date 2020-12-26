@@ -21,6 +21,7 @@ private:
 	MusicPlayer		mMusic;
 	SoundPlayer		mSound;
 	sf::Sound		mButton;
+	sf::Sprite		mBackground;
 
 	std::list<Entity *>						mEntities;
 	

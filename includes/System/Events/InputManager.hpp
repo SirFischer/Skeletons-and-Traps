@@ -15,6 +15,8 @@ private:
 	static std::map<int, InputAction>	mInputKeyMap;
 	static std::map<int, InputAction>	mInputButtonMap;
 
+	static sf::Keyboard::Key			mLastPressedKey;
+
 	static void		HandleKeyPress(sf::Event	&tEvent);
 	static void		HandleKeyRelease(sf::Event	&tEvent);
 
@@ -22,6 +24,8 @@ public:
 	~InputManager();
 
 	static void		LoadDefaultKeyBindings();
+
+	static int		GetKeyBinding(InputAction tAction);
 
 	static void		ResetActionStates();
 

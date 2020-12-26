@@ -2,12 +2,14 @@
 
 #include "State.hpp"
 #include "ResourceManager.hpp"
+#include "InputManager.hpp"
 
 class OptionsState : public State
 {
 private:
-	mf::Button	*mFullscreenButton;
 	mf::Button	*mQuitButton;
+
+	mf::Button	*mAttackKey;
 	
 public:
 	OptionsState(Window *tWindow);

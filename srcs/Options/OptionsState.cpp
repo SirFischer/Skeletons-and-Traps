@@ -36,26 +36,13 @@ void		OptionsState::Init()
 		*actionReturn = StateAction::POP;
 		*active = false;
 	});
-	/* ERROR TOGGLEFULLSCREEN FUNCTION FAILS TO FIND VIDEO MODE AND RRMODE
-	mFullscreenButton = mf::Button::Create(sf::Color::Yellow, sf::Color::Red);
-	mFullscreenButton->SetSize(150, 50);
-	mFullscreenButton->SetPositionPercentage(true)->SetPosition(45, 50);
-	mFullscreenButton->SetTextFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));
-	mFullscreenButton->SetTextColor(sf::Color::Black);
-	mFullscreenButton->SetTextPosition(sf::Vector2f(8, 5));
-	mFullscreenButton->SetText("Fullscreen");
-	Window	*window = mWindow;
-	mFullscreenButton->SetClickEvent([window] {
-		window->ToggleFullscreen();
-	});
-	*/
-
-	/*
-	Volume slider
-	*/
-
-	//mf::GUI::AddWidget(mFullscreenButton);
 	mf::GUI::AddWidget(mQuitButton);
+
+	mAttackKey = mf::Button::Create(sf::Color(15, 15, 15, 255), sf::Color(155, 155, 155, 255));
+	mAttackKey->SetPositionPercentage(true)->SetPosition(10, 30);
+	mAttackKey->SetTextFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));
+	mAttackKey->SetText(std::to_string(InputManager::GetKeyBinding(InputAction::ATTACK)));
+	mf::GUI::AddWidget(mAttackKey);
 }
 
 void		OptionsState::HandleEvents()

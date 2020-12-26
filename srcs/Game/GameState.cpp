@@ -9,6 +9,9 @@ GameState::GameState(Window *tWindow)
 	mMap.SpawnPlayer(&mPlayer);
 	mMap.SpawnPowerUps(&mPowerUps);
 	mMusic.Play(Music::GameTheme);
+
+	mBackground.setTexture(*ResourceManager::LoadTexture("assets/Textures/Nature Background Raw.png"));
+	mBackground.setScale(1.3, 1.3);
 }
 
 GameState::~GameState()
@@ -143,7 +146,8 @@ void		GameState::Update()
 void		GameState::Render()
 {
 	mWindow->Clear(sf::Color(135, 206, 235));
-
+	mWindow->SetDefaultView();
+	mWindow->Draw(mBackground);
 	mWindow->View();
 	mMap.Draw(mWindow);
 	mPlayer.Render(mWindow);
