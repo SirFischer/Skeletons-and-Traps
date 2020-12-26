@@ -5,8 +5,8 @@ MusicPlayer::MusicPlayer()
 , mFilenames()
 , mVolume(100.f)
 {
-    mFilenames[Music::MenuTheme]    = "assets/Music/extra_G#_122bpm_dripchord.wav";
-    mFilenames[Music::GameTheme]    = "assets/Music/musicbyaden-rise.wav";
+    mFilenames[Music::MenuTheme]    = "assets/Music/MenuState.wav";
+    mFilenames[Music::GameTheme]    = "assets/Music/Gamestate.wav";
 }
 
 MusicPlayer::~MusicPlayer()
@@ -19,7 +19,7 @@ void    MusicPlayer::Play(Music:: ID theme)
 
     if (!mMusic.openFromFile(filename))
         throw std::runtime_error("Music " + filename + "could no be loaded.");
-
+    mVolume = 20.f;
     mMusic.setVolume(mVolume);
     mMusic.setLoop(true);
     mMusic.play();
