@@ -125,7 +125,6 @@ void		MenuState::Update()
 		entity->Update();
 	}
 	//mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
-	mWindow->mView.setCenter(mPlayer.GetEntity()->GetPosition());
 
 
 	if (mIsActive == false)
