@@ -16,6 +16,8 @@ private:
 	Map				 mMap;
 	Player			 mPlayer;
 
+	sf::Sprite		mBackground;
+
 	std::list<Entity *>						mEntities;
 	
 	std::list<ParticleEffect>				mParticleEffects;

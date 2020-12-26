@@ -23,6 +23,9 @@ void		MenuState::Init()
 	mMap.SpawnEntities(&mEntities);
 	mMap.SpawnPlayer(&mPlayer);
 
+	mBackground.setTexture(*ResourceManager::LoadTexture("assets/Textures/Nature Background Raw.png"));
+	mBackground.setScale(1.3, 1.3);
+
 	
 	/**
 	 * INIT STATE AND GUI
@@ -121,6 +124,8 @@ void		MenuState::Update()
 void		MenuState::Render()
 {
 	mWindow->Clear(sf::Color(135,206,235));
+	mWindow->SetDefaultView();
+	mWindow->Draw(mBackground);
 	mPlayer.Render(mWindow);
 	for (auto &entity : mEntities)
 		entity->Render(mWindow);

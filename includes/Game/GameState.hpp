@@ -30,6 +30,8 @@ private:
 	std::list<ParticleEffect>				mParticleEffects;
 	std::list<Projectile>					mProjectiles;
 	std::list<PowerUp>						mPowerUps;
+	
+	sf::Sprite								mBackground;
 
 	void		UpdateCameraPosition();
 	

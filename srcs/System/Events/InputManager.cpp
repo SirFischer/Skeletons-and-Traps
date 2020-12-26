@@ -3,6 +3,7 @@
 std::map<InputAction, bool>	InputManager::mActionMap = std::map<InputAction, bool>();
 std::map<int, InputAction>	InputManager::mInputKeyMap = std::map<int, InputAction>();
 std::map<int, InputAction>	InputManager::mInputButtonMap = std::map<int, InputAction>();
+sf::Keyboard::Key			InputManager::mLastPressedKey = sf::Keyboard::Unknown;
 
 InputManager::InputManager(/* args */)
 {
@@ -19,6 +20,17 @@ void		InputManager::LoadDefaultKeyBindings()
 	mInputKeyMap[sf::Keyboard::A] = InputAction::MOVE_LEFT;
 	mInputKeyMap[sf::Keyboard::Space] = InputAction::ATTACK;
 	mInputKeyMap[sf::Keyboard::W] = InputAction::JUMP;
+}
+
+int			InputManager::GetKeyBinding(InputAction tAction)
+{
+	auto res = std::find_if(std::begin(mInputKeyMap), std::end(mInputKeyMap), [&](const std::pair<int, InputAction> &pair)
+	{
+		return pair.second == tAction;
+	});
+	if (std::end(mInputKeyMap) == res)
+		return (-1);
+	return (res->first);
 }
 
 void		InputManager::HandleInput(sf::Event	&tEvent)
