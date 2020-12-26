@@ -9,6 +9,7 @@
 #include "AI.hpp"
 #include "ParticleEffect.hpp"
 #include "Projectile.hpp"
+#include "PowerUp.hpp"
 
 
 class GameState : public State
@@ -28,6 +29,7 @@ private:
 	
 	std::list<ParticleEffect>				mParticleEffects;
 	std::list<Projectile>					mProjectiles;
+	std::list<PowerUp>						mPowerUps;
 
 	void		UpdateCameraPosition();
 	

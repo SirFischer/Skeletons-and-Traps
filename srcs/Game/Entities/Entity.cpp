@@ -12,7 +12,10 @@ void				Entity::ApplyAnimation()
 {
 	if (mAnimations.count(mAction))
 		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
-	mAction = EntityAction::IDLE;
+	if (mDirection == Direction::RIGHT)
+		mAction = EntityAction::IDLE_RIGHT;
+	else
+		mAction = EntityAction::IDLE_LEFT;
 }
 
 
@@ -179,6 +182,12 @@ void				Entity::Jump()
 	}
 	
 }
+
+void				Entity::AddHealth(float tHealthPoints)
+{
+	mHealth += tHealthPoints;
+}
+
 
 void				Entity::HandleProjectileCollision(Projectile *tProjectile, std::list<ParticleEffect> *tParticleEffects)
 {

@@ -50,7 +50,7 @@ protected:
 
 	sf::Sprite					mSprite;
 
-	EntityAction				mAction = EntityAction::IDLE;
+	EntityAction				mAction = EntityAction::IDLE_RIGHT;
 
 	std::map<EntityAction, Animation>	mAnimations = std::map<EntityAction, Animation>();
 
@@ -78,6 +78,8 @@ public:
 	void						RunLeft();
 	void						RunRight();
 	void						Jump();
+
+	void						AddHealth(float tHealthPoints);
 
 	sf::Sprite					GetSprite(){return (mSprite);}
 	sf::Vector2f				GetPosition(){return (mPosition);}

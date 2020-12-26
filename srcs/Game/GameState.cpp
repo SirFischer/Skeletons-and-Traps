@@ -7,6 +7,7 @@ GameState::GameState(Window *tWindow)
 	mWindow->HideCursor();
 	mMap.SpawnEntities(&mEntities);
 	mMap.SpawnPlayer(&mPlayer);
+	mMap.SpawnPowerUps(&mPowerUps);
 }
 
 GameState::~GameState()
@@ -103,6 +104,16 @@ void		GameState::Update()
 			break;
 		}
 	}
+	for (auto &powerUp : mPowerUps)
+	{
+		powerUp.Update();
+		powerUp.HandlePickUp(mPlayer.GetEntity());
+		if (!powerUp.IsActive())
+		{
+			mPowerUps.remove(powerUp);
+			break;
+		}
+	}
 	if (mParticleEffects.size() > 20)
 		mParticleEffects.pop_front();
 	if (mMap.GetGoalStatus(mPlayer.GetEntity()))
@@ -139,6 +150,8 @@ void		GameState::Render()
 		entity->Render(mWindow);
 	for (auto &particleEffect : mParticleEffects)
 		particleEffect.Render(mWindow);
+	for (auto &powerUp : mPowerUps)
+		powerUp.Render(mWindow);
 	mWindow->SetDefaultView();
 	mf::GUI::Render();
 	mWindow->Render();

@@ -10,9 +10,8 @@ Skeleton::Skeleton(/* args */)
 	for (size_t i = 0; i < 9; i++)
 		mAnimations[EntityAction::WALK_RIGHT].AddFrame(sf::IntRect(64 * i, 64 * 11, 64, 64));
 	mAnimations[EntityAction::WALK_RIGHT].SetLength(0.1);
-	for (size_t i = 0; i < 1; i++)
-		mAnimations[EntityAction::IDLE].AddFrame(sf::IntRect(64 * i, 64 * 10, 64, 64));
-	mAnimations[EntityAction::IDLE].SetLength(0.08);
+	mAnimations[EntityAction::IDLE_RIGHT].AddFrame(sf::IntRect(64, 64 * 3, 64, 64));
+	mAnimations[EntityAction::IDLE_LEFT].AddFrame(sf::IntRect(64, 64 * 1, 64, 64));
 	for (size_t i = 0; i < 6; i++)
 		mAnimations[EntityAction::JUMP].AddFrame(sf::IntRect(64 * i, 64 * 15, 64, 64));
 	mAnimations[EntityAction::JUMP].SetLength(0.08);

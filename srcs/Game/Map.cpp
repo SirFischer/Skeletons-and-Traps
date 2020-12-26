@@ -271,6 +271,28 @@ void		Map::SpawnEntities(std::list<Entity *> *tEntities)
 	}
 }
 
+void			Map::SpawnPowerUps(std::list<PowerUp> *tPowerUps)
+{
+	int y = 0;
+	for (auto &&i : mMapLines)
+	{
+		for (size_t x = 0; x < i.length(); x++)
+		{
+			if (i[x] == '+')
+			{
+				PowerUp powerUp(sf::Vector2f((x * BLOCK_SIZE) + 16, (y * BLOCK_SIZE + 16)));
+				tPowerUps->push_front(powerUp);
+				tPowerUps->front().SetEffect([](Entity *tEntity){
+					tEntity->AddHealth(50.f);
+				});
+				tPowerUps->front().SetTexture("assets/Textures/healthPowerUp.png");
+			}
+		}
+		y++;
+	}
+}
+
+
 void		Map::SpawnPlayer(Player *tPlayer)
 {
 	int y = 0;

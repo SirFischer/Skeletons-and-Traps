@@ -1,7 +1,8 @@
 #pragma once
 
 enum class EntityAction {
-	IDLE,
+	IDLE_LEFT,
+	IDLE_RIGHT,
 	JUMP,
 	DIE,
 	ATTACK_LEFT,

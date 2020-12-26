@@ -11,6 +11,7 @@
 #include "Player.hpp"
 #include "ParticleEffect.hpp"
 #include "Projectile.hpp"
+#include "PowerUp.hpp"
 
 #define		BLOCK_SIZE 64.f
 
@@ -55,6 +56,8 @@ public:
 	void					HandleProjectileCollision(Projectile *tProjectile);
 
 	void					SpawnEntities(std::list<Entity *> *tEntities);
+
+	void					SpawnPowerUps(std::list<PowerUp> *tPowerUps);
 
 	void					SpawnPlayer(Player *tPlayer);
 
