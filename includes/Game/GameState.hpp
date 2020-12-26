@@ -10,6 +10,8 @@
 #include "ParticleEffect.hpp"
 #include "Projectile.hpp"
 #include "PowerUp.hpp"
+#include "MusicPlayer.hpp"
+#include "SoundPlayer.hpp"
 
 
 class GameState : public State
@@ -24,6 +26,8 @@ private:
 
 	sf::Vector2f							mCameraVelocity = sf::Vector2f(0, 0);
 	sf::Vector2f							mCameraPosition = sf::Vector2f(0, 0);
+	MusicPlayer								mMusic;
+	SoundPlayer								mSound;
 
 	mf::Text								*mHPText;
 	
@@ -32,7 +36,7 @@ private:
 	std::list<PowerUp>						mPowerUps;
 
 	void		UpdateCameraPosition();
-	
+
 public:
 	GameState(Window *tWindow);
 	~GameState();

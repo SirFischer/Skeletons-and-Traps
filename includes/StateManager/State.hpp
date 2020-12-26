@@ -13,7 +13,6 @@ protected:
 	bool			mIsActive = true;
 	Window			*mWindow = NULL;
 
-
 public:
 
 	virtual				~State() {}

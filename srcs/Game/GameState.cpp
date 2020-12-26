@@ -8,6 +8,7 @@ GameState::GameState(Window *tWindow)
 	mMap.SpawnEntities(&mEntities);
 	mMap.SpawnPlayer(&mPlayer);
 	mMap.SpawnPowerUps(&mPowerUps);
+	mMusic.Play(Music::GameTheme);
 }
 
 GameState::~GameState()
@@ -37,6 +38,7 @@ void		GameState::Init()
 	->SetBackgroundColor(sf::Color::Transparent)
 	->SetTextFontSize(20);
 	mf::GUI::AddWidget(mHPText);
+
 }
 
 void		GameState::HandleEvents()
@@ -121,6 +123,7 @@ void		GameState::Update()
 		mIsActive = false;
 		mStateReturnAction = StateAction::POP;
 	}
+	
 	if (mPlayer.GetEntity()->GetHealth() > 0)
 	{
 		mTimer.restart();

@@ -15,7 +15,7 @@ StateManager::~StateManager()
 void		StateManager::Run()
 {
 	StateAction	action = StateAction::POP;
-
+	
 	while (mStates.size())
 	{
 		mStates.top()->Init();
@@ -51,5 +51,6 @@ void		StateManager::Run()
 			mStates.pop();
 			break;
 		}
+		
 	}
 }

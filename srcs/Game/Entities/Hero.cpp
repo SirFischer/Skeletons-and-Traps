@@ -56,14 +56,22 @@ void	Hero::Update()
 	if (mHealth > 0)
 	{
 		mDeathClock.restart();
+		mKilledClock.restart();
 		mAnimations[EntityAction::DIE].ResetAnimation();
 	}
+	
 	if (mHealth <= 0)
 	{
 		mAction = EntityAction::DIE;
+		mAttackDamage = 0;
 		if (mDeathClock.getElapsedTime().asSeconds() > 6.0)
 			mIsAlive = false;
 	}
+	if (mHealth <= 0 && mKilledClock.getElapsedTime().asSeconds() < 0.1)
+	{
+		mSound.Play(SoundEffect::PlayerDeath);
+	}
+	
 }
 
 

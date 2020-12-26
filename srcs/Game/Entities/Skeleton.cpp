@@ -52,6 +52,7 @@ void	Skeleton::Update()
 		mVelocity.y += 0.1;
 	if (mHealth > 0)
 	{
+		mKilledClock.restart();
 		mDeathClock.restart();
 		mAnimations[EntityAction::DIE].ResetAnimation();
 	}
@@ -60,6 +61,10 @@ void	Skeleton::Update()
 		mAction = EntityAction::DIE;
 		if (mDeathClock.getElapsedTime().asSeconds() > 6.0)
 			mIsAlive = false;
+	}
+	if (mHealth <= 0 && mKilledClock.getElapsedTime().asSeconds() < 0.1)
+	{
+		mSound.Play(SoundEffect::EnemyDeath);
 	}
 }
 

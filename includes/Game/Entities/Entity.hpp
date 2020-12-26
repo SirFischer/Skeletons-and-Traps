@@ -5,6 +5,7 @@
 #include "AIMode.hpp"
 #include "ParticleEffect.hpp"
 #include "Projectile.hpp"
+#include "SoundPlayer.hpp"
 
 #include <map>
 
@@ -40,13 +41,18 @@ protected:
 	bool						mOnGround = false;
 	bool						mIsAlive = true;
 	bool						mIsBlocked = false;
+	bool						mKilled = false;
 	float						mAttackCooldown = 0.55f;
+	int							mDead = 0;
 
 	AIMode						mAIMode = AIMode::PATROL;
 	EntityAction				mAIAction = EntityAction::WALK_RIGHT;
 
+	SoundPlayer					mSound;
+
 	sf::Clock					mDeathClock;
 	sf::Clock					mAttackClock;
+	sf::Clock					mKilledClock;
 
 	sf::Sprite					mSprite;
 
