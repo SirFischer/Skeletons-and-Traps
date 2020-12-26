@@ -21,7 +21,6 @@ void				Entity::ApplyAnimation()
 
 void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> *tParticleEffects)
 {
-	mSound.Play(SoundEffect::EnemyAttack);
 	if (mAttackClock.getElapsedTime().asSeconds() < mAttackCooldown)
 		return ;
 	mAttackClock.restart();
@@ -32,6 +31,7 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 		mAction = EntityAction::ATTACK_RIGHT;
 	if (mAnimations[mAction].IsDone())
 	{
+		mSound.Play(SoundEffect::EnemyAttack);
 		mAnimations[mAction].ResetAnimation();
 		for (auto &entity : tEntities)
 		{
@@ -66,7 +66,6 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 
 void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffects)
 {
-	mSound.Play(SoundEffect::PlayerAttack);
 	(void)tParticleEffects;
 	if (mAttackClock.getElapsedTime().asSeconds() < mAttackCooldown)
 		return ;
@@ -77,6 +76,7 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 		mAction = EntityAction::ATTACK_RIGHT;
 	if (mAnimations[mAction].IsDone())
 	{
+		mSound.Play(SoundEffect::PlayerAttack);
 		mAnimations[mAction].ResetAnimation();
 	
 		if (tEntity->mSprite.getGlobalBounds().intersects(mSprite.getGlobalBounds()))
