@@ -3,7 +3,7 @@
 MusicPlayer::MusicPlayer()
 : mMusic()
 , mFilenames()
-, mVolume(100.f)
+, mVolume(20.f)
 {
     mFilenames[Music::MenuTheme]    = "assets/Music/MenuState.wav";
     mFilenames[Music::GameTheme]    = "assets/Music/Gamestate.wav";

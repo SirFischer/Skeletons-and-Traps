@@ -10,4 +10,5 @@
 #include "MenuState.hpp"
 #include "OptionsState.hpp"
 #include "GameOverState.hpp"
+#include "WinState.hpp"
 

@@ -46,6 +46,12 @@ void		StateManager::Run()
 			mStates.push(new GameOverState(mWindow));
 			break;
 
+		case StateAction::WIN:
+			delete mStates.top();
+			mStates.pop();
+			mStates.push(new WinState(mWindow));
+			break;
+
 		default:
 			delete mStates.top();
 			mStates.pop();

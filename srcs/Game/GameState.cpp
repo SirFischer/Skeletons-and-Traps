@@ -124,7 +124,7 @@ void		GameState::Update()
 	if (mMap.GetGoalStatus(mPlayer.GetEntity()))
 	{
 		mIsActive = false;
-		mStateReturnAction = StateAction::POP;
+		mStateReturnAction = StateAction::WIN;
 	}
 	
 	if (mPlayer.GetEntity()->GetHealth() > 0)
