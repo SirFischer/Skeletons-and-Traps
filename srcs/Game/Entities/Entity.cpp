@@ -44,7 +44,8 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 				entity->mDeathClock.restart();
 				entity->mAttackClock.restart();
 				sf::Vector2f	particlePos = entity->GetPosition() + (mSize / 2.f);
-				if (entity->GetPosition().x + (entity->mSize.x / 2.f) < mPosition.x + (mSize.x / 2.f))
+				//if (entity->GetPosition().x + (entity->mSize.x / 2.f) < mPosition.x + (mSize.x / 2.f))  //position dependent
+				if (mDirection == Direction::LEFT)
 				{
 					entity->mVelocity = sf::Vector2f(-6, -2);
 					particlePos.x -= 10;

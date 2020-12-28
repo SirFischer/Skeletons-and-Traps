@@ -73,8 +73,6 @@ void		GameState::Update()
 	mScoreText->SetTextFontSize(25);
 	mMap.HandleCollisions(mPlayer.GetEntity(), &mParticleEffects);
 	UpdateCameraPosition();
-	mHPText->SetText("HP: " + std::to_string((int)mPlayer.GetEntity()->GetHealth()));
-	mScoreText->SetText("Score: " + std::to_string(mStateInformations->mScore));
 	mPlayer.Update(mEntities, &mParticleEffects);
 	for (auto &particleEffect : mParticleEffects)
 	{
@@ -112,6 +110,7 @@ void		GameState::Update()
 		else if (!entity->IsDead())
 		{
 			entity->Kill();
+			mScoreText->SetTextFontSize(26);
 			mStateInformations->mScore += entity->GetScoreValue();
 		}
 		entity->Update();
@@ -154,6 +153,10 @@ void		GameState::Update()
 		}
 			
 	}
+
+
+	mHPText->SetText("HP: " + std::to_string((int)mPlayer.GetEntity()->GetHealth()));
+	mScoreText->SetText("Score: " + std::to_string(mStateInformations->mScore));
 }
 
 void		GameState::Render()
