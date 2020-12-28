@@ -11,7 +11,7 @@ PowerUp::~PowerUp()
 
 void		PowerUp::Update()
 {
-	mSprite.setPosition(sf::Vector2f(mPosition.x, mPosition.y + (sin(mClock.getElapsedTime().asSeconds() * 2.f) * 10.f)));
+	mSprite.setPosition(sf::Vector2f(mPosition.x, mPosition.y + ((sin(mClock.getElapsedTime().asSeconds() * 2.f) + 2.f) * 10.f)));
 }
 
 void		PowerUp::Render(Window *tWindow)

@@ -19,9 +19,11 @@ GameState::~GameState()
 	mWindow->ShowCursor();
 }
 
-void		GameState::Init()
+void		GameState::Init(StateInformations &tStateInformations)
 {
+	tStateInformations.mScore = 0;
 	mf::GUI::ClearWidgets();
+	mStateInformations = &tStateInformations;
 	mIsActive = true;
 	mStateReturnAction = StateAction::POP;
 
@@ -42,6 +44,14 @@ void		GameState::Init()
 	->SetTextFontSize(20);
 	mf::GUI::AddWidget(mHPText);
 
+	mScoreText = mf::Text::Create("assets/fonts/PressStart2P-Regular.ttf", "Score: 0");
+	mScoreText->SetPositionPercentage(true)
+	->SetPosition(40, 5)
+	->SetTextColor(sf::Color::White)
+	->SetBackgroundColor(sf::Color::Transparent)
+	->SetTextFontSize(20);
+	mf::GUI::AddWidget(mScoreText);
+
 }
 
 void		GameState::HandleEvents()
@@ -60,9 +70,11 @@ void		GameState::HandleEvents()
 
 void		GameState::Update()
 {
+	mScoreText->SetTextFontSize(25);
 	mMap.HandleCollisions(mPlayer.GetEntity(), &mParticleEffects);
 	UpdateCameraPosition();
 	mHPText->SetText("HP: " + std::to_string((int)mPlayer.GetEntity()->GetHealth()));
+	mScoreText->SetText("Score: " + std::to_string(mStateInformations->mScore));
 	mPlayer.Update(mEntities, &mParticleEffects);
 	for (auto &particleEffect : mParticleEffects)
 	{
@@ -97,11 +109,12 @@ void		GameState::Update()
 		entity->HandleCollisions(mEntities);
 		if (entity->GetHealth() > 0)
 			AI::ProcessEntity(&mPlayer, entity, &mParticleEffects, &mProjectiles);
+		else if (!entity->IsDead())
+		{
+			entity->Kill();
+			mStateInformations->mScore += entity->GetScoreValue();
+		}
 		entity->Update();
-	}
-
-	for (auto &entity : mEntities)
-	{
 		if (entity->IsAlive() == false)
 		{
 			delete entity;

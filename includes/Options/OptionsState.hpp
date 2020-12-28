@@ -15,7 +15,7 @@ public:
 	OptionsState(Window *tWindow);
 	~OptionsState();
 
-	void		Init();
+	void		Init(StateInformations &tStateInformations);
 	void		HandleEvents();
 	void		Update();
 	void		Render();

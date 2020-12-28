@@ -1,6 +1,7 @@
 #pragma once
 
 #include "States.hpp"
+#include "StateInformations.hpp"
 #include <stack>
 
 class StateManager

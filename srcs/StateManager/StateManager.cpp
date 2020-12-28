@@ -15,10 +15,11 @@ StateManager::~StateManager()
 void		StateManager::Run()
 {
 	StateAction	action = StateAction::POP;
+	StateInformations		informtations;
 	
 	while (mStates.size())
 	{
-		mStates.top()->Init();
+		mStates.top()->Init(informtations);
 		action = mStates.top()->Run();
 
 		switch (action)

@@ -40,10 +40,11 @@ protected:
 	float						mVerticalViewDistance = 200.f;
 	bool						mOnGround = false;
 	bool						mIsAlive = true;
+	bool						mIsDead = false;
 	bool						mIsBlocked = false;
 	bool						mKilled = false;
 	float						mAttackCooldown = 0.55f;
-	int							mDead = 0;
+	int							mScoreValue = 100;
 
 	AIMode						mAIMode = AIMode::PATROL;
 	EntityAction				mAIAction = EntityAction::WALK_RIGHT;
@@ -93,7 +94,10 @@ public:
 	//sf::Vector2f				GetSize(){return (sf::Vector2f(mSprite.getGlobalBounds().width, mSprite.getGlobalBounds().height));}
 	sf::Vector2f				GetSize(){return (mSize);}
 	float						GetHealth(){return (mHealth);}
+	int							GetScoreValue(){return (mScoreValue);}
 	bool						IsAlive(){return (mIsAlive);}
+	bool						IsDead(){return (mIsDead);}
+	void						Kill(){mIsDead = true;}
 	friend class				Map;
 	friend class				AI;
 };

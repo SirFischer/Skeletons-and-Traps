@@ -9,8 +9,9 @@ WinState::~WinState()
 {
 }
 
-void		WinState::Init()
+void		WinState::Init(StateInformations &tStateInformations)
 {
+	(void)tStateInformations;
     mWindow->SetDefaultView();
 	mf::GUI::ClearWidgets();
 	mIsActive = true;

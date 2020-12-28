@@ -9,8 +9,9 @@ OptionsState::~OptionsState()
 {
 }
 
-void		OptionsState::Init()
+void		OptionsState::Init(StateInformations &tStateInformations)
 {
+	(void)tStateInformations;
 	mf::GUI::ClearWidgets();
 	mIsActive = true;
 	mStateReturnAction = StateAction::POP;

@@ -2,6 +2,7 @@
 
 #include "Window.hpp"
 #include "StateAction.hpp"
+#include "StateInformations.hpp"
 
 class State
 {
@@ -17,7 +18,7 @@ public:
 
 	virtual				~State() {}
 
-	virtual void		Init() = 0;
+	virtual void		Init(StateInformations &tStateInformations) = 0;
 	virtual StateAction	Run();
 	virtual void		HandleEvents() = 0;
 	virtual void		Update() = 0;

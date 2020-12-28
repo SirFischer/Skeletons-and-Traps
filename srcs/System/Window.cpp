@@ -73,7 +73,7 @@ void	Window::ShowCursor()
 void	Window::View()
 {
 	mView.setSize(1600, 900);
-	mView.zoom(0.85f);
+	mView.zoom(0.70f);
 	mWindow.setView(mView);	
 }
 

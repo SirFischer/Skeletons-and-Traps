@@ -22,6 +22,8 @@ private:
 
 	Map										mMap;
 	Player									mPlayer;
+	StateInformations						*mStateInformations;
+
 	std::list<Entity *>						mEntities;
 
 	sf::Vector2f							mCameraVelocity = sf::Vector2f(0, 0);
@@ -30,6 +32,7 @@ private:
 	SoundPlayer								mSound;
 
 	mf::Text								*mHPText;
+	mf::Text								*mScoreText;
 	
 	std::list<ParticleEffect>				mParticleEffects;
 	std::list<Projectile>					mProjectiles;
@@ -43,7 +46,7 @@ public:
 	GameState(Window *tWindow);
 	~GameState();
 
-	void		Init();
+	void		Init(StateInformations &tStateInformations);
 	void		HandleEvents();
 	void		Update();
 	void		Render();

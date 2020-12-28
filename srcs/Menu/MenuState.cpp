@@ -10,8 +10,9 @@ MenuState::~MenuState()
 {
 }
 
-void		MenuState::Init()
+void		MenuState::Init(StateInformations &tStateInformations)
 {
+	(void)tStateInformations;
 	mWindow->SetDefaultView();
 	mf::GUI::ClearWidgets();
 	InputManager::ResetActionStates();

@@ -9,8 +9,9 @@ GameOverState::~GameOverState()
 {
 }
 
-void		GameOverState::Init()
+void		GameOverState::Init(StateInformations &tStateInformations)
 {
+	(void)tStateInformations;
     mWindow->SetDefaultView();
 	mf::GUI::ClearWidgets();
 	mIsActive = true;

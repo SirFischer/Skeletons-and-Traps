@@ -12,7 +12,7 @@ public:
     GameOverState(Window *tWindow);
     ~GameOverState();
 
-    void		Init();
+    void		Init(StateInformations &tStateInformations);
 	void		HandleEvents();
 	void		Update();
 	void		Render();
