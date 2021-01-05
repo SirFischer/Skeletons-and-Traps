@@ -27,6 +27,8 @@ private:
 	sf::Texture					mSpikeTexture;
 	sf::Texture					mGoalTexture;
 	sf::Texture					mDeathTexture;
+	sf::Texture					mSignTexture;
+	sf::Texture					mBushTexture;
 
 	sf::Sprite					mDeathSprite;
 	sf::Sprite					mGoalSprite;
@@ -36,6 +38,8 @@ private:
 	sf::Sprite					mDirt2Sprite;
 	sf::Sprite					mDirt3Sprite;
 	sf::Sprite					mGrassSprite;
+	sf::Sprite					mSignSprite;
+	sf::Sprite					mBushSprite;
 
 	sf::Sound					mSound;
 
