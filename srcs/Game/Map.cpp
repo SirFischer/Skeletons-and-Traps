@@ -26,6 +26,12 @@ Map::Map(std::string path)
 	if (!mDeathTexture.loadFromFile("assets/Textures/spike.png"))
 	{
 	}
+	if (!mSignTexture.loadFromFile("assets/Textures/Sign.png"))
+	{
+	}
+	if (!mBushTexture.loadFromFile("assets/Textures/Bush.png"))
+	{
+	}
 
 	//Textures/sprites
 	mDirtSprite.setTexture(mDirtTexture);
@@ -36,6 +42,8 @@ Map::Map(std::string path)
 	mSkySprite.setTexture(mSkyTexture);
 	mSpikeSprite.setTexture(mSpikeTexture);
 	mGoalSprite.setTexture(mGoalTexture);
+	mSignSprite.setTexture(mSignTexture);
+	mBushSprite.setTexture(mBushTexture);
 
 
 	mSpikeSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
@@ -44,6 +52,8 @@ Map::Map(std::string path)
 	mDirtSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mGrassSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mSkySprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mSignSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mBushSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 
 	std::fstream				map;
 	std::string					tmp;
@@ -335,6 +345,16 @@ void		Map::Draw(Window *tWindow)
 			{
 				mGrassSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mGrassSprite);
+			}
+			if (i[x] == 'i')
+			{
+				mSignSprite.setPosition(x * BLOCK_SIZE, (y * BLOCK_SIZE) + 5);
+				tWindow->Draw(mSignSprite);
+			}
+			if (i[x] == 'b')
+			{
+				mBushSprite.setPosition(x * BLOCK_SIZE, (y * BLOCK_SIZE) + 5);
+				tWindow->Draw(mBushSprite);
 			}
 			if (i[x] == '_')
 			{
