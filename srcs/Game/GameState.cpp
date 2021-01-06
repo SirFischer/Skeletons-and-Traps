@@ -166,13 +166,14 @@ void		GameState::Render()
 	mWindow->Draw(mBackground);
 	mWindow->View();
 	mMap.Draw(mWindow);
+	for (auto &particleEffect : mParticleEffects)
+		particleEffect.Render(mWindow);
 	mPlayer.Render(mWindow);
 	for (auto &projectile : mProjectiles)
 		projectile.Render(mWindow);
 	for (auto &entity : mEntities)
 		entity->Render(mWindow);
-	for (auto &particleEffect : mParticleEffects)
-		particleEffect.Render(mWindow);
+	
 	for (auto &powerUp : mPowerUps)
 		powerUp.Render(mWindow);
 	mWindow->SetDefaultView();

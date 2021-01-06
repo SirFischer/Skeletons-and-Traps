@@ -64,6 +64,7 @@ void	Hero::Update()
 	{
 		mAction = EntityAction::DIE;
 		mAttackDamage = 0;
+		mSize.y = mSprite.getGlobalBounds().height / 1.8;
 		if (mDeathClock.getElapsedTime().asSeconds() > 6.0)
 			mIsAlive = false;
 	}

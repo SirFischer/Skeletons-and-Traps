@@ -143,12 +143,12 @@ void		MenuState::Render()
 	mWindow->Clear(sf::Color(135,206,235));
 	mWindow->SetDefaultView();
 	mWindow->Draw(mBackground);
+	mMap.Draw(mWindow);
+	for (auto &particleEffect : mParticleEffects)
+		particleEffect.Render(mWindow);
 	mPlayer.Render(mWindow);
 	for (auto &entity : mEntities)
 		entity->Render(mWindow);
-	for (auto &particleEffect : mParticleEffects)
-		particleEffect.Render(mWindow);
-	mMap.Draw(mWindow);
 	mf::GUI::Render();
 	mWindow->Render();
 }
