@@ -6,6 +6,7 @@
 class WinState : public State
 {
 private:
+    sf::Text            mWinText;
     sf::Text            mScoreText;
 	mf::Button		    *mQuitBtn;
 public:
