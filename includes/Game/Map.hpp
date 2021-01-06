@@ -23,8 +23,10 @@ private:
 	sf::Texture					mDirtTexture;
 	sf::Texture					mDirt2Texture;
 	sf::Texture					mDirt3Texture;
+	sf::Texture					mDirt4Texture;
 	sf::Texture					mGrassTexture;
 	sf::Texture					mSpikeTexture;
+	sf::Texture					mSpikeOnDirtTexture;
 	sf::Texture					mGoalTexture;
 	sf::Texture					mDeathTexture;
 	sf::Texture					mSignTexture;
@@ -34,10 +36,12 @@ private:
 	sf::Sprite					mDeathSprite;
 	sf::Sprite					mGoalSprite;
 	sf::Sprite					mSpikeSprite;
+	sf::Sprite					mSpikeOnDirtSprite;
 	sf::Sprite					mSkySprite;
 	sf::Sprite					mDirtSprite;
 	sf::Sprite					mDirt2Sprite;
 	sf::Sprite					mDirt3Sprite;
+	sf::Sprite					mDirt4Sprite;
 	sf::Sprite					mGrassSprite;
 	sf::Sprite					mSignSprite;
 	sf::Sprite					mBushSprite;

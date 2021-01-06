@@ -11,6 +11,9 @@ Map::Map(std::string path)
 	if (!mDirt3Texture.loadFromFile("assets/Textures/dirt_w_vines.png"))
 	{
 	}
+	if (!mDirt4Texture.loadFromFile("assets/Textures/BackgroundDirt.png"))
+	{
+	}
 	if (!mGrassTexture.loadFromFile("assets/Textures/green400x400.png"))
 	{
 	}
@@ -18,6 +21,9 @@ Map::Map(std::string path)
 	{
 	}
 	if (!mSpikeTexture.loadFromFile("assets/Textures/spike.png"))
+	{
+	}
+	if (!mSpikeOnDirtTexture.loadFromFile("assets/Textures/SpikeOnDirt.png"))
 	{
 	}
 	if (!mGoalTexture.loadFromFile("assets/Textures/flag.png"))
@@ -40,10 +46,12 @@ Map::Map(std::string path)
 	mDirtSprite.setTexture(mDirtTexture);
 	mDirt2Sprite.setTexture(mDirt2Texture);
 	mDirt3Sprite.setTexture(mDirt3Texture);
+	mDirt4Sprite.setTexture(mDirt4Texture);
 	mDeathSprite.setTexture(mDeathTexture);
 	mGrassSprite.setTexture(mGrassTexture);
 	mSkySprite.setTexture(mSkyTexture);
 	mSpikeSprite.setTexture(mSpikeTexture);
+	mSpikeOnDirtSprite.setTexture(mSpikeOnDirtTexture);
 	mGoalSprite.setTexture(mGoalTexture);
 	mSignSprite.setTexture(mSignTexture);
 	mBushSprite.setTexture(mBushTexture);
@@ -111,7 +119,7 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 			if (x >= (int)mMapLines[y].length())
 				break;
 
-			if(mMapLines[y][x] == 'k')
+			if(mMapLines[y][x] == 'k' || mMapLines[y][x] == 'c')
 			{
 				int my = y * BLOCK_SIZE;
 				int mx = x * BLOCK_SIZE;
@@ -351,6 +359,11 @@ void		Map::Draw(Window *tWindow)
 				mGrassSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mGrassSprite);
 			}
+			if ((i[x] == '3' || i[x] == '4' || i[x] == 'n' || i[x] == '+' || i[x] == 'i') && mMapLines[y - 1][x] == ',')
+			{
+				mDirt4Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mDirt4Sprite);
+			}
 			if (i[x] == 'i')
 			{
 				mSignSprite.setPosition(x * BLOCK_SIZE, (y * BLOCK_SIZE) + 5);
@@ -371,6 +384,11 @@ void		Map::Draw(Window *tWindow)
 				mDirtSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mDirtSprite);
 			}
+			if (i[x] == ',')
+			{
+				mDirt4Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mDirt4Sprite);
+			}
 			if (i[x] == 'v')
 			{
 				mDirt3Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
@@ -385,6 +403,11 @@ void		Map::Draw(Window *tWindow)
 			{
 				mSpikeSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mSpikeSprite);
+			}
+			if (i[x] == 'c')
+			{
+				mSpikeOnDirtSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mSpikeOnDirtSprite);
 			}
 			if (i[x] == 'g')
 			{
