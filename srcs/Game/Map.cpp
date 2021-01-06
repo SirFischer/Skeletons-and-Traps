@@ -32,6 +32,9 @@ Map::Map(std::string path)
 	if (!mBushTexture.loadFromFile("assets/Textures/Bush.png"))
 	{
 	}
+	if (!mSwordTexture.loadFromFile("assets/Textures/BloodySword.png"))
+	{
+	}
 
 	//Textures/sprites
 	mDirtSprite.setTexture(mDirtTexture);
@@ -44,6 +47,7 @@ Map::Map(std::string path)
 	mGoalSprite.setTexture(mGoalTexture);
 	mSignSprite.setTexture(mSignTexture);
 	mBushSprite.setTexture(mBushTexture);
+	mSwordSprite.setTexture(mSwordTexture);
 
 
 	mSpikeSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
@@ -54,6 +58,7 @@ Map::Map(std::string path)
 	mSkySprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mSignSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mBushSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mSwordSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 
 	std::fstream				map;
 	std::string					tmp;
@@ -355,6 +360,11 @@ void		Map::Draw(Window *tWindow)
 			{
 				mBushSprite.setPosition(x * BLOCK_SIZE, (y * BLOCK_SIZE) + 5);
 				tWindow->Draw(mBushSprite);
+			}
+			if (i[x] == 'n')
+			{
+				mSwordSprite.setPosition(x * BLOCK_SIZE, (y * BLOCK_SIZE) + 5);
+				tWindow->Draw(mSwordSprite);
 			}
 			if (i[x] == '_')
 			{
