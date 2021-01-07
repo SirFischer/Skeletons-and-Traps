@@ -19,11 +19,17 @@ void		WinState::Init(StateInformations &tStateInformations)
 	mWindow->ShowCursor();
 
     //Text 
-    mScoreText.setFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));
-    mScoreText.setPosition(714, 100);
-	mScoreText.setCharacterSize(40);
-    mScoreText.setFillColor(sf::Color::Yellow);
-    mScoreText.setString("You Won!");
+    mWinText.setFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));
+    mWinText.setPosition(714, 100);
+	mWinText.setCharacterSize(40);
+    mWinText.setFillColor(sf::Color::Yellow);
+    mWinText.setString("You Won!");
+
+	mScoreText.setFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));
+    mScoreText.setPosition(714, 300);
+	mScoreText.setCharacterSize(30);
+    mScoreText.setFillColor(sf::Color::White);
+    mScoreText.setString("Score: " + std::to_string(tStateInformations.mScore));
 
 	/**
 	 * INIT STATE AND GUI
@@ -68,6 +74,7 @@ void		WinState::Render()
 {
 	mWindow->Clear(sf::Color::Black);
 	mf::GUI::Render();
+    mWindow->Draw(mWinText);
     mWindow->Draw(mScoreText);
     mWindow->Render();
 }

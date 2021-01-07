@@ -67,6 +67,7 @@ void	DarkArcher::Update()
 	if (mHealth <= 0)
 	{
 		mAction = EntityAction::DIE;
+		mSize.y = mSprite.getGlobalBounds().height / 1.8;
 		if (mDeathClock.getElapsedTime().asSeconds() > 6.0)
 			mIsAlive = false;
 	}
