@@ -29,7 +29,21 @@ private:
 	sf::Texture					mDeathTexture;
 	sf::Texture					mSignTexture;
 	sf::Texture					mBushTexture;
+	sf::Texture					mWallTexture;
+	sf::Texture					mWall2Texture;
+	sf::Texture					mWalltopTexture;
+	sf::Texture					mWall3Texture;
+	sf::Texture					mDoorTexture;
+	sf::Texture					mDoor2Texture;
+	sf::Texture					mFloorTexture;
 
+	sf::Sprite					mWallSprite;
+	sf::Sprite					mWall2Sprite;
+	sf::Sprite					mWall3Sprite;
+	sf::Sprite					mWalltopSprite;
+	sf::Sprite					mDoorSprite;
+	sf::Sprite					mDoor2Sprite;
+	sf::Sprite					mFloorSprite;
 	sf::Sprite					mDeathSprite;
 	sf::Sprite					mGoalSprite;
 	sf::Sprite					mSpikeSprite;

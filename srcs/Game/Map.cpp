@@ -32,6 +32,29 @@ Map::Map(std::string path)
 	if (!mBushTexture.loadFromFile("assets/Textures/Bush.png"))
 	{
 	}
+	if (!mWallTexture.loadFromFile("assets/Textures/wall.png"))
+	{
+	}
+	if (!mWall2Texture.loadFromFile("assets/Textures/wall-inside.png"))
+	{
+	}
+	if (!mWalltopTexture.loadFromFile("assets/Textures/wall-top.png"))
+	{
+	}
+	if (!mFloorTexture.loadFromFile("assets/Textures/floor.png"))
+	{
+	}
+	if (!mDoor2Texture.loadFromFile("assets/Textures/door-open.png"))
+	{
+	}
+	if (!mDoorTexture.loadFromFile("assets/Textures/door.png"))
+	{
+	}
+	if (!mWall3Texture.loadFromFile("assets/Textures/wall-inside-door.png"))
+	{
+	}
+
+	
 
 	//Textures/sprites
 	mDirtSprite.setTexture(mDirtTexture);
@@ -44,8 +67,21 @@ Map::Map(std::string path)
 	mGoalSprite.setTexture(mGoalTexture);
 	mSignSprite.setTexture(mSignTexture);
 	mBushSprite.setTexture(mBushTexture);
+	mWallSprite.setTexture(mWallTexture);
+	mWall2Sprite.setTexture(mWall2Texture);
+	mWall3Sprite.setTexture(mWall3Texture);
+	mWalltopSprite.setTexture(mWalltopTexture);
+	mDoorSprite.setTexture(mDoorTexture);
+	mDoor2Sprite.setTexture(mDoor2Texture);
+	mFloorSprite.setTexture(mFloorTexture);
 
-
+	mWallSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mWall2Sprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mWall3Sprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mDoorSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mDoor2Sprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mFloorSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mWalltopSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mSpikeSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mDeathSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mGoalSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
@@ -141,7 +177,7 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 			}
 
 			//if block is solid
-			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v'/* || mMapLines[y][x] == 'k'*/)
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v' || mMapLines[y][x] == 'o' || mMapLines[y][x] == 'j' || mMapLines[y][x] == 'l'/* || mMapLines[y][x] == 'k'*/)
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
@@ -386,6 +422,42 @@ void		Map::Draw(Window *tWindow)
 				mDeathSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				//tWindow->Draw(mDeathSprite);
 			}
+			if (i[x] == 'o')
+			{
+				mWallSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWallSprite);
+			}
+			if (i[x] == 'h')
+			{
+				mWall2Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWall2Sprite);
+			}
+			if (i[x] == 'q')
+			{
+				mWall3Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWall3Sprite);
+			}
+			if (i[x] == 'j')
+			{
+				mWalltopSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWalltopSprite);
+			}
+			if (i[x] == 'l')
+			{
+				mFloorSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mFloorSprite);
+			}
+			if (i[x] == 'd')
+			{
+				mDoorSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mDoorSprite);
+			}
+			if (i[x] == 'f')
+			{
+				mDoor2Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mDoor2Sprite);
+			}
+			
 		}
 	}
 }
