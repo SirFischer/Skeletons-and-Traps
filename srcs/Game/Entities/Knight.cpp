@@ -1,9 +1,9 @@
-#include "Orc.hpp"
+#include "Knight.hpp"
 
-Orc::Orc(/* args */)
+Knight::Knight(/* args */)
 {
 	mPosition = sf::Vector2f(400, 100);
-	mSprite.setTexture(*ResourceManager::LoadTexture("assets/Textures/Orc.png"));
+	mSprite.setTexture(*ResourceManager::LoadTexture("assets/Textures/Knight.png"));
 	for (size_t i = 0; i < 9; i++)
 		mAnimations[EntityAction::WALK_LEFT].AddFrame(sf::IntRect(64 * i, 64 * 9, 64, 64));
 	mAnimations[EntityAction::WALK_LEFT].SetLength(0.1);
@@ -28,24 +28,24 @@ Orc::Orc(/* args */)
 	if (mAnimations.count(mAction))
 		mSprite.setTextureRect(mAnimations[mAction].GetTextureRect());
 	mSprite.setOrigin(16, 8);
-	mRunSpeed = 0.45f;
-	mSpeed = 0.17f;
-	mViewDistance = 400.f;
-	mVerticalViewDistance = 400.f;
+	mRunSpeed = 0.18f;
+	mSpeed = 0.13f;
+	mViewDistance = 200.f;
+	mVerticalViewDistance = 100.f;
 	mAttackDamage = 5;
-	mKnockBack = 3.f;
-	mJumpForce = 4.f;
+	mJumpForce = 2.5f;
+	mKnockBack = 8.f;
 	mScoreValue = 75;
-	mHealth = 10.f;
+	mHealth = 200.f;
 
 	mSound.SetVolume(SoundEffect::EnemyAttack, 0.5);
 }
 
-Orc::~Orc()
+Knight::~Knight()
 {
 }
 
-void	Orc::Update()
+void	Knight::Update()
 {
 	mIsBlocked = false;
 	if (!mAnimations[EntityAction::ATTACK_LEFT].IsDone())
@@ -78,7 +78,7 @@ void	Orc::Update()
 }
 
 
-void	Orc::Render(Window	*tWindow)
+void	Knight::Render(Window	*tWindow)
 {
 	tWindow->Draw(mSprite);
 }

@@ -4,3 +4,4 @@
 # include "Skeleton.hpp"
 # include "DarkArcher.hpp"
 # include "Orc.hpp"
+# include "Knight.hpp"
