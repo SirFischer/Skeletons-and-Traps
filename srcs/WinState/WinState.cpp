@@ -31,6 +31,12 @@ void		WinState::Init(StateInformations &tStateInformations)
     mScoreText.setFillColor(sf::Color::White);
     mScoreText.setString("Score: " + std::to_string(tStateInformations.mScore));
 
+	mHighScore.setFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));
+    mHighScore.setPosition(714, 600);
+	mHighScore.setCharacterSize(30);
+    mHighScore.setFillColor(sf::Color::White);
+    mHighScore.setString("Highscore: " + std::to_string(tStateInformations.mScore));
+
 	/**
 	 * INIT STATE AND GUI
 	 **/
@@ -53,6 +59,21 @@ void		WinState::Init(StateInformations &tStateInformations)
 
 	mf::GUI::AddWidget(mQuitBtn);
 
+	//HIGHSCORE
+	std::fstream	stream;
+	std::string		scoreString;
+	stream.open("assets/Highscore.score", std::fstream::in);
+	stream >> scoreString;
+	mHighScore.setString("Highscore: " + scoreString);
+	stream.close();
+	if (tStateInformations.mScore > std::stoi(scoreString))
+	{
+		mHighScore.setString("Highscore: " + std::to_string(tStateInformations.mScore));
+		stream.open("assets/Highscore.score", std::fstream::out);
+		stream << std::to_string(tStateInformations.mScore) << std::endl;
+		mWinText.setString("You Won!\n New highscore!");
+		stream.close();
+	}
 }
 void		WinState::HandleEvents()
 {
@@ -75,6 +96,7 @@ void		WinState::Render()
 	mWindow->Clear(sf::Color::Black);
 	mf::GUI::Render();
     mWindow->Draw(mWinText);
+    mWindow->Draw(mHighScore);
     mWindow->Draw(mScoreText);
     mWindow->Render();
 }
