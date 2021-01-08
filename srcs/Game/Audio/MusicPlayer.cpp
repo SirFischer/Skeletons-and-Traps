@@ -3,7 +3,7 @@
 MusicPlayer::MusicPlayer()
 : mMusic()
 , mFilenames()
-, mVolume(20.f)
+, mVolume(3.f)
 {
     mFilenames[Music::MenuTheme]    = "assets/Music/MenuState.wav";
     mFilenames[Music::GameTheme]    = "assets/Music/Gamestate.wav";
@@ -19,7 +19,6 @@ void    MusicPlayer::Play(Music:: ID theme)
 
     if (!mMusic.openFromFile(filename))
         throw std::runtime_error("Music " + filename + "could no be loaded.");
-    mVolume = 20.f;
     mMusic.setVolume(mVolume);
     mMusic.setLoop(true);
     mMusic.play();

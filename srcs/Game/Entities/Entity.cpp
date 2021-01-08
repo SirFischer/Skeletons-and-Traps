@@ -59,6 +59,7 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 				ParticleEffect effect(particlePos, 3.f, 0.8f, 300, angle, M_PI / 3.5f);
 				effect.SetParticleColor(sf::Color::Red);
 				tParticleEffects->push_back(effect);
+				mSound.Play(SoundEffect::EntityImpact);
 			}
 		}
 	}	
@@ -100,6 +101,7 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 			ParticleEffect effect(particlePos, 3.f, 0.8f, 300, angle, M_PI / 3.5f);
 			effect.SetParticleColor(sf::Color::Red);
 			tParticleEffects->push_back(effect);
+			mSound.Play(SoundEffect::EntityImpact);
 		}
 	}	
 }
