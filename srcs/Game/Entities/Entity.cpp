@@ -6,6 +6,8 @@ Entity::Entity(/* args */)
 	mSound.SetPitch(SoundEffect::EntityImpact, 1.5);
 	mSound.SetVolume(SoundEffect::EnemyAttack, 0.5);
 	mSound.SetVolume(SoundEffect::EnemyJump, 0.5);
+	mSound.SetVolume(SoundEffect::PickUp, 0.5);
+	mSound.SetPitch(SoundEffect::PickUp, 1.5);
 }
 
 Entity::~Entity()
@@ -82,7 +84,7 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 		mAction = EntityAction::ATTACK_RIGHT;
 	if (mAnimations[mAction].IsDone())
 	{
-		mSound.Play(SoundEffect::PlayerAttack);
+		mSound.Play(SoundEffect::EnemyAttack);
 		mAnimations[mAction].ResetAnimation();
 	
 		if (tEntity->mSprite.getGlobalBounds().intersects(mSprite.getGlobalBounds()))
@@ -126,9 +128,15 @@ void	Entity::Shoot(std::list<Projectile> *tProjectiles)
 		Projectile projectile(mPosition + sf::Vector2f(20, 30), (mDirection == Direction::LEFT) ? M_PI : 0, 10.f);
 		projectile.mParent = this;
 		tProjectiles->push_back(projectile);
-		std::cout << "added projectile to list: " << tProjectiles->size() << std::endl;
+		mSound.Play(SoundEffect::EnemyShoot);
 	}
 }
+
+void				Entity::PickUp()
+{
+	mSound.Play(SoundEffect::PickUp);
+}
+
 
 void				Entity::Reset()
 {

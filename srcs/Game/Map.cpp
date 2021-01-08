@@ -357,6 +357,7 @@ void			Map::SpawnPowerUps(std::list<PowerUp> *tPowerUps)
 				tPowerUps->push_front(powerUp);
 				tPowerUps->front().SetEffect([](Entity *tEntity){
 					tEntity->AddHealth(50.f);
+					tEntity->PickUp();
 				});
 				tPowerUps->front().SetTexture("assets/Textures/healthPowerUp.png");
 			}

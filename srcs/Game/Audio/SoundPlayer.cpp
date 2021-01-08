@@ -15,10 +15,12 @@ SoundPlayer::SoundPlayer(/* args */)
     mSoundNames[SoundEffect::EnemyAttack]               = "assets/Sound effects/sword swing_04.wav";
     mSoundNames[SoundEffect::EnemyHit]                  = "assets/Sound effects/Door_Openning.wav";
     mSoundNames[SoundEffect::EnemyDeath]                = "assets/Sound effects/Rocks Moving.wav";
+	mSoundNames[SoundEffect::EnemyShoot]				= "assets/Sound effects/drawKnife1.ogg";
 
     mSoundNames[SoundEffect::TrapCollision]             = "assets/Sound effects/Rocks Moving.wav";
     mSoundNames[SoundEffect::GoalReached]               = "assets/Sound effects/itempickup.wav";
     mSoundNames[SoundEffect::MenuButtonPressed]         = "assets/Sound effects/Lever.wav";
+	mSoundNames[SoundEffect::PickUp]					= "assets/Sound effects/impactGlass_light_002.ogg";
 }
 
 SoundPlayer::~SoundPlayer()
