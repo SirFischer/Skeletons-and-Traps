@@ -75,6 +75,8 @@ public:
 
 	virtual void				Shoot(std::list<Projectile> *tProjectiles);
 
+	void						PickUp();
+
 	void						Reset();
 
 	void						HandleCollisions(std::list<Entity *> tEntities);

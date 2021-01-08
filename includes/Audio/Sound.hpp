@@ -18,6 +18,7 @@ namespace SoundEffect
         EnemyAttack,
         EnemyDeath,
         EnemyHit,
+		EnemyShoot,
 
 		EntityImpact,
 
@@ -26,6 +27,7 @@ namespace SoundEffect
         GoalReached,
 
         MenuButtonPressed,
+		PickUp
     };
     
 }

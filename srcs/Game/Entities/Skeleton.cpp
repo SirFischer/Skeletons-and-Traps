@@ -32,6 +32,8 @@ Skeleton::Skeleton(/* args */)
 	mSpeed = 0.17f;
 	mJumpForce = 4.f;
 	mScoreValue = 75;
+
+	mSound.SetVolume(SoundEffect::EnemyAttack, 0.5);
 }
 
 Skeleton::~Skeleton()
