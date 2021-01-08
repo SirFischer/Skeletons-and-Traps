@@ -467,7 +467,7 @@ void		Map::Draw(Window *tWindow)
 			}
 			if (i[x] == 'g')
 			{
-				mGoalSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				mGoalSprite.setPosition(x * BLOCK_SIZE, (y * BLOCK_SIZE) + 5);
 				tWindow->Draw(mGoalSprite);
 			}
 			if (i[x] == 'z')
