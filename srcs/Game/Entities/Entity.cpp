@@ -218,6 +218,7 @@ void				Entity::HandleProjectileCollision(Projectile *tProjectile, std::list<Par
 		effect.SetParticleColor(sf::Color::Red);
 		tParticleEffects->push_back(effect);
 		mHealth -= 30.f;
+		mSound.Play(SoundEffect::EntityImpact);
 	}
 }
 
