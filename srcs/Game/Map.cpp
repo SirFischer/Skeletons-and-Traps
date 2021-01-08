@@ -339,6 +339,11 @@ void		Map::SpawnEntities(std::list<Entity *> *tEntities)
 				tEntities->push_front(new DarkArcher());
 				tEntities->front()->mPosition = sf::Vector2f(x * BLOCK_SIZE, y * BLOCK_SIZE);
 			}
+			if (i[x] == '2')
+			{
+				tEntities->push_front(new Orc());
+				tEntities->front()->mPosition = sf::Vector2f(x * BLOCK_SIZE, y * BLOCK_SIZE);
+			}
 		}
 		y++;
 	}
@@ -410,12 +415,12 @@ void		Map::Draw(Window *tWindow)
 				mGrassSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mGrassSprite);
 			}
-			if ((i[x] == '3' || i[x] == '4' || i[x] == 'n' || i[x] == '+' || i[x] == 'i' || i[x] == 'k') && mMapLines[y - 1][x] == ',')
+			if ((i[x] == '3' || i[x] == '4' || i[x] == '2' || i[x] == 'n' || i[x] == '+' || i[x] == 'i' || i[x] == 'k') && mMapLines[y - 1][x] == ',')
 			{
 				mDirt4Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mDirt4Sprite);
 			}
-			if ((i[x] == '3' || i[x] == '4' || i[x] == 'n' || i[x] == '+' || i[x] == 'i' || i[x] == 'k') && mMapLines[y - 1][x] == 'h')
+			if ((i[x] == '3' || i[x] == '4' || i[x] == '2' || i[x] == 'n' || i[x] == '+' || i[x] == 'i' || i[x] == 'k') && mMapLines[y - 1][x] == 'h')
 			{
 				mWall4Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mWall4Sprite);
