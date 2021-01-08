@@ -38,7 +38,7 @@ void		MenuState::Init(StateInformations &tStateInformations)
 	 * Button coloring/text/state return
 	 **/
 
-	mPlayBtn = mf::Button::Create("assets/Textures/play.png", "assets/Textures/play.png");
+	mPlayBtn = mf::Button::Create("assets/Textures/play.png", "assets/Textures/greenbuttonHL.png");
 	mPlayBtn->SetSize(150, 50);
 	mPlayBtn->SetPositionPercentage(true)->SetPosition(45, 35);
 	mPlayBtn->SetClickEvent([actionReturn, active] {
@@ -46,7 +46,7 @@ void		MenuState::Init(StateInformations &tStateInformations)
 		*active = false;
 	});
 
-	mOptionBtn = mf::Button::Create("assets/Textures/options.png", "assets/Textures/options.png");
+	mOptionBtn = mf::Button::Create("assets/Textures/options.png", "assets/Textures/bluebuttonHL.png");
 	mOptionBtn->SetSize(150, 50);
 	mOptionBtn->SetPositionPercentage(true)->SetPosition(45, 45);
 	mOptionBtn->SetClickEvent([actionReturn, active] {
@@ -54,7 +54,7 @@ void		MenuState::Init(StateInformations &tStateInformations)
 		*active = false;
 	});
 
-	mQuitBtn = mf::Button::Create("assets/Textures/exit.png", "assets/Textures/exit.png");
+	mQuitBtn = mf::Button::Create("assets/Textures/exit.png", "assets/Textures/buttonHL.png");
 	mQuitBtn->SetSize(150, 50);
 	mQuitBtn->SetPositionPercentage(true)->SetPosition(45, 55);
 	mQuitBtn->SetClickEvent([actionReturn, active] {

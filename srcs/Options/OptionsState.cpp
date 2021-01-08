@@ -26,7 +26,7 @@ void		OptionsState::Init(StateInformations &tStateInformations)
 	/**
 	 * Button coloring/text/state return/ volume slider
 	 **/
-	mQuitButton = mf::Button::Create("assets/Textures/exit.png", "assets/Textures/exit.png");
+	mQuitButton = mf::Button::Create("assets/Textures/exit.png", "assets/Textures/buttonHL.png");
 	mQuitButton->SetSize(150, 50);
 	mQuitButton->SetPositionPercentage(true)->SetPosition(45, 60);
 	mQuitButton->SetTextFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));

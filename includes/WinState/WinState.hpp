@@ -12,6 +12,7 @@ private:
     sf::Text            mScoreText;
 	sf::Text			mHighScore;
 	mf::Button		    *mQuitBtn;
+    mf::Button          *mVictoryBtn;
 public:
     WinState(Window *tWindow);
     ~WinState();

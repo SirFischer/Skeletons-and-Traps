@@ -32,7 +32,7 @@ void		WinState::Init(StateInformations &tStateInformations)
     mScoreText.setString("Score: " + std::to_string(tStateInformations.mScore));
 
 	mHighScore.setFont(*ResourceManager::LoadFont("assets/fonts/Roboto-Regular.ttf"));
-    mHighScore.setPosition(714, 600);
+    mHighScore.setPosition(714, 350);
 	mHighScore.setCharacterSize(30);
     mHighScore.setFillColor(sf::Color::White);
     mHighScore.setString("Highscore: " + std::to_string(tStateInformations.mScore));
@@ -44,7 +44,11 @@ void		WinState::Init(StateInformations &tStateInformations)
     StateAction	*actionReturn = &mStateReturnAction;
 	bool		*active = &mIsActive;
 
-    mQuitBtn = mf::Button::Create("assets/Textures/exit.png", "assets/Textures/exit.png");
+	mVictoryBtn = mf::Button::Create("assets/Textures/victory.png", "assets/Textures/victory.png");
+	mVictoryBtn->SetSize(64, 64);
+	mVictoryBtn->SetPositionPercentage(true)->SetPosition(47.8, 47);
+
+    mQuitBtn = mf::Button::Create("assets/Textures/exit.png", "assets/Textures/buttonHL.png");
 	mQuitBtn->SetSize(150, 50);
 	mQuitBtn->SetPositionPercentage(true)->SetPosition(45, 55);
 	mQuitBtn->SetClickEvent([actionReturn, active] {
@@ -58,6 +62,7 @@ void		WinState::Init(StateInformations &tStateInformations)
 	mQuitBtn->SetText("Quit!");
 
 	mf::GUI::AddWidget(mQuitBtn);
+	mf::GUI::AddWidget(mVictoryBtn);
 
 	//HIGHSCORE
 	std::fstream	stream;

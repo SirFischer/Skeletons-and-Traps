@@ -8,6 +8,7 @@ class GameOverState : public State
 private:
     sf::Text            mScoreText;
 	mf::Button		    *mQuitBtn;
+    mf::Button          *mDeadBtn;
 public:
     GameOverState(Window *tWindow);
     ~GameOverState();

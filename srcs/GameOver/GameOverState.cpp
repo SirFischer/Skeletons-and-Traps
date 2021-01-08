@@ -30,8 +30,12 @@ void		GameOverState::Init(StateInformations &tStateInformations)
 
     StateAction	*actionReturn = &mStateReturnAction;
 	bool		*active = &mIsActive;
+	
+	mDeadBtn = mf::Button::Create("assets/Textures/gameover.png", "assets/Textures/gameover.png");
+	mDeadBtn->SetSize(64, 64);
+	mDeadBtn->SetPositionPercentage(true)->SetPosition(47.8, 49);
 
-    mQuitBtn = mf::Button::Create("assets/Textures/exit.png", "assets/Textures/exit.png");
+    mQuitBtn = mf::Button::Create("assets/Textures/exit.png", "assets/Textures/buttonHL.png");
 	mQuitBtn->SetSize(150, 50);
 	mQuitBtn->SetPositionPercentage(true)->SetPosition(45, 55);
 	mQuitBtn->SetClickEvent([actionReturn, active] {
@@ -44,6 +48,7 @@ void		GameOverState::Init(StateInformations &tStateInformations)
 	mQuitBtn->SetTextPosition(sf::Vector2f(45, 5));
 	mQuitBtn->SetText("Quit!");
 
+	mf::GUI::AddWidget(mDeadBtn);
 	mf::GUI::AddWidget(mQuitBtn);
 
 }
