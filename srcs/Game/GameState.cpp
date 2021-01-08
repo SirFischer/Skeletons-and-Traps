@@ -1,7 +1,7 @@
 #include "GameState.hpp"
 
 GameState::GameState(Window *tWindow)
-:mMap("assets/Map/map.txt")
+:mMap("assets/Map/SkeletonValley.txt")
 {
 	mWindow = tWindow;
 	mWindow->HideCursor();
