@@ -31,7 +31,7 @@ void		GameOverState::Init(StateInformations &tStateInformations)
     StateAction	*actionReturn = &mStateReturnAction;
 	bool		*active = &mIsActive;
 
-    mQuitBtn = mf::Button::Create(sf::Color::Red, sf::Color::Yellow);
+    mQuitBtn = mf::Button::Create("assets/Textures/exit.png", "assets/Textures/exit.png");
 	mQuitBtn->SetSize(150, 50);
 	mQuitBtn->SetPositionPercentage(true)->SetPosition(45, 55);
 	mQuitBtn->SetClickEvent([actionReturn, active] {

@@ -41,7 +41,7 @@ Map::Map(std::string path)
 	if (!mWallTexture.loadFromFile("assets/Textures/wall.png"))
 	{
 	}
-	if (!mWall2Texture.loadFromFile("assets/Textures/wall-inside.png"))
+	if (!mWall4Texture.loadFromFile("assets/Textures/wall-background.png"))
 	{
 	}
 	if (!mWalltopTexture.loadFromFile("assets/Textures/wall-top.png"))
@@ -59,14 +59,28 @@ Map::Map(std::string path)
 	if (!mWall3Texture.loadFromFile("assets/Textures/wall-inside-door.png"))
 	{
 	}
-
-	
 	if (!mSwordTexture.loadFromFile("assets/Textures/BloodySword.png"))
+	{
+	}
+	if (!mWall2Texture.loadFromFile("assets/Textures/wall-inside.png"))
+	{
+	}
+	if (!mSign2Texture.loadFromFile("assets/Textures/danger-sign.png"))
+	{
+	}
+	if (!mDoor3Texture.loadFromFile("assets/Textures/door-open-exit.png"))
+	{
+	}
+	if (!mWindowTexture.loadFromFile("assets/Textures/window.png"))
 	{
 	}
 
 	//Textures/sprites
 	mDirtSprite.setTexture(mDirtTexture);
+	mWindowSprite.setTexture(mWindowTexture);
+	mWall2Sprite.setTexture(mWall2Texture);
+	mSign2Sprite.setTexture(mSign2Texture);
+	mDoor3Sprite.setTexture(mDoor3Texture);
 	mDirt2Sprite.setTexture(mDirt2Texture);
 	mDirt3Sprite.setTexture(mDirt3Texture);
 	mDirt4Sprite.setTexture(mDirt4Texture);
@@ -79,7 +93,7 @@ Map::Map(std::string path)
 	mSignSprite.setTexture(mSignTexture);
 	mBushSprite.setTexture(mBushTexture);
 	mWallSprite.setTexture(mWallTexture);
-	mWall2Sprite.setTexture(mWall2Texture);
+	mWall4Sprite.setTexture(mWall4Texture);
 	mWall3Sprite.setTexture(mWall3Texture);
 	mWalltopSprite.setTexture(mWalltopTexture);
 	mDoorSprite.setTexture(mDoorTexture);
@@ -190,7 +204,7 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 			}
 
 			//if block is solid
-			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v' || mMapLines[y][x] == 'o' || mMapLines[y][x] == 'j' || mMapLines[y][x] == 'l'/* || mMapLines[y][x] == 'k'*/)
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == 'y' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v' || mMapLines[y][x] == 'o' || mMapLines[y][x] == 'j' || mMapLines[y][x] == 'l'/* || mMapLines[y][x] == 'k'*/)
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
@@ -258,7 +272,7 @@ void				Map::HandleParticleCollisions(ParticleEffect	*tEffect)
 				if (x >= (int)mMapLines[y].length())
 					break;
 				//if block is solid
-				if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v')
+				if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v' || mMapLines[y][x] == 'o' || mMapLines[y][x] == 'l' || mMapLines[y][x] == 'j' || mMapLines[y][x] == 'y')
 				{
 					int mx = x * BLOCK_SIZE;
 					int my = y * BLOCK_SIZE;
@@ -400,6 +414,11 @@ void		Map::Draw(Window *tWindow)
 				mDirt4Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mDirt4Sprite);
 			}
+			if ((i[x] == '3' || i[x] == '4' || i[x] == 'n' || i[x] == '+' || i[x] == 'i' || i[x] == 'k') && mMapLines[y - 1][x] == 'h')
+			{
+				mWall4Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWall4Sprite);
+			}
 			if (i[x] == 'i')
 			{
 				mSignSprite.setPosition(x * BLOCK_SIZE, (y * BLOCK_SIZE) + 5);
@@ -462,8 +481,8 @@ void		Map::Draw(Window *tWindow)
 			}
 			if (i[x] == 'h')
 			{
-				mWall2Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
-				tWindow->Draw(mWall2Sprite);
+				mWall4Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWall4Sprite);
 			}
 			if (i[x] == 'q')
 			{
@@ -489,6 +508,26 @@ void		Map::Draw(Window *tWindow)
 			{
 				mDoor2Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mDoor2Sprite);
+			}
+			if (i[x] == '<')
+			{
+				mDoor3Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mDoor3Sprite);
+			}
+			if (i[x] == 'a')
+			{
+				mSign2Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mSign2Sprite);
+			}
+			if (i[x] == 'y')
+			{
+				mWall2Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWall2Sprite);
+			}
+			if (i[x] == '!')
+			{
+				mWindowSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWindowSprite);
 			}
 			
 		}

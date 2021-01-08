@@ -32,15 +32,24 @@ private:
 	sf::Texture					mSignTexture;
 	sf::Texture					mBushTexture;
 	sf::Texture					mWallTexture;
-	sf::Texture					mWall2Texture;
+	sf::Texture					mWall4Texture;
 	sf::Texture					mWalltopTexture;
 	sf::Texture					mWall3Texture;
 	sf::Texture					mDoorTexture;
 	sf::Texture					mDoor2Texture;
 	sf::Texture					mFloorTexture;
+	sf::Texture					mWall2Texture;
+	sf::Texture					mSign2Texture;
+	sf::Texture					mDoor3Texture;
+	sf::Texture					mWindowTexture;
 
-	sf::Sprite					mWallSprite;
+
 	sf::Sprite					mWall2Sprite;
+	sf::Sprite					mWindowSprite;
+	sf::Sprite					mSign2Sprite;
+	sf::Sprite					mDoor3Sprite;
+	sf::Sprite					mWallSprite;
+	sf::Sprite					mWall4Sprite;
 	sf::Sprite					mWall3Sprite;
 	sf::Sprite					mWalltopSprite;
 	sf::Sprite					mDoorSprite;

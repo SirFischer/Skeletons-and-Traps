@@ -38,7 +38,7 @@ void		MenuState::Init(StateInformations &tStateInformations)
 	 * Button coloring/text/state return
 	 **/
 
-	mPlayBtn = mf::Button::Create(sf::Color::Green, sf::Color::Cyan);
+	mPlayBtn = mf::Button::Create("assets/Textures/play.png", "assets/Textures/play.png");
 	mPlayBtn->SetSize(150, 50);
 	mPlayBtn->SetPositionPercentage(true)->SetPosition(45, 35);
 	mPlayBtn->SetClickEvent([actionReturn, active] {
@@ -46,7 +46,7 @@ void		MenuState::Init(StateInformations &tStateInformations)
 		*active = false;
 	});
 
-	mOptionBtn = mf::Button::Create(sf::Color::Blue, sf::Color::Cyan);
+	mOptionBtn = mf::Button::Create("assets/Textures/options.png", "assets/Textures/options.png");
 	mOptionBtn->SetSize(150, 50);
 	mOptionBtn->SetPositionPercentage(true)->SetPosition(45, 45);
 	mOptionBtn->SetClickEvent([actionReturn, active] {
@@ -54,7 +54,7 @@ void		MenuState::Init(StateInformations &tStateInformations)
 		*active = false;
 	});
 
-	mQuitBtn = mf::Button::Create(sf::Color::Red, sf::Color::Yellow);
+	mQuitBtn = mf::Button::Create("assets/Textures/exit.png", "assets/Textures/exit.png");
 	mQuitBtn->SetSize(150, 50);
 	mQuitBtn->SetPositionPercentage(true)->SetPosition(45, 55);
 	mQuitBtn->SetClickEvent([actionReturn, active] {
@@ -143,12 +143,12 @@ void		MenuState::Render()
 	mWindow->Clear(sf::Color(135,206,235));
 	mWindow->SetDefaultView();
 	mWindow->Draw(mBackground);
-	mMap.Draw(mWindow);
-	for (auto &particleEffect : mParticleEffects)
-		particleEffect.Render(mWindow);
 	mPlayer.Render(mWindow);
 	for (auto &entity : mEntities)
 		entity->Render(mWindow);
+	for (auto &particleEffect : mParticleEffects)
+		particleEffect.Render(mWindow);
+	mMap.Draw(mWindow);
 	mf::GUI::Render();
 	mWindow->Render();
 }

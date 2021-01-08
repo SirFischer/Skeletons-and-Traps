@@ -1,7 +1,7 @@
 _ = dirt
 . = grass
 v = dirt with vines
-x = dirt with mose
+- = dirt with mose
 b = bush
 o = wall
 h = wall-inside
@@ -14,3 +14,15 @@ i = sign
 g = goal(goal-door)
 k = spikes
 z = invisble "death" block
+c = spikes(underground)
+n = bloody sword
+, = cave background
++ = healthPowerUp
+< = exit door
+a = danger sign
+y = wall with collider (inside)
+! = window
+
+3 = Skeleton
+4 = DarkArcher
+s = spawnpoint(player)
