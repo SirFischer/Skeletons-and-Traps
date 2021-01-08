@@ -19,6 +19,8 @@ namespace SoundEffect
         EnemyDeath,
         EnemyHit,
 
+		EntityImpact,
+
         TrapCollision,
 
         GoalReached,

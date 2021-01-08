@@ -8,19 +8,19 @@
 class SoundPlayer : sf::NonCopyable
 {
 private:
-    sf::Sound                                  mSound;
-    sf::SoundBuffer                            mBuffer;
-    std::map<SoundEffect::ID, std::string>     mSoundNames;
+    std::map<SoundEffect::ID, std::string>     	mSoundNames;
+	std::map<SoundEffect::ID, sf::Sound>		mSoundList;
 
-    float                                      mVolume;
+    float                                      	mVolume;
 public:
     SoundPlayer(/* args */);
     ~SoundPlayer();
 
     void            Play(SoundEffect::ID effect);
 
+    void            StopSound(SoundEffect::ID effect);
     void            StopSound();
 
-    sf::Sound       GetSound(){return (mSound);}
+    sf::Sound       GetSound(SoundEffect::ID tEffect){return (mSoundList[tEffect]);}
 
 };
