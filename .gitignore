@@ -2,3 +2,4 @@ LabMonkey
 *.o
 *.d
 .vscode
+assets/Highscore.score
