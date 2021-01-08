@@ -2,6 +2,10 @@
 
 Entity::Entity(/* args */)
 {
+	mSound.SetVolume(SoundEffect::EntityImpact, 0.9);
+	mSound.SetPitch(SoundEffect::EntityImpact, 1.5);
+	mSound.SetVolume(SoundEffect::EnemyAttack, 0.5);
+	mSound.SetVolume(SoundEffect::EnemyJump, 0.5);
 }
 
 Entity::~Entity()
