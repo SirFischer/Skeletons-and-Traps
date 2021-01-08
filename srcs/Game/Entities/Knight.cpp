@@ -33,9 +33,9 @@ Knight::Knight(/* args */)
 	mViewDistance = 200.f;
 	mVerticalViewDistance = 100.f;
 	mAttackDamage = 5;
-	mJumpForce = 2.5f;
+	mJumpForce = 3.5f;
 	mKnockBack = 8.f;
-	mScoreValue = 75;
+	mScoreValue = 60;
 	mHealth = 200.f;
 
 	mSound.SetVolume(SoundEffect::EnemyAttack, 0.5);
@@ -57,7 +57,7 @@ void	Knight::Update()
 	mVelocity.x *= 0.90;
 	ApplyAnimation();
 	if (!mOnGround)
-		mVelocity.y += 0.1;
+		mVelocity.y += 0.10;
 	if (mHealth > 0)
 	{
 		mKilledClock.restart();
