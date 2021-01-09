@@ -74,7 +74,7 @@ public:
 	virtual void				Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> *tParticleEffects);
 	virtual void				Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffects);
 
-	virtual void				Shoot(std::list<Projectile> *tProjectiles);
+	virtual void				Shoot(std::list<Projectile> *tProjectiles, float tAngle);
 
 	void						PickUp();
 

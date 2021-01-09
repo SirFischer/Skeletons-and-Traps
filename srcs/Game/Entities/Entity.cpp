@@ -112,7 +112,7 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 	}	
 }
 
-void	Entity::Shoot(std::list<Projectile> *tProjectiles)
+void	Entity::Shoot(std::list<Projectile> *tProjectiles, float tAngle)
 {
 	if (mAttackClock.getElapsedTime().asSeconds() < mAttackCooldown)
 		return ;
@@ -125,7 +125,7 @@ void	Entity::Shoot(std::list<Projectile> *tProjectiles)
 	if (mAnimations[mAction].IsDone())
 	{
 		mAnimations[mAction].ResetAnimation();
-		Projectile projectile(mPosition + sf::Vector2f(20, 30), (mDirection == Direction::LEFT) ? M_PI : 0, 10.f);
+		Projectile projectile(mPosition + sf::Vector2f(20, 30), tAngle, 10.f);
 		projectile.mParent = this;
 		tProjectiles->push_back(projectile);
 		mSound.Play(SoundEffect::EnemyShoot);
