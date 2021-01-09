@@ -43,7 +43,36 @@ private:
 	sf::Texture					mDoor3Texture;
 	sf::Texture					mWindowTexture;
 
+	sf::Texture					mForestBTexture;
+	sf::Texture					mForestTTexture;
+	sf::Texture					mTreeBTexture;
+	sf::Texture					mTreeTTexture;
+	sf::Texture					mShroomsTexture;
+	sf::Texture					mShrooms2Texture;
+	sf::Texture					mShroomforestTexture;
+	sf::Texture					mWallbloodyTexture;
+	sf::Texture					mWallskeletonTexture;
+	sf::Texture					mSkeletonTexture;
+	sf::Texture					mRoofRTexture;
+	sf::Texture					mRoofLTexture;
 
+
+
+
+
+
+	sf::Sprite					mForestBSprite;
+	sf::Sprite					mForestTSprite;
+	sf::Sprite					mTreeBSprite;
+	sf::Sprite					mTreeTSprite;
+	sf::Sprite					mShroomsSprite;
+	sf::Sprite					mShrooms2Sprite;
+	sf::Sprite					mShroomforestSprite;
+	sf::Sprite					mWallbloodySprite;
+	sf::Sprite					mWallskeletonSprite;
+	sf::Sprite					mSkeletonSprite;
+	sf::Sprite					mRoofRSprite;
+	sf::Sprite					mRoofLSprite;
 	sf::Sprite					mWall2Sprite;
 	sf::Sprite					mWindowSprite;
 	sf::Sprite					mSign2Sprite;

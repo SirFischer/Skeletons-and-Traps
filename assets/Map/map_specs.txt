@@ -1,30 +1,33 @@
-_ = dirt
-. = grass
-v = dirt with vines
-- = dirt with mose
-b = bush
-o = wall
-h = wall-inside
-q = wall-inside with light source from left
-j = wall-top
-l = wooden floor
-d = door
-f = open-door
-i = sign
-g = goal(goal-door)
-k = spikes
-z = invisble "death" block
-c = spikes(underground)
-n = bloody sword
-, = cave background
-+ = healthPowerUp
-< = exit door
-a = danger sign
-y = wall with collider (inside)
-! = window
+STONE SPRITE // DOOR SPRITE // ROOF // FLOOR   DECORATION
+o   = wall                                     b   = bush
+y   = wall-inside(collider)                    n   = bloody sword
+A   = wall-inside-bloody(collider)             a   = danger sign
+j   = wall-top                                 i   = arrow  sign
+h   = wall-inside (background)                 T   = Forest TOP (COLLIDER)
+q   = wall-bright-inside(background)           I   = Forest BOT
+!   = wall-window-inside(background)           F   = Tree   TOP (COLLIDER)
+d   = door(Senter)                             R   = Tree   BOT
+f   = door-open                                S   = Shrooms
+<   = door-open-exit                           Z   = more Shrooms
+H   = Roof-RIGHT                               D   = Shroom forest
+J   = Roof-LEFT                                W   = Skeleton
+l   = wooden floor                             E   = Skeleton on background wall   
 
-3 = Skeleton
-4 = DarkArcher
-1 = knight 
-2 = orc
-s = spawnpoint(player)
+INTERECTABLE                                   NATURE BLOCKS
+g   = goal(goal-door)                          _   = dirt
+k   = spikes                                   v   = dirt with vines
+z   = invisble "death" block                   -   = dirt with mose
+c   = spikes(underground)                      .   = grass
++   = healthPowerUp                            ,   = cave background
+g   = goal(goal-door)                     
+k   = spikes                                    
+z   = invisble "death" block                    
+c   = spikes(underground)                       
++   = healthPowerUp                             
+
+ENTITIES // SPAWNPOINT
+1   = knight 
+2   = orc
+3   = Skeleton
+4   = DarkArcher
+s   = spawnpoint(player)

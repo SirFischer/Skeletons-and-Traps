@@ -75,7 +75,57 @@ Map::Map(std::string path)
 	{
 	}
 
+	if (!mForestTTexture.loadFromFile("assets/Textures/forest-top.png"))
+	{
+	}
+	if (!mForestBTexture.loadFromFile("assets/Textures/forest-bottom.png"))
+	{
+	}
+	if (!mTreeTTexture.loadFromFile("assets/Textures/tree-top.png"))
+	{
+	}
+	if (!mTreeBTexture.loadFromFile("assets/Textures/tree-bottom.png"))
+	{
+	}
+	if (!mShroomsTexture.loadFromFile("assets/Textures/shrooms.png"))
+	{
+	}
+	if (!mShrooms2Texture.loadFromFile("assets/Textures/more-shrooms.png"))
+	{
+	}
+	if (!mShroomforestTexture.loadFromFile("assets/Textures/shroom-forest.png"))
+	{
+	}
+	if (!mRoofRTexture.loadFromFile("assets/Textures/roof-right.png"))
+	{
+	}
+	if (!mRoofLTexture.loadFromFile("assets/Textures/roof-left.png"))
+	{
+	}
+	if (!mWallbloodyTexture.loadFromFile("assets/Textures/bloody-wall-inside.png"))
+	{
+	}
+	if (!mWallskeletonTexture.loadFromFile("assets/Textures/dead-body-wall.png"))
+	{
+	}
+	if (!mSkeletonTexture.loadFromFile("assets/Textures/skeleton.png"))
+	{
+	}
+	
+
 	//Textures/sprites
+	mForestBSprite.setTexture(mForestBTexture);
+	mForestTSprite.setTexture(mForestTTexture);
+	mTreeBSprite.setTexture(mTreeBTexture);
+	mTreeTSprite.setTexture(mTreeTTexture);
+	mShroomsSprite.setTexture(mShroomsTexture);
+	mShrooms2Sprite.setTexture(mShrooms2Texture);
+	mShroomforestSprite.setTexture(mShroomforestTexture);
+	mWallbloodySprite.setTexture(mWallbloodyTexture);
+	mWallskeletonSprite.setTexture(mWallskeletonTexture);
+	mSkeletonSprite.setTexture(mSkeletonTexture);
+	mRoofRSprite.setTexture(mRoofRTexture);
+	mRoofLSprite.setTexture(mRoofLTexture);
 	mDirtSprite.setTexture(mDirtTexture);
 	mWindowSprite.setTexture(mWindowTexture);
 	mWall2Sprite.setTexture(mWall2Texture);
@@ -101,6 +151,19 @@ Map::Map(std::string path)
 	mFloorSprite.setTexture(mFloorTexture);
 	mSwordSprite.setTexture(mSwordTexture);
 
+
+	mForestBSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mForestTSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mTreeBSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mTreeTSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mShroomsSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mShrooms2Sprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mShroomforestSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mWallbloodySprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mWallskeletonSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mSkeletonSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mRoofRSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
+	mRoofLSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mWallSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mWall2Sprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mWall3Sprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
@@ -204,7 +267,7 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 			}
 
 			//if block is solid
-			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == 'y' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v' || mMapLines[y][x] == 'o' || mMapLines[y][x] == 'j' || mMapLines[y][x] == 'l'/* || mMapLines[y][x] == 'k'*/)
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == 'E' || mMapLines[y][x] == 'F' || mMapLines[y][x] == 'T' || mMapLines[y][x] == 'y' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v' || mMapLines[y][x] == 'o' || mMapLines[y][x] == 'j' || mMapLines[y][x] == 'l'/* || mMapLines[y][x] == 'k'*/)
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
@@ -272,7 +335,7 @@ void				Map::HandleParticleCollisions(ParticleEffect	*tEffect)
 				if (x >= (int)mMapLines[y].length())
 					break;
 				//if block is solid
-				if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v' || mMapLines[y][x] == 'o' || mMapLines[y][x] == 'l' || mMapLines[y][x] == 'j' || mMapLines[y][x] == 'y')
+				if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == 'A'  || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v' || mMapLines[y][x] == 'o' || mMapLines[y][x] == 'l' || mMapLines[y][x] == 'j' || mMapLines[y][x] == 'y')
 				{
 					int mx = x * BLOCK_SIZE;
 					int my = y * BLOCK_SIZE;
@@ -306,7 +369,7 @@ void				Map::HandleProjectileCollision(Projectile *tProjectile)
 			if (x >= (int)mMapLines[y].length())
 				break;
 			//if block is solid
-			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v')
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v'  || mMapLines[y][x] == 'o'  || mMapLines[y][x] == 'j' || mMapLines[y][x] == 'l' || mMapLines[y][x] == 'y')
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
@@ -539,6 +602,66 @@ void		Map::Draw(Window *tWindow)
 			{
 				mWindowSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mWindowSprite);
+			}
+			if (i[x] == 'T')
+			{
+				mForestTSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mForestTSprite);
+			}
+			if (i[x] == 'I')
+			{
+				mForestBSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mForestBSprite);
+			}
+			if (i[x] == 'F')
+			{
+				mTreeTSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWindowSprite);
+			}
+			if (i[x] == 'R')
+			{
+				mTreeBSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWindowSprite);
+			}
+			if (i[x] == 'S')
+			{
+				mShroomsSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWindowSprite);
+			}
+			if (i[x] == 'Z')
+			{
+				mShrooms2Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWindowSprite);
+			}
+			if (i[x] == 'D')
+			{
+				mShroomforestSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWindowSprite);
+			}
+			if (i[x] == 'H')
+			{
+				mRoofRSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mRoofRSprite);
+			}
+			if (i[x] == 'J')
+			{
+				mRoofLSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mRoofLSprite);
+			}
+			if (i[x] == 'A')
+			{
+				mWallbloodySprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWallbloodySprite);
+			}
+			if (i[x] == 'W')
+			{
+				mSkeletonSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mSkeletonSprite);
+			}
+			if (i[x] == 'E')
+			{
+				mWallskeletonSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mWallskeletonSprite);
 			}
 			
 		}
