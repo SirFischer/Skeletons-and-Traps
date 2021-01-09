@@ -35,7 +35,7 @@ DarkArcher::DarkArcher(/* args */)
 	mAttackCooldown = 1.f;
 	mVerticalViewDistance = 128.f;
 	mHealth = 50.f;
-	mScoreValue = 50;
+	mScoreValue = 100;
 }
 
 DarkArcher::~DarkArcher()
