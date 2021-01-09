@@ -53,12 +53,12 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 				//if (entity->GetPosition().x + (entity->mSize.x / 2.f) < mPosition.x + (mSize.x / 2.f))  //position dependent
 				if (mDirection == Direction::LEFT)
 				{
-					entity->mVelocity = sf::Vector2f(-6, -2);
+					entity->mVelocity = sf::Vector2f(-mKnockBack, -2);
 					particlePos.x -= 10;
 				}
 				else
 				{
-					entity->mVelocity = sf::Vector2f(6, -2);
+					entity->mVelocity = sf::Vector2f(mKnockBack, -2);
 					particlePos.x += 10;
 				}
 				float angle = std::atan2(mPosition.y - entity->GetPosition().y, mPosition.x - entity->GetPosition().x) + M_PI;
@@ -94,12 +94,12 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 			sf::Vector2f	particlePos = tEntity->GetPosition() + (mSize / 2.f);
 			if (tEntity->GetPosition().x + (tEntity->mSize.x / 2.f) < mPosition.x + (mSize.x / 2.f))
 			{
-				tEntity->mVelocity += sf::Vector2f(-5, -1);
+				tEntity->mVelocity += sf::Vector2f(-mKnockBack, -1);
 				particlePos.x -= 10;
 			}
 			else
 			{
-				tEntity->mVelocity += sf::Vector2f(5, -1);
+				tEntity->mVelocity += sf::Vector2f(mKnockBack, -1);
 				particlePos.x += 10;
 
 			}

@@ -34,10 +34,11 @@ protected:
 	float						mHealth = 100.f;
 	float						mAttackDamage = 30.f;
 	float						mSpeed = 0.35f;
-	float						mRunSpeed = 0.35f;
+	float						mRunSpeed = 0.36f;
 	float						mJumpForce = 6.5f;
 	float						mViewDistance = 300.f;
 	float						mVerticalViewDistance = 200.f;
+	float						mKnockBack = 6.f;
 	bool						mOnGround = false;
 	bool						mIsAlive = true;
 	bool						mIsDead = false;
