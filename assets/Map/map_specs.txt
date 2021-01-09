@@ -25,4 +25,6 @@ y = wall with collider (inside)
 
 3 = Skeleton
 4 = DarkArcher
+1 = knight 
+2 = orc
 s = spawnpoint(player)
