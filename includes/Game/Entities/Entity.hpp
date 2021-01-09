@@ -34,7 +34,7 @@ protected:
 	float						mHealth = 100.f;
 	float						mAttackDamage = 30.f;
 	float						mSpeed = 0.35f;
-	float						mRunSpeed = 0.36f;
+	float						mRunSpeed = 0.30f;
 	float						mJumpForce = 6.5f;
 	float						mViewDistance = 300.f;
 	float						mVerticalViewDistance = 200.f;
@@ -74,7 +74,7 @@ public:
 	virtual void				Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> *tParticleEffects);
 	virtual void				Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffects);
 
-	virtual void				Shoot(std::list<Projectile> *tProjectiles);
+	virtual void				Shoot(std::list<Projectile> *tProjectiles, float tAngle);
 
 	void						PickUp();
 

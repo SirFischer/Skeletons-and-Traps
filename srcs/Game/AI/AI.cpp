@@ -65,7 +65,8 @@ void		AI::EntityRangeAttack(Player *tPlayer, Entity *tEntity, std::list<Particle
 			tEntity->mDirection = Entity::Direction::RIGHT;
 		else if (tEntity->GetPosition().x > tPlayer->GetEntity()->GetPosition().x)
 			tEntity->mDirection = Entity::Direction::LEFT;
-		tEntity->Shoot(tProjectiles);
+		float angle = std::atan2(tEntity->GetPosition().y - tPlayer->GetEntity()->mPosition.y, tEntity->GetPosition().x - tPlayer->GetEntity()->mPosition.x) + M_PI;
+		tEntity->Shoot(tProjectiles, angle);
 	}
 	
 	(void)tPlayer;
