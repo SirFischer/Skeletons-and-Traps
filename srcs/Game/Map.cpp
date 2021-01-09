@@ -616,27 +616,27 @@ void		Map::Draw(Window *tWindow)
 			if (i[x] == 'F')
 			{
 				mTreeTSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
-				tWindow->Draw(mWindowSprite);
+				tWindow->Draw(mTreeTSprite);
 			}
 			if (i[x] == 'R')
 			{
 				mTreeBSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
-				tWindow->Draw(mWindowSprite);
+				tWindow->Draw(mTreeBSprite);
 			}
 			if (i[x] == 'S')
 			{
 				mShroomsSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
-				tWindow->Draw(mWindowSprite);
+				tWindow->Draw(mShroomsSprite);
 			}
 			if (i[x] == 'Z')
 			{
 				mShrooms2Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
-				tWindow->Draw(mWindowSprite);
+				tWindow->Draw(mShrooms2Sprite);
 			}
 			if (i[x] == 'D')
 			{
 				mShroomforestSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
-				tWindow->Draw(mWindowSprite);
+				tWindow->Draw(mShroomforestSprite);
 			}
 			if (i[x] == 'H')
 			{
