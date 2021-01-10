@@ -1,4 +1,4 @@
-#  :Skeletons and Traps! :crossed_swords:
+#  Skeletons and Traps! :crossed_swords:
 
 A small SFML game made in about a month.
 
