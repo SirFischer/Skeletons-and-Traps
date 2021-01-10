@@ -2,10 +2,10 @@
 
 A small SFML game made in about a month (not including breaks ;^) ).
 
-    For LINUX type in "make test" into the terminal to start up the game!
+    For LINUX type in "make test RELEASE=TRUE" into the terminal to start up the game!
 -----------------
-    For WINDOWS type in "make test RELEASE=TRUE" into the terminal to start up the game!
------------------
+
+Does not work for Windows!
 
 You are a lone fighter searching for a challenge.. You are trapped in this realm of monsters and have to find an exit.
 During this travel you have to fight monsters, archers, knights, avoid traps and use your dexterity and strength to jump from platform to platform and wall to wall.
