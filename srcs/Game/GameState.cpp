@@ -29,7 +29,7 @@ void		GameState::Init(StateInformations &tStateInformations)
 
 	InputManager::ResetActionStates();
 
-	mCameraPosition = mMap.GetGoalPosition();
+	mCameraPosition = sf::Vector2f(mPlayer.GetEntity()->GetPosition().x, 0);
 
 
 	/**
