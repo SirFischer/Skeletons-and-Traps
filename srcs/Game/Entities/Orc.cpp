@@ -36,7 +36,7 @@ Orc::Orc(/* args */)
 	mKnockBack = 3.f;
 	mJumpForce = 4.f;
 	mScoreValue = 15;
-	mHealth = 30.f;
+	mHealth = 45.f;
 
 	SoundPlayer::SetVolume(SoundEffect::EnemyAttack, 0.5);
 }
