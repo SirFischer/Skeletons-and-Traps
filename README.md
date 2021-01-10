@@ -1,6 +1,7 @@
 #  Skeletons and Traps! :crossed_swords:
 
 A small SFML game made in about a month.
+
 This game works only for Linux!
 
 Type in "make test" into the terminal after selecting the folder containing the game to start up the game!
