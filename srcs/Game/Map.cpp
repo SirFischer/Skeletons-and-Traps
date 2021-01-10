@@ -111,9 +111,13 @@ Map::Map(std::string path)
 	if (!mSkeletonTexture.loadFromFile("assets/Textures/skeleton.png"))
 	{
 	}
+	if (!mInvisbleTexture.loadFromFile("assets/Textures/spike.png"))
+	{
+	}
 	
 
 	//Textures/sprites
+	mInvisbleSprite.setTexture(mInvisbleTexture);
 	mForestBSprite.setTexture(mForestBTexture);
 	mForestTSprite.setTexture(mForestTTexture);
 	mTreeBSprite.setTexture(mTreeBTexture);
@@ -151,7 +155,7 @@ Map::Map(std::string path)
 	mFloorSprite.setTexture(mFloorTexture);
 	mSwordSprite.setTexture(mSwordTexture);
 
-
+	mInvisbleSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mForestBSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mForestTSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
 	mTreeBSprite.setTextureRect(sf::IntRect(0, 0, BLOCK_SIZE, BLOCK_SIZE));
@@ -369,7 +373,7 @@ void				Map::HandleProjectileCollision(Projectile *tProjectile)
 			if (x >= (int)mMapLines[y].length())
 				break;
 			//if block is solid
-			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v'  || mMapLines[y][x] == 'o'  || mMapLines[y][x] == 'j' || mMapLines[y][x] == 'l' || mMapLines[y][x] == 'y')
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == '_' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v' || mMapLines[y][x] == 'P' || mMapLines[y][x] == 'o'  || mMapLines[y][x] == 'j' || mMapLines[y][x] == 'l' || mMapLines[y][x] == 'y')
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
@@ -483,12 +487,12 @@ void		Map::Draw(Window *tWindow)
 				mGrassSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mGrassSprite);
 			}
-			if ((i[x] == '3' || i[x] == '4' || i[x] == '2' || i[x] == '1' || i[x] == 'n' || i[x] == '+' || i[x] == 'i' || i[x] == 'k') && mMapLines[y - 1][x] == ',')
+			if ((i[x] == '3' || i[x] == '4' || i[x] == '2' || i[x] == '1' || i[x] == 'n' || i[x] == '+' || i[x] == 'i' || i[x] == 'k' || i[x] == 'j' || i[x] == 'H' || i[x] == 'J') && mMapLines[y - 1][x] == ',')
 			{
 				mDirt4Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mDirt4Sprite);
 			}
-			if ((i[x] == '3' || i[x] == '4' || i[x] == '2' || i[x] == '1' || i[x] == 'n' || i[x] == '+' || i[x] == 'i' || i[x] == 'k') && mMapLines[y - 1][x] == 'h')
+			if ((i[x] == '3' || i[x] == '4' || i[x] == '2' || i[x] == '1' || i[x] == 'n' || i[x] == '+' || i[x] == 'i' || i[x] == 'k' || i[x] == 'j' || i[x] == 'H' || i[x] == 'J') && mMapLines[y - 1][x] == 'h')
 			{
 				mWall4Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mWall4Sprite);
@@ -662,6 +666,11 @@ void		Map::Draw(Window *tWindow)
 			{
 				mWallskeletonSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mWallskeletonSprite);
+			}
+			if (i[x] == 'P')
+			{
+				mInvisbleSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
+				tWindow->Draw(mInvisbleSprite);
 			}
 			
 		}

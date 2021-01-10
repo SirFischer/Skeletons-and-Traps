@@ -13,7 +13,7 @@ H   = Roof-RIGHT                               D   = Shroom forest
 J   = Roof-LEFT                                W   = Skeleton
 l   = wooden floor                             E   = Skeleton on background wall   
 
-INTERECTABLE                                   NATURE BLOCKS
+INTERECTABLE // INVISBLE BLOCK                 NATURE BLOCKS
 g   = goal(goal-door)                          _   = dirt
 k   = spikes                                   v   = dirt with vines
 z   = invisble "death" block                   -   = dirt with mose
@@ -23,7 +23,8 @@ g   = goal(goal-door)
 k   = spikes                                    
 z   = invisble "death" block                    
 c   = spikes(underground)                       
-+   = healthPowerUp                             
++   = healthPowerUp      
+P   = Invisble Block (can shoot trough)                       
 
 ENTITIES // SPAWNPOINT
 1   = knight 

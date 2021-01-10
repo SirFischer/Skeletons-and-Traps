@@ -42,7 +42,7 @@ private:
 	sf::Texture					mSign2Texture;
 	sf::Texture					mDoor3Texture;
 	sf::Texture					mWindowTexture;
-
+	sf::Texture					mInvisbleTexture;
 	sf::Texture					mForestBTexture;
 	sf::Texture					mForestTTexture;
 	sf::Texture					mTreeBTexture;
@@ -60,7 +60,7 @@ private:
 
 
 
-
+	sf::Sprite					mInvisbleSprite;
 	sf::Sprite					mForestBSprite;
 	sf::Sprite					mForestTSprite;
 	sf::Sprite					mTreeBSprite;
