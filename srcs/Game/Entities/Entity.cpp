@@ -61,6 +61,7 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 					entity->mVelocity = sf::Vector2f(mKnockBack, -2);
 					particlePos.x += 10;
 				}
+				entity->mStunClock.restart();
 				float angle = std::atan2(mPosition.y - entity->GetPosition().y, mPosition.x - entity->GetPosition().x) + M_PI;
 				ParticleEffect effect(particlePos, 3.f, 0.8f, 300, angle, M_PI / 3.5f);
 				effect.SetParticleColor(sf::Color::Red);
