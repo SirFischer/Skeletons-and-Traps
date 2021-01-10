@@ -19,7 +19,6 @@ private:
 	Player			 mPlayer;
 
 	MusicPlayer		mMusic;
-	SoundPlayer		mSound;
 	sf::Sound		mButton;
 	sf::Sprite		mBackground;
 

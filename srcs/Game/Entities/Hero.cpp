@@ -26,8 +26,8 @@ Hero::Hero(/* args */)
 	mAnimations[EntityAction::DIE].SetLoop(false);
 	mSprite.setOrigin(16, 8);
 	mAttackDamage = 40.f;
-	mSound.SetPitch(SoundEffect::PlayerWalk, 1.7);
-	mSound.SetVolume(SoundEffect::PlayerWalk, 0.15);
+	SoundPlayer::SetPitch(SoundEffect::PlayerWalk, 1.7);
+	SoundPlayer::SetVolume(SoundEffect::PlayerWalk, 0.15);
 }
 
 Hero::~Hero()
@@ -37,7 +37,7 @@ Hero::~Hero()
 void	Hero::Update()
 {
 	if ((mAction == EntityAction::WALK_LEFT || mAction == EntityAction::WALK_RIGHT) && mOnGround == true)
-		mSound.Play(SoundEffect::PlayerWalk);
+		SoundPlayer::Play(SoundEffect::PlayerWalk);
 	if (!mAnimations[EntityAction::ATTACK_LEFT].IsDone())
 		mAction = EntityAction::ATTACK_LEFT;
 	if (!mAnimations[EntityAction::ATTACK_RIGHT].IsDone())

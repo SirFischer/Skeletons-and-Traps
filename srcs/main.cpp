@@ -3,6 +3,7 @@
 void	Init()
 {
 	InputManager::LoadDefaultKeyBindings();
+	SoundPlayer::Init();
 }
 
 int main( void )

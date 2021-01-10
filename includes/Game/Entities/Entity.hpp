@@ -50,8 +50,6 @@ protected:
 	AIMode						mAIMode = AIMode::PATROL;
 	EntityAction				mAIAction = EntityAction::WALK_RIGHT;
 
-	SoundPlayer					mSound;
-
 	sf::Clock					mDeathClock;
 	sf::Clock					mAttackClock;
 	sf::Clock					mKilledClock;

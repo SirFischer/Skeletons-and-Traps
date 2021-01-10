@@ -17,12 +17,12 @@ Orc::Orc(/* args */)
 	mAnimations[EntityAction::JUMP].SetLength(0.08);
 	for (size_t i = 0; i < 6; i++)
 		mAnimations[EntityAction::DIE].AddFrame(sf::IntRect(64 * i, 64 * 20, 64, 64));
-	for (size_t i = 0; i < 6; i++)
-		mAnimations[EntityAction::ATTACK_RIGHT].AddFrame(sf::IntRect(64 * i, 64 * 15, 64, 64));
-	mAnimations[EntityAction::ATTACK_RIGHT].SetLength(0.05);
-	for (size_t i = 0; i < 6; i++)
-		mAnimations[EntityAction::ATTACK_LEFT].AddFrame(sf::IntRect(64 * i, 64 * 13, 64, 64));
-	mAnimations[EntityAction::ATTACK_LEFT].SetLength(0.05);
+	for (size_t i = 0; i < 8; i++)
+		mAnimations[EntityAction::ATTACK_RIGHT].AddFrame(sf::IntRect(64 * i, 64 * 7, 64, 64));
+	mAnimations[EntityAction::ATTACK_RIGHT].SetLength(0.06);
+	for (size_t i = 0; i < 8; i++)
+		mAnimations[EntityAction::ATTACK_LEFT].AddFrame(sf::IntRect(64 * i, 64 * 9, 64, 64));
+	mAnimations[EntityAction::ATTACK_LEFT].SetLength(0.06);
 	mAnimations[EntityAction::DIE].SetLength(0.1);
 	mAnimations[EntityAction::DIE].SetLoop(false);
 	if (mAnimations.count(mAction))
@@ -38,7 +38,7 @@ Orc::Orc(/* args */)
 	mScoreValue = 15;
 	mHealth = 20.f;
 
-	mSound.SetVolume(SoundEffect::EnemyAttack, 0.5);
+	SoundPlayer::SetVolume(SoundEffect::EnemyAttack, 0.5);
 }
 
 Orc::~Orc()
@@ -73,7 +73,7 @@ void	Orc::Update()
 	}
 	if (mHealth <= 0 && mKilledClock.getElapsedTime().asSeconds() < 0.1)
 	{
-		mSound.Play(SoundEffect::EnemyDeath);
+		SoundPlayer::Play(SoundEffect::EnemyDeath);
 	}
 }
 

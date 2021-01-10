@@ -38,7 +38,7 @@ Knight::Knight(/* args */)
 	mScoreValue = 60;
 	mHealth = 200.f;
 
-	mSound.SetVolume(SoundEffect::EnemyAttack, 0.5);
+	SoundPlayer::SetVolume(SoundEffect::EnemyAttack, 0.5);
 }
 
 Knight::~Knight()
@@ -73,7 +73,7 @@ void	Knight::Update()
 	}
 	if (mHealth <= 0 && mKilledClock.getElapsedTime().asSeconds() < 0.1)
 	{
-		mSound.Play(SoundEffect::EnemyDeath);
+		SoundPlayer::Play(SoundEffect::EnemyDeath);
 	}
 }
 

@@ -2,12 +2,12 @@
 
 Entity::Entity(/* args */)
 {
-	mSound.SetVolume(SoundEffect::EntityImpact, 0.9);
-	mSound.SetPitch(SoundEffect::EntityImpact, 1.5);
-	mSound.SetVolume(SoundEffect::EnemyAttack, 0.5);
-	mSound.SetVolume(SoundEffect::EnemyJump, 0.5);
-	mSound.SetVolume(SoundEffect::PickUp, 0.5);
-	mSound.SetPitch(SoundEffect::PickUp, 1.5);
+	SoundPlayer::SetVolume(SoundEffect::EntityImpact, 0.9);
+	SoundPlayer::SetPitch(SoundEffect::EntityImpact, 1.5);
+	SoundPlayer::SetVolume(SoundEffect::EnemyAttack, 0.5);
+	SoundPlayer::SetVolume(SoundEffect::EnemyJump, 0.5);
+	SoundPlayer::SetVolume(SoundEffect::PickUp, 0.5);
+	SoundPlayer::SetPitch(SoundEffect::PickUp, 1.5);
 }
 
 Entity::~Entity()
@@ -37,7 +37,7 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 		mAction = EntityAction::ATTACK_RIGHT;
 	if (mAnimations[mAction].IsDone())
 	{
-		mSound.Play(SoundEffect::EnemyAttack);
+		SoundPlayer::Play(SoundEffect::EnemyAttack);
 		mAnimations[mAction].ResetAnimation();
 		for (auto &entity : tEntities)
 		{
@@ -65,7 +65,7 @@ void				Entity::Attack(std::list<Entity *> tEntities, std::list<ParticleEffect> 
 				ParticleEffect effect(particlePos, 3.f, 0.8f, 300, angle, M_PI / 3.5f);
 				effect.SetParticleColor(sf::Color::Red);
 				tParticleEffects->push_back(effect);
-				mSound.Play(SoundEffect::EntityImpact);
+				SoundPlayer::Play(SoundEffect::EntityImpact);
 			}
 		}
 	}	
@@ -84,7 +84,7 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 		mAction = EntityAction::ATTACK_RIGHT;
 	if (mAnimations[mAction].IsDone())
 	{
-		mSound.Play(SoundEffect::EnemyAttack);
+		SoundPlayer::Play(SoundEffect::EnemyAttack);
 		mAnimations[mAction].ResetAnimation();
 	
 		if (tEntity->mSprite.getGlobalBounds().intersects(mSprite.getGlobalBounds()))
@@ -107,7 +107,7 @@ void				Entity::Attack(Entity *tEntity, std::list<ParticleEffect> *tParticleEffe
 			ParticleEffect effect(particlePos, 3.f, 0.8f, 300, angle, M_PI / 3.5f);
 			effect.SetParticleColor(sf::Color::Red);
 			tParticleEffects->push_back(effect);
-			mSound.Play(SoundEffect::EntityImpact);
+			SoundPlayer::Play(SoundEffect::EntityImpact);
 		}
 	}	
 }
@@ -128,13 +128,13 @@ void	Entity::Shoot(std::list<Projectile> *tProjectiles, float tAngle)
 		Projectile projectile(mPosition + sf::Vector2f(20, 30), tAngle, 10.f);
 		projectile.mParent = this;
 		tProjectiles->push_back(projectile);
-		mSound.Play(SoundEffect::EnemyShoot);
+		SoundPlayer::Play(SoundEffect::EnemyShoot);
 	}
 }
 
 void				Entity::PickUp()
 {
-	mSound.Play(SoundEffect::PickUp);
+	SoundPlayer::Play(SoundEffect::PickUp);
 }
 
 
@@ -186,7 +186,7 @@ void				Entity::Jump()
 {
 	if (mOnGround)
 	{
-		mSound.Play(SoundEffect::PlayerJump);
+		SoundPlayer::Play(SoundEffect::PlayerJump);
 		if (mVelocity.y > 0 && (mCollisionDirection == Entity::CollisionDirection::LEFT || mCollisionDirection == Entity::CollisionDirection::RIGHT))
 		{
 			if (mCollisionDirection == Entity::CollisionDirection::LEFT)
@@ -226,7 +226,7 @@ void				Entity::HandleProjectileCollision(Projectile *tProjectile, std::list<Par
 		effect.SetParticleColor(sf::Color::Red);
 		tParticleEffects->push_back(effect);
 		mHealth -= 30.f;
-		mSound.Play(SoundEffect::EntityImpact);
+		SoundPlayer::Play(SoundEffect::EntityImpact);
 	}
 }
 

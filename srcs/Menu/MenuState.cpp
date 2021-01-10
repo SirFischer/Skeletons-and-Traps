@@ -131,7 +131,7 @@ void		MenuState::Update()
 	if (mIsActive == false)
 	{
 		mMusic.Stop();
-		mSound.StopSound();
+		SoundPlayer::StopSound();
 	}
 
 

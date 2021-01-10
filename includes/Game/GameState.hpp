@@ -29,7 +29,6 @@ private:
 	sf::Vector2f							mCameraVelocity = sf::Vector2f(0, 0);
 	sf::Vector2f							mCameraPosition = sf::Vector2f(0, 0);
 	MusicPlayer								mMusic;
-	SoundPlayer								mSound;
 
 	mf::Text								*mHPText;
 	mf::Text								*mScoreText;

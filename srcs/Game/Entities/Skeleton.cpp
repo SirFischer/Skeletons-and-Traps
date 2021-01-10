@@ -33,7 +33,7 @@ Skeleton::Skeleton(/* args */)
 	mJumpForce = 4.f;
 	mScoreValue = 75;
 
-	mSound.SetVolume(SoundEffect::EnemyAttack, 0.5);
+	SoundPlayer::SetVolume(SoundEffect::EnemyAttack, 0.5);
 }
 
 Skeleton::~Skeleton()
@@ -68,7 +68,7 @@ void	Skeleton::Update()
 	}
 	if (mHealth <= 0 && mKilledClock.getElapsedTime().asSeconds() < 0.1)
 	{
-		mSound.Play(SoundEffect::EnemyDeath);
+		SoundPlayer::Play(SoundEffect::EnemyDeath);
 	}
 }
 
