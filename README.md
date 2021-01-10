@@ -21,11 +21,11 @@ During this travel you have to fight monsters, archers, knights, avoid traps and
     SPACEBAR = ATTACK
 -----------------
 
-You can also walljump by jumping from wall to wall using A and D while holding W!
+You can also wall jump by jumping from wall to wall using A and D while holding W!
 
 ![GamePlay2](assets/Screenshots/screenshot5.png)
 
-There are also an item that looks like a green circle with a cross that you can pick up to gain more health.
+There are also an item that looks like a green circle with a red cross that you can pick up to gain more health.
 There is no limit to how much health you can gain, so be sure to collect as many as you can to make your
 journey easier. Good luck!
 
