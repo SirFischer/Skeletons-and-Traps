@@ -45,6 +45,7 @@ protected:
 	bool						mIsBlocked = false;
 	bool						mKilled = false;
 	float						mAttackCooldown = 0.55f;
+	float						mStunCooldown = 0.5f;
 	int							mScoreValue = 100;
 
 	AIMode						mAIMode = AIMode::PATROL;
@@ -53,6 +54,7 @@ protected:
 	sf::Clock					mDeathClock;
 	sf::Clock					mAttackClock;
 	sf::Clock					mKilledClock;
+	sf::Clock					mStunClock;
 
 	sf::Sprite					mSprite;
 
