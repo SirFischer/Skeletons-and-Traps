@@ -2,7 +2,7 @@
 
 A small SFML game made in about a month (not including breaks ;^) ).
 
-    For Linux type in "make test" into the terminal to start up the game!
+    For LINUX type in "make test" into the terminal to start up the game!
 -----------------
     For WINDOWS type in "make test RELEASE=TRUE"
 -----------------
