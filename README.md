@@ -1,18 +1,20 @@
-#  :octocat: SFMLProjectTemplate :octocat:
-An SFML project template for easy start if you feel creative
+#  :Skeletons and Traps! :crossed_swords:
 
----
+A small SFML game made in about a month.
 
-## How to get started:
+![GamePlay1](assets/Screenshots/screenshot2.png)
 
-1. Change program name in *Makefiles/default_vars.mk*.
-2. Change window title in *includes/System/Window.hpp*.
-3. Customize the menu in *includes/Menu/MenuState.hpp*.
-4. Code your game in *includes/Game/GameState.hpp*.
+You are a lone fighter searching a challenge.. You are trapped in this realm of monster and have to find an exit.
+During this travel you have to fight monsters, avoid traps and use your dexterity and strength to jump from platform to platform and wall to wall.
 
-### Optional:
 
-5. Add all new states to *includes/StateManager/States.hpp*.
-6. Create new states following the same pattern as the GameState.hpp or MenuState.hpp.
-7. Add the new state to the switch inside *srcs/StateManager/StateManager.cpp*.
-8. **Enjoy!**
+![GamePlay2](assets/Screenshots/screenshot5.png)
+
+Press A to walk left, D to walk right, W to jump and SPACEBAR to attack.
+You can also walljump by jumping from wall to wall using A and D while holding W.
+
+![GamePlay3](assets/Screenshots/screenshot4.png)
+
+There are also an item that looks like a green circle with a cross that you can pick up to gain more health.
+There is no limit to how much health you can gain, so be sure to collect as many as you can to make your
+journey easier.
