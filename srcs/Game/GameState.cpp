@@ -29,7 +29,7 @@ void		GameState::Init(StateInformations &tStateInformations)
 
 	InputManager::ResetActionStates();
 
-	mCameraPosition = sf::Vector2f(mPlayer.GetEntity()->GetPosition().x, 0);
+	mCameraPosition = sf::Vector2f(mPlayer.GetEntity()->GetPosition().x, mPlayer.GetEntity()->GetPosition().y - 300);
 
 
 	/**
