@@ -271,7 +271,7 @@ void				Map::HandleCollisions(Entity	*tEntity, std::list<ParticleEffect> *tParti
 			}
 
 			//if block is solid
-			if (mMapLines[y][x] == '.' || mMapLines[y][x] == 'A' || mMapLines[y][x] == '_' || mMapLines[y][x] == 'E' || mMapLines[y][x] == 'F' || mMapLines[y][x] == 'T' || mMapLines[y][x] == 'y' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v' || mMapLines[y][x] == 'o' || mMapLines[y][x] == 'j' || mMapLines[y][x] == 'P' || mMapLines[y][x] == 'l'/* || mMapLines[y][x] == 'k'*/)
+			if (mMapLines[y][x] == '.' || mMapLines[y][x] == 'A' || mMapLines[y][x] == '_' || mMapLines[y][x] == 'F' || mMapLines[y][x] == 'T' || mMapLines[y][x] == 'y' || mMapLines[y][x] == '-' || mMapLines[y][x] == 'v' || mMapLines[y][x] == 'o' || mMapLines[y][x] == 'j' || mMapLines[y][x] == 'P' || mMapLines[y][x] == 'l'/* || mMapLines[y][x] == 'k'*/)
 			{
 				int mx = x * BLOCK_SIZE;
 				int my = y * BLOCK_SIZE;
