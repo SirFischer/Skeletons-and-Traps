@@ -12,14 +12,14 @@ During this travel you have to fight monsters, archers, knights, avoid traps and
 
      CONTROLS
 -----------------
-     A = LEFT
-==================
-     D = RIGHT
-==================
+     A = WALK LEFT
+-----------------
+     D = WALK RIGHT
+-----------------
      W = JUMP
-==================
-SPACEBAR = ATTACK
-==================
+-----------------
+    SPACEBAR = ATTACK
+-----------------
 
 You can also walljump by jumping from wall to wall using A and D while holding W!
 
