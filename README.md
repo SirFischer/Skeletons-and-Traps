@@ -6,7 +6,7 @@ This game works only for Linux!
 
 Type in "make test" into the terminal after selecting the folder containing the game to start up the game!
 
-You are a lone fighter searching for a challenge.. You are trapped in this realm of monster and have to find an exit.
+You are a lone fighter searching for a challenge.. You are trapped in this realm of monsters and have to find an exit.
 During this travel you have to fight monsters, archers, knights, avoid traps and use your dexterity and strength to jump from platform to platform and wall to wall.
 
 ![GamePlay1](assets/Screenshots/screenshot2.png)
