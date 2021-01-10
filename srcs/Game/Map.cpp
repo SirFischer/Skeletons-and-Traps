@@ -487,12 +487,12 @@ void		Map::Draw(Window *tWindow)
 				mGrassSprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mGrassSprite);
 			}
-			if ((i[x] == '3' || i[x] == '4' || i[x] == '2' || i[x] == '1' || i[x] == 'n' || i[x] == '+' || i[x] == 'i' || i[x] == 'k' || i[x] == 'j' || i[x] == 'H' || i[x] == 'J') && mMapLines[y - 1][x] == ',')
+			if ((i[x] == '3' || i[x] == '4' || i[x] == '2' || i[x] == '1' || i[x] == 'n' || i[x] == '+' || i[x] == 'P' || i[x] == 'i' || i[x] == 'k' || i[x] == 'j' || i[x] == 'H' || i[x] == 'J') && mMapLines[y - 1][x] == ',')
 			{
 				mDirt4Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mDirt4Sprite);
 			}
-			if ((i[x] == '3' || i[x] == '4' || i[x] == '2' || i[x] == '1' || i[x] == 'n' || i[x] == '+' || i[x] == 'i' || i[x] == 'k' || i[x] == 'j' || i[x] == 'H' || i[x] == 'J') && mMapLines[y - 1][x] == 'h')
+			if ((i[x] == '3' || i[x] == '4' || i[x] == '2' || i[x] == '1' || i[x] == 'n' || i[x] == '+' || i[x] == 'P' || i[x] == 'i' || i[x] == 'k' || i[x] == 'j' || i[x] == 'H' || i[x] == 'J') && mMapLines[y - 1][x] == 'h')
 			{
 				mWall4Sprite.setPosition(x * BLOCK_SIZE, y * BLOCK_SIZE);
 				tWindow->Draw(mWall4Sprite);
