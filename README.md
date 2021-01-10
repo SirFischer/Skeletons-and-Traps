@@ -1,10 +1,11 @@
 #  Skeletons and Traps! :crossed_swords:
 
-A small SFML game made in about a month.
+A small SFML game made in about a month (not including breaks ;)).
 
-This game works only for Linux!
-
-Type in "make test" into the terminal after selecting the folder containing the game to start up the game!
+    For Linux type in "make test" into the terminal to start up the game!
+-----------------
+    For WINDOWS type in "make test RELEASE=TRUE"
+-----------------
 
 You are a lone fighter searching for a challenge.. You are trapped in this realm of monsters and have to find an exit.
 During this travel you have to fight monsters, archers, knights, avoid traps and use your dexterity and strength to jump from platform to platform and wall to wall.
