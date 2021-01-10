@@ -4,7 +4,7 @@ A small SFML game made in about a month (not including breaks ;^) ).
 
     For LINUX type in "make test" into the terminal to start up the game!
 -----------------
-    For WINDOWS type in "make test RELEASE=TRUE"
+    For WINDOWS type in "make test RELEASE=TRUE" into the terminal to start up the game!
 -----------------
 
 You are a lone fighter searching for a challenge.. You are trapped in this realm of monsters and have to find an exit.
