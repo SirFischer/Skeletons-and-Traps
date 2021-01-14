@@ -1,4 +1,4 @@
-Download link: https://www.mfischer.fr/Files/TrapsAndSkeletonsWindowsInstaller-20210111T125450Z-001.zip
+Download link: https://www.mfischer.fr/Files/TrapsAndSkeletonsWindowsInstaller-20210114T154353Z-001.zip
 
 Extract and run the setup to install.
 Make sure to run the executable as administrator!
