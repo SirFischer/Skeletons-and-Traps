@@ -3,6 +3,7 @@
 A small SFML game made in about a month (not including breaks ;^) ).
 
     For LINUX type in "make test RELEASE=TRUE" into the terminal to start up the game!
+    For Windows run the setup file and run the exe as administrator
 -----------------
 
 Does not work for Windows!
